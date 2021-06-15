@@ -54,7 +54,7 @@ Which should work in theory, even though RegEx are pretty tedious and i pretty m
 For further preprocessing I had to pause and get some more knowledge on Pytorch.
 Today I came across `torch.autograd` and made the following notes on the same, here's a brief summary : 
 
-#### 🔥 Automatic Differentiation Package - torch.autograd
+#### 🔦 Automatic Differentiation Package - torch.autograd
 
  → For the differentiation for all operations on tensors 
 
@@ -69,12 +69,23 @@ Gradient : The derivative is the instantaneous rate of change of a function with
 
 
 ```python
-import python
+import torch
+
 a = torch.tensor(5., requires_grad = True) #5. cause we always need floating point tensors 
 b = 2*a**3
 b.backward()
 a.grad
 # Output : tensor(150.) which is the derivative of b and proves our point
+x = torch.tensor(5.)
+w = torch.tensor(10., requires_grad = True)
+b = torch.tesnor(5., requires_grad = True)
+y = w*x+b
+y 
+# Output(55., grad_fn=<AddBackward0>)
+y.backward()
+print(x.grad) # Output : None
+print(w.grad) # Output : tensor(5.)
+print(b.grad) # Output : tensor(1.)
 ```
 
 When we call .backward() it computes the gradient w.r.t all the parameters that have `required_grad = True` and store them in `parameter_grad`
