@@ -1,7 +1,7 @@
 # 365 Days Of Machine Learning and Deep Learning ⚒
 ⌚ Here I will be documenting my journey from ▶14 June 2021 to 14 June 2022🔚 
 
-### 🏆 Day 01 : 
+## 🏆 Day 01 : 
 Started working on an NLP project (Depression-Detection) implementing advanced NLP practices and got suggested the torchtext library from pytorch. 
 The library provides a set of classes that are useful in NLP tasks. Bascially this library takes care of the typical components of NLP tasks namely : 
 
@@ -27,8 +27,8 @@ Meaning a 7 word sentence will be padded into a 5 word sentence.  Similarly if t
 Word vectors or embeddings is a methodology in NLP to map words or phrases from vocabulary to a corresponding vector of real numbers where each number represents a word from the phrase.
 What i learnt is that torchtext makes implementing pretrained word vectors much easier by just mentioning the name of one or specify the path of a word vector that we will be using and is predownloaded. 
 
-### 📃 Day 02 :
-***Preprocessing phase for Twitter Depression Detection Project***
+## 📃 Day 02 : ***Preprocessing phase for Twitter Depression Detection Project #01***
+
 - Removing abnormalies in the tweets : 
 
 On the preprocessing phase, needed to remove the URLs that may contribute more towards advertisements than a potential depressive tweets, the hashtag symbols, the mentions, the emoticons and all other symbols and punctuations other than `?,! and .` 
@@ -91,4 +91,51 @@ print(b.grad) # Output : tensor(1.)
 When we call .backward() it computes the gradient w.r.t all the parameters that have `required_grad = True` and store them in `parameter_grad`
 
 Remember, the backward graph is already made dynamically during the forward pass. The backward function only calculates the gradient using the already made graph and stores them in leaf nodes
+
+## 🔰 Day 03 : ***Preprocessing Phase for Twitter Depression Project #02***
+
+Learnt about the preprocessing pipeline for spaCy. Need to go into more details with it's methods later, but for now i understand the bare bones of it.
+- Contains the preprocessing pipeline
+- inclues language specific used for tokenization
+
+When we process a text with the NLP object it creates a `doc` object 
+
+```python
+# A Doc is Created by processing a string of text with the nlp object
+doc = nlp("Hello World") # The doc lets us access info about text in a structured way and no info is lost
+	# Works as a normal python sequence and let's us iterate over the tokens or get a token by it's index
+	for token in doc:
+		print(token.text) 
+# Output :
+''' 
+Hello
+World
+'''
+```
+
+We tokenize our tweets using spacy by making `tweet_clean(s)` as an `nlp` object.
+```python
+nlp = spacy.load("en_core_web_sm",disable=['lemmatizer', 'tagger', 'ner'])
+def tokenizer(s): return [w.text.lower() for w in nlp(tweet_clean(s))]
+```
+#### Implementing torchtext :
+- Defining Fields 
+```python
+# We define the fields for our tweets 
+TEXT = Field(sequential=True, tokenize=tokenizer, include_lengths=True, use_vocab = True)
+# We define the fields for our target variable. It does not need any tokenization since it is already in it's class form of 1s and 0s
+TARGET = Field(sequential=False, use_vocab=False, pad_token=None, unk_token=None, is_target=False)
+# Here we assign our fields to our dataset
+data_fields = [
+    (None, None),
+    ("tweet", TEXT), 
+    ("target", TARGET)
+]
+```
+I was honestly pretty confused on the significant differences between a test and validation datasets,
+
+So I referred to [this insanely dedicated article](https://machinelearningmastery.com/difference-test-validation-datasets/#:~:text=%E2%80%93%20Validation%20set%3A%20A%20set%20of,of%20a%20fully%2Dspecified%20classifier.&text=These%20are%20the%20recommended%20definitions%20and%20usages%20of%20the%20terms) to have a better understanding for them. 
+> Suppose that we would like to estimate the test error associated with fitting a particular statistical learning method on a set of observations. The validation set approach […] is a very simple strategy for this task. It involves randomly dividing the available set of observations into two parts, a training set and a validation set or hold-out set. The model is fit on the training set, and the fitted model is used to predict the responses for the observations in the validation set. The resulting validation set error rate — typically assessed using MSE in the case of a quantitative response—provides an estimate of the test error rate.
+
+In short I made the train, validation and test set (80:20) and made them into a tabular_dataset for torchtext operations. After that I fitted the vector embedding `glove.6B.50d` to my training data and wrapped up for the day. 
 
