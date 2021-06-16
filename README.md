@@ -94,7 +94,7 @@ Remember, the backward graph is already made dynamically during the forward pass
 
 ## 🔰 Day 03 : ***Preprocessing Phase for Twitter Depression Project #02***
 
-Learnt about the preprocessing pipeline for spaCy. Need to go into more details with it's methods later, but for now i understand the bare bones of it.
+Learnt about the **preprocessing pipeline for spaCy**. Will need to go into a little more detail later, for now I understand the bare bones of it. 
 - Contains the preprocessing pipeline
 - inclues language specific used for tokenization
 
@@ -132,6 +132,8 @@ data_fields = [
     ("target", TARGET)
 ]
 ```
+#### 💬 ***Building our train, validation and test datasets***
+
 I was honestly pretty confused on the significant differences between a test and validation datasets,
 
 So I referred to [this insanely dedicated article](https://machinelearningmastery.com/difference-test-validation-datasets/#:~:text=%E2%80%93%20Validation%20set%3A%20A%20set%20of,of%20a%20fully%2Dspecified%20classifier.&text=These%20are%20the%20recommended%20definitions%20and%20usages%20of%20the%20terms) to have a better understanding for them. 
