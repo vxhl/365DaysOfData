@@ -141,3 +141,67 @@ So I referred to [this insanely dedicated article](https://machinelearningmaster
 
 In short I made the train, validation and test set (80:20) and made them into a tabular_dataset for torchtext operations. After that I fitted the vector embedding `glove.6B.50d` to my training data and wrapped up for the day. 
 
+## 🔍 Day 04 : ***Loading Data in Batches*** 
+
+Today was all about batches so referred to [this](https://gmihaila.medium.com/better-batches-with-pytorchtext-bucketiterator-12804a545e2a) article to have a better understanding on it, but honestly was still confused on the implementation part. 
+
+- After making my train, validation and test data into tabular_datasets we use the `BucketIterator` to access the Dataloader. It sorts data according to length of text, and groups similar length text in a batch, thus reducing the amount of padding required. It pads the batch according to the max length in that particular batch
+
+```python
+train_loader, val_loader, test_loader = BucketIterator.splits(datasets=(train_data, val_data, test_data), 
+                                            batch_sizes=(3,3,3), 
+                                            sort_key=lambda x: len(x.tweet), 
+                                            device=None, 
+                                            sort_within_batch=True, 
+                                            repeat=False)
+```
+
+Having batches with similar length sequences provides a lot of gain for recurrent modes and transformers models since they would require a minimal amount of padding.
+
+- We then define the `idxtosent`, and not gonna lie, not exactly sure what this does yet.
+```python
+def idxtosent(batch, idx):
+    return ' '.join([TEXT.vocab.itos[i] for i in batch.tweet[0][:,idx].cpu().data.numpy()])
+```
+We get the information about the batch with the .__dict__ method and we are all set to make our BatchGeneratorClass
+```python
+batch.__dict__
+'''
+{'batch_size': 3,
+ 'dataset': <torchtext.data.dataset.TabularDataset at 0x223a03d5730>,
+ 'fields': dict_keys([None, 'tweet', 'target']),
+ 'input_fields': ['tweet', 'target'],
+ 'target_fields': [],
+ 'tweet': (tensor([[  48,    4,  530],
+          [  56,  107,  318],
+          [ 119,  145,   10],
+          [ 312,   63,   24],
+          [  40,    6,   72],
+          [  31, 2255,   45],
+          [   9, 1437,   10],
+          [1431,    2,  114]]),
+  tensor([8, 8, 8])),
+ 'target': tensor([0, 0, 0])}
+'''
+```
+The Batch Generator makes it more convenient to get information from our batches. 
+That is basically what I understood from my implementation today. It loads the dataloader we created previously, gets the independent and the dependent varibale fields in the __init__ method. Further the __len__ gets the total size of our dataset and the __iter__ provides methods for accessing the dataset by index. __getitem()__ may also be used to get the selected sample in the dataset by indexing. 
+I came across [this](https://blog.paperspace.com/dataloaders-abstractions-pytorch/) article with a comprehensive explanation of the dataloader class. I will look into it tomorrow.
+```python
+class BatchGenerator:
+    def __init__(self, dl, x_field, y_field):
+        # data loading
+        self.dl, self.x_field, self.y_field = dl, x_field, y_field
+        
+    def __len__(self):
+        # len(dataset)
+        return len(self.dl)
+    
+    def __iter__(self):
+        for batch in self.dl:
+            X = getattr(batch, self.x_field)
+            y = getattr(batch, self.y_field)
+            yield (X,y)
+```
+Also today i started collaborating with someone i met in a discord group on an Employee_Satisfaction dataset. 
+It is a real world dataset with a lot to uncover. Everything was cluttered in it so went on a discord call to discuss on what features would actually contruibute to the target_satisfaction variable. It was a confusing session. 
