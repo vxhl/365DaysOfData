@@ -141,7 +141,7 @@ So I referred to [this insanely dedicated article](https://machinelearningmaster
 
 In short I made the train, validation and test set (80:20) and made them into a tabular_dataset for torchtext operations. After that I fitted the vector embedding `glove.6B.50d` to my training data and wrapped up for the day. 
 
-## 🔍 Day 04 : ***Loading Data in Batches*** 
+## 🔍 Day 04 : ***Twitter Depression Detection Project : Loading Data in Batches*** 
 
 Today was all about batches so referred to [this](https://gmihaila.medium.com/better-batches-with-pytorchtext-bucketiterator-12804a545e2a) article to have a better understanding on it, but honestly was still confused on the implementation part. 
 
@@ -205,3 +205,41 @@ class BatchGenerator:
 ```
 Also today i started collaborating with someone i met in a discord group on an Employee_Satisfaction dataset. 
 It is a real world dataset with a lot to uncover. Everything was cluttered in it so went on a discord call to discuss on what features would actually contruibute to the target_satisfaction variable. It was a confusing session. 
+
+## 📑 Day 05 : ***Pytorch fundamentals : `DataLoader` class and Abstractions***
+I was following a learning as I build approach so the fundamental concepts of loading and different types of data in Pytorch just confused me a lot. So I follwed [this](https://blog.paperspace.com/dataloaders-abstractions-pytorch/) article to have a better comprehensive look on it, in summary :
+
+I learnt about the `DataLoader` class and its significance in handling the data neatly by organizing it in accordance with the given paramters. Then analyzed the MNIST dataset by looking at varios possible techniques to call it into the workspace and how to load the Data onto the GPUs using `CUDA`. Then learnt about the transforming and rescaling the data using the different methods of the `transforms` module like `Resize()`, `CenterCrop()`,`ToTensor()`, etc, which were admittedly completely outside the scope of the project I am currently working on but alright. 
+Understood some of the differences between a map-styled and iterable datasets and how the project I am currently working on uses an Iterable dataset ( though this part still confuses me ) 
+
+Also used the `DataLoader` class to make a custom dataset in pytorch that has numbers and their squared values. Let us call our dataset SquareDataset. Its purpose is to return squares of values in the range [a,b]. Below is the relevant code: 
+```python
+import torch
+import torchvision
+from torch.utils.data import Dataset, DataLoader
+from torchvision import datasets, transforms
+
+class SquareDataset(Dataset):
+     def __init__(self, a=0, b=1):
+         super(Dataset, self).__init__()
+         assert a <= b
+         self.a = a
+         self.b = b
+        
+     def __len__(self):
+         return self.b - self.a + 1
+        
+     def __getitem__(self, index):
+        assert self.a <= index <= self.b
+        return index, index**2
+
+data_train = SquareDataset(a=1,b=64)
+data_train_loader = DataLoader(data_train, batch_size=64, shuffle=True)
+print(len(data_train))
+```
+### 🤖 GATED RECURRENT UNIT
+While I had previously done a good study on LSTMS from the infamous [colah's LSTM blog post](https://colah.github.io/posts/2015-08-Understanding-LSTMs/) today is the first time I came across GRU.
+GRU is short for Gatted Recurrent Unit and was introduced in 2014. Unlike LSTMs, GRUs have no cell state and it instead uses the hidden state where it combines the long and short term memory. In LSTMs we have the forget, input and output gate whereas in GRU we have - 
+- Update gate which is similar to our forget and input gate and specifies how much of the past memory to retain
+- Reset gate which specifies how much of the past information to forget.
+Thankfully I got a good revision on LSTM as well thanks to Michael Phi's youtube video on [Illustrated Guide to LSTM's and GRU's](https://www.youtube.com/watch?v=8HyCNIVRbSU)
