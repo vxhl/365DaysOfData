@@ -243,3 +243,30 @@ GRU is short for Gatted Recurrent Unit and was introduced in 2014. Unlike LSTMs,
 - Update gate which is similar to our forget and input gate and specifies how much of the past memory to retain
 - Reset gate which specifies how much of the past information to forget.
 Thankfully I got a good revision on LSTM as well thanks to Michael Phi's youtube video on [Illustrated Guide to LSTM's and GRU's](https://www.youtube.com/watch?v=8HyCNIVRbSU)
+
+## 📜 Day 06 : ***Implementing RNN, GRU and LSTM***
+Inorder to implement GRU into the [depression-detection-project]() I have been working on, today I dedicated most of my time into understanding the implementations for RNN, LSTM and GRU. 
+For this purpose I followed the official [pytorch documentation](https://pytorch.org/docs/stable/generated/torch.nn.GRU.html) as well as [this tutorial](https://www.youtube.com/watch?v=0_PgWWmauHk&t=396s) from [Python Engineer](https://www.youtube.com/channel/UCbXgNpp0jedKWcQiULLbDTA)
+
+Below is the implemented quote for all the models on the MNIST dataset 
+[ Insert Image here ] 
+
+In one similar project relating to Depression-Detection, the user had used AGA-GRU which is an even more optimised version of GRU where AGA stands for Adaptive Genetic Algorithm. I tried to read up on the [research paper](https://iopscience.iop.org/article/10.1088/1742-6596/1651/1/012146#:~:text=The%20weight%20adjustment%20of%20gated,GRU) but of course it overwhelmed me so I kept it aside. 
+
+### ➡Bidirectional RNNs⬅
+Let us look at a simple RNN cell
+
+[Insert Image]
+
+We can see that the previous words influence the final output. But in order to determine if apple is a fruit or a company we need to have the influence of the next words as well. 
+
+Inorder to tackle this problem we need to input the words that come after Apple so we need to make a change to this structure.
+
+To do this, we add another layer which processes the word from right to left ——-
+
+[Insert Image here]
+
+We should use Bi-directional RNN for all sorts of NLP tasks.
+However for speech recognition will not work well since the input is gotten w.r.t time.
+
+It is slower to LSTM RNN or simple RNN.
