@@ -296,7 +296,7 @@ In one similar project relating to Depression-Detection, the user had used AGA-G
 ### ➡Bidirectional RNNs⬅
 Let us look at a simple RNN cell
 
-![Insert Image]("C:\CS_07\Data Science\365Days_MachineLearning_DeepLearning\Images\Untitled.png")
+![Insert Image](C:\CS_07\Data Science\365Days_MachineLearning_DeepLearning\Images\Untitled.png)
 
 We can see that the previous words influence the final output. But in order to determine if apple is a fruit or a company we need to have the influence of the next words as well. 
 
@@ -304,7 +304,7 @@ Inorder to tackle this problem we need to input the words that come after Apple 
 
 To do this, we add another layer which processes the word from right to left ——-
 
-![Insert Image here]("C:\CS_07\Data Science\365Days_MachineLearning_DeepLearning\Images\Untitled (1).png")
+![Insert Image here](C:\CS_07\Data Science\365Days_MachineLearning_DeepLearning\Images\Untitled (1).png)
 
 We should use Bi-directional RNN for all sorts of NLP tasks.
 However for speech recognition will not work well since the input is gotten w.r.t time.
