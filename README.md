@@ -291,7 +291,7 @@ class RNN(nn.Module):
 model = RNN(input_size, hidden_size, num_layers, num_classes).to(device)
 ```
 
-In one similar project relating to Depression-Detection, the user had used AGA-GRU which is an even more optimised version of GRU where AGA stands for Adaptive Genetic Algorithm. I tried to read up on the [research paper](https://iopscience.iop.org/article/10.1088/1742-6596/1651/1/012146#:~:text=The%20weight%20adjustment%20of%20gated,GRU) but of course it overwhelmed me so I kept it aside. 
+In one similar project relating to Depression-Detection, AGA-GRU was used for training the model which is an even more optimised version of GRU where AGA stands for Adaptive Genetic Algorithm. I tried to read up on the [research paper](https://iopscience.iop.org/article/10.1088/1742-6596/1651/1/012146#:~:text=The%20weight%20adjustment%20of%20gated,GRU) but of course it overwhelmed me so I kept it aside. 
 
 ### ➡Bidirectional RNNs⬅
 Let us look at a simple RNN cell
