@@ -248,15 +248,55 @@ Thankfully I got a good revision on LSTM as well thanks to Michael Phi's youtube
 Inorder to implement GRU into the [depression-detection-project]() I have been working on, today I dedicated most of my time into understanding the implementations for RNN, LSTM and GRU. 
 For this purpose I followed the official [pytorch documentation](https://pytorch.org/docs/stable/generated/torch.nn.GRU.html) as well as [this tutorial](https://www.youtube.com/watch?v=0_PgWWmauHk&t=396s) from [Python Engineer](https://www.youtube.com/channel/UCbXgNpp0jedKWcQiULLbDTA)
 
-Below is the implemented quote for all the models on the MNIST dataset 
-[ Insert Image here ] 
+Below is a snippet for the implemented class for the models
+
+```python
+# Fully connected neural network with one hidden layer
+class RNN(nn.Module):
+    def __init__(self, input_size, hidden_size, num_layers, num_classes):
+        super(RNN, self).__init__()
+        self.num_layers = num_layers
+        self.hidden_size = hidden_size
+        self.rnn = nn.RNN(input_size, hidden_size, num_layers, batch_first=True)
+        # -> x needs to be: (batch_size, seq, input_size)
+        
+        # or:
+        #self.gru = nn.GRU(input_size, hidden_size, num_layers, batch_first=True)
+        #self.lstm = nn.LSTM(input_size, hidden_size, num_layers, batch_first=True)
+        self.fc = nn.Linear(hidden_size, num_classes)
+        
+    def forward(self, x):
+        # Set initial hidden states (and cell states for LSTM)
+        h0 = torch.zeros(self.num_layers, x.size(0), self.hidden_size).to(device) 
+        #c0 = torch.zeros(self.num_layers, x.size(0), self.hidden_size).to(device) 
+        
+        # x: (n, 28, 28), h0: (2, n, 128)
+        
+        # Forward propagate RNN
+        out, _ = self.rnn(x, h0)  
+        # or:
+        #out, _ = self.lstm(x, (h0,c0))  
+        
+        # out: tensor of shape (batch_size, seq_length, hidden_size)
+        # out: (n, 28, 128)
+        
+        # Decode the hidden state of the last time step
+        out = out[:, -1, :]
+        # out: (n, 128)
+         
+        out = self.fc(out)
+        # out: (n, 10)
+        return out
+
+model = RNN(input_size, hidden_size, num_layers, num_classes).to(device)
+```
 
 In one similar project relating to Depression-Detection, the user had used AGA-GRU which is an even more optimised version of GRU where AGA stands for Adaptive Genetic Algorithm. I tried to read up on the [research paper](https://iopscience.iop.org/article/10.1088/1742-6596/1651/1/012146#:~:text=The%20weight%20adjustment%20of%20gated,GRU) but of course it overwhelmed me so I kept it aside. 
 
 ### ➡Bidirectional RNNs⬅
 Let us look at a simple RNN cell
 
-[Insert Image]
+![Insert Image]("C:\CS_07\Data Science\365Days_MachineLearning_DeepLearning\Images\Untitled.png")
 
 We can see that the previous words influence the final output. But in order to determine if apple is a fruit or a company we need to have the influence of the next words as well. 
 
@@ -264,7 +304,7 @@ Inorder to tackle this problem we need to input the words that come after Apple 
 
 To do this, we add another layer which processes the word from right to left ——-
 
-[Insert Image here]
+![Insert Image here]("C:\CS_07\Data Science\365Days_MachineLearning_DeepLearning\Images\Untitled (1).png")
 
 We should use Bi-directional RNN for all sorts of NLP tasks.
 However for speech recognition will not work well since the input is gotten w.r.t time.
