@@ -291,12 +291,12 @@ class RNN(nn.Module):
 model = RNN(input_size, hidden_size, num_layers, num_classes).to(device)
 ```
 
-In one similar project relating to Depression-Detection, the user had used AGA-GRU which is an even more optimised version of GRU where AGA stands for Adaptive Genetic Algorithm. I tried to read up on the [research paper](https://iopscience.iop.org/article/10.1088/1742-6596/1651/1/012146#:~:text=The%20weight%20adjustment%20of%20gated,GRU) but of course it overwhelmed me so I kept it aside. 
+In one similar project relating to Depression-Detection, AGA-GRU was used for training the model which is an even more optimised version of GRU where AGA stands for Adaptive Genetic Algorithm. I tried to read up on the [research paper](https://iopscience.iop.org/article/10.1088/1742-6596/1651/1/012146#:~:text=The%20weight%20adjustment%20of%20gated,GRU) but of course it overwhelmed me so I kept it aside. 
 
 ### ➡Bidirectional RNNs⬅
 Let us look at a simple RNN cell
 
-![Insert Image](C:\CS_07\Data Science\365Days_MachineLearning_DeepLearning\Images\Untitled.png)
+![Insert Image](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/Untitled.png)
 
 We can see that the previous words influence the final output. But in order to determine if apple is a fruit or a company we need to have the influence of the next words as well. 
 
@@ -304,7 +304,7 @@ Inorder to tackle this problem we need to input the words that come after Apple 
 
 To do this, we add another layer which processes the word from right to left ——-
 
-![Insert Image here](C:\CS_07\Data Science\365Days_MachineLearning_DeepLearning\Images\Untitled (1).png)
+![Insert Image here](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/Untitled%20(1).png)
 
 We should use Bi-directional RNN for all sorts of NLP tasks.
 However for speech recognition will not work well since the input is gotten w.r.t time.
