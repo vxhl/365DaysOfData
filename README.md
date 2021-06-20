@@ -310,3 +310,62 @@ We should use Bi-directional RNN for all sorts of NLP tasks.
 However for speech recognition will not work well since the input is gotten w.r.t time.
 
 It is slower to LSTM RNN or simple RNN.
+
+## 📌Day 07 : Pooling and Introduction to Concat Pooling
+- Pooling is a type of downsampling. We use pooling for the conveniences like [1]reducing the input size for efficient computations of the convolutional layers and [2] To achieve "spacial invariance" for any given input.
+
+"Spacial Invariance" is a property which means that our model can recognise a given object in our input vector no matter the orientation.
+
+There are three types of pooling namely [1] Average Pooling and [2] Max Pooling and [3] Min Pooling
+
+[1] Average Pooling: Example - from a 4x4 matrix that we divide into 4 sections, we choose the average value from each section and convert it into a 2x2 matrix similarly, for [2] Max Pooing and [3] Min Pooling we choose the Max and Min respectively.
+
+The sections in the NxN matrix are referred to as filters and change based on the size of the given input. 
+
+Preference :
+
+[1] Average Pooling: Smooths out the given image and hence sharp features may nt be identified.
+[2] Max Pooling: Selects the brighter pixels from the image. Useful when we only need the brighter pixels from an image with dark background and it is vice versa for [3] Min Pooling.
+
+Let us look at the implementation for these pooling methods. 
+```python
+from skimage.measure import block_reduce
+import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib.image import imread
+
+img = imread('black_stick.png')
+mean_pool=block_reduce(img, block_size=(9,9,1), func=np.mean)
+max_pool=block_reduce(img, block_size=(9,9,1), func=np.max)
+min_pool=block_reduce(img, block_size=(9,9,1), func=np.min)
+
+plt.figure(1)
+plt.subplot(221)
+imgplot = plt.imshow(img)
+plt.title('Original Image')
+
+plt.subplot(222)
+imgplot3 = plt.imshow(mean_pool)
+plt.title('Average pooling')
+
+plt.subplot(223)
+imgplot1 = plt.imshow(max_pool)
+plt.title('Max pooling')
+
+plt.subplot(224)
+imgplot1 = plt.imshow(min_pool)
+plt.title('Min pooling')
+
+plt.show()
+
+```
+## Depression-Detection-Project : Model Building #01
+In the depression-detection-project today I implemented a simple GRU model with concat pooling and achieved a validation accuracy score of 78%. Next I will be looking into implementing the LSTM+CNN model inorder to try and improve the accuracy.
+
+![insert acc image](C:\CS_07\Data Science\365Days_MachineLearning_DeepLearning\Images\depression-detection-accuracy.png)
+
+Concat Pooling in simple terms means taking max and average pools of the output of all timesteps and then concatenating them along with the last hidden state before passing it as the output layer.
+
+The following article gives a detailed implementation for GRU with concat pooling: 
+https://medium.com/@sonicboom8/sentiment-analysis-with-variable-length-sequences-in-pytorch-6241635ae130
+
