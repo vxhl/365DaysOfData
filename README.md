@@ -360,7 +360,7 @@ plt.title('Min pooling')
 plt.show()
 
 ```
-## Depression-Detection-Project : Model Building #01
+### Depression-Detection-Project : Model Building #01
 In the depression-detection-project today I implemented a simple GRU model with concat pooling and achieved a validation accuracy score of 78%. Next I will be looking into implementing the LSTM+CNN model inorder to try and improve the accuracy.
 
 ![insert acc image](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/depression-detection-accuracy.png)
