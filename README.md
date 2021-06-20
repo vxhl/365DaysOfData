@@ -311,7 +311,7 @@ However for speech recognition will not work well since the input is gotten w.r.
 
 It is slower to LSTM RNN or simple RNN.
 
-## 📌Day 07 : Pooling and Introduction to Concat Pooling
+## 📌Day 07 : Revisiting Pooling and Model Building #01 for depression-detection-project
 - Pooling is a type of downsampling. We use pooling for the conveniences like [1]reducing the input size for efficient computations of the convolutional layers and [2] To achieve "spacial invariance" for any given input.
 
 "Spacial Invariance" is a property which means that our model can recognise a given object in our input vector no matter the orientation.
@@ -362,7 +362,7 @@ plt.show()
 ## Depression-Detection-Project : Model Building #01
 In the depression-detection-project today I implemented a simple GRU model with concat pooling and achieved a validation accuracy score of 78%. Next I will be looking into implementing the LSTM+CNN model inorder to try and improve the accuracy.
 
-![insert acc image](C:\CS_07\Data Science\365Days_MachineLearning_DeepLearning\Images\depression-detection-accuracy.png)
+![insert acc image]()
 
 Concat Pooling in simple terms means taking max and average pools of the output of all timesteps and then concatenating them along with the last hidden state before passing it as the output layer.
 
