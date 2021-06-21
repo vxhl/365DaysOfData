@@ -329,7 +329,7 @@ Preference :
 [2] Max Pooling: Selects the brighter pixels from the image. Useful when we only need the brighter pixels from an image with dark background and it is vice versa for [3] Min Pooling.
 
 Let us look at the implementation for these pooling methods. 
-```python
+```python   
 from skimage.measure import block_reduce
 import numpy as np
 import matplotlib.pyplot as plt
@@ -370,3 +370,32 @@ Concat Pooling in simple terms means taking max and average pools of the output 
 The following article gives a detailed implementation for GRU with concat pooling: 
 https://medium.com/@sonicboom8/sentiment-analysis-with-variable-length-sequences-in-pytorch-6241635ae130
 
+## 📌Day 08: The LSTM+CNN Model & Sentiment Analysis with Variable Length Sequences in Pytorch
+
+#### THE CNN-LSTM ARCHITECTURE
+The CNN-LSTM architecture involves using Convulational layers for feature extraction on input data combined with LSTMs to support sequence prediction.
+
+This architecture is primarily aimed towards --- Generating textual description of an activity demonstarted in a sequence of images ( Videos ) or a single image.
+
+This architecture is also being used for speech recognition and NLP tasks where CNN is used a feature extractor for the LSTMs on audio or textual data.
+
+In other words this model is appropriate for the following kinds of problems --
+1. Where the input has a spatial structures such as the pixels in an image or the structure of words that is the sequence and paragraphs that can be expressed in the form of a vector. 
+
+2. Temporal structure, in other words the structure or order of the different images we feed to it or the different words in a text.
+
+A CNN-LSTM layer can be implemented in Keras by taking two sub-models i.e, the CNN model for feature extraction and the LSTM model for interpreting the features along the time steps.
+
+#### Sentimental Analysis with Variable Length Sequence in Pytorch
+Studied up on the essential steps for working with Variable length sequences in Pytorch. Again.
+While I am quite confident that it will take a little too much time to implement on my own, atleast studying up on this gave me the proper structure that I need to follow for problems like these. For example---
+- Building the vocabulary for all the unique words in lowercae, then converting the sequences to indices and calculating the length of each index. We use spaCy for this process.
+- Creating our pytorch Dataset class
+- Loading our custom Dataset with the DataLoader class
+- Finally in the output of our padded dataset and dataloader we get the samples are of equal lengths and ouput of DataLoader as LongTensor.
+
+On these foundations we apply our standard practices and tweak around to increase performance. 
+
+References :
+(Sentimental Analysis with Variable Length Sequences)[https://medium.com/@sonicboom8/sentiment-analysis-with-variable-length-sequences-in-pytorch-6241635ae130]
+(LSTM-CNN Models)[https://machinelearningmastery.com/cnn-long-short-term-memory-networks/#:~:text=A%20CNN%20LSTM%20can%20be,the%20features%20across%20time%20steps]
