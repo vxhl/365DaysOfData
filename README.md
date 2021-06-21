@@ -397,5 +397,5 @@ While I am quite confident that it will take a little too much time to implement
 On these foundations we apply our standard practices and tweak around to increase performance. 
 
 References :
-(Sentimental Analysis with Variable Length Sequences)[https://medium.com/@sonicboom8/sentiment-analysis-with-variable-length-sequences-in-pytorch-6241635ae130]
-(LSTM-CNN Models)[https://machinelearningmastery.com/cnn-long-short-term-memory-networks/#:~:text=A%20CNN%20LSTM%20can%20be,the%20features%20across%20time%20steps]
+[Sentimental Analysis with Variable Length Sequences](https://medium.com/@sonicboom8/sentiment-analysis-with-variable-length-sequences-in-pytorch-6241635ae130)
+[LSTM-CNN Models](https://machinelearningmastery.com/cnn-long-short-term-memory-networks/#:~:text=A%20CNN%20LSTM%20can%20be,the%20features%20across%20time%20steps)
