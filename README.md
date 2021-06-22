@@ -458,7 +458,7 @@ output: 0.52680796
 # We check the similarities between "GREAT" and "GOOD"
 model.wv.similarity(w1="great", w2="good")
 '''
-Output: 0,7714355
+Output: 0.7714355
 '''
 ```
 ### 📦 ***Depression-Detection-Project: Implementing the LSTM-CNN model #01***
