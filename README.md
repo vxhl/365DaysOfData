@@ -399,3 +399,78 @@ On these foundations we apply our standard practices and tweak around to increas
 References :
 [Sentimental Analysis with Variable Length Sequences](https://medium.com/@sonicboom8/sentiment-analysis-with-variable-length-sequences-in-pytorch-6241635ae130)
 [LSTM-CNN Models](https://machinelearningmastery.com/cnn-long-short-term-memory-networks/#:~:text=A%20CNN%20LSTM%20can%20be,the%20features%20across%20time%20steps)
+
+## 📌Day 08 : Implementing and Learning about Word2vec + Implementing LSTM+CNN model on depression-detection-project 
+### 📊***Vector Embeddings using Word2vec***
+Before understanding Word2vec let us look into word embeddings/vector embeds.
+
+Vector embeddings is one of the central ideas of Natural Lanuage Processing models. 
+
+In simple words, they map a discrete categorical variable, in our case words, into a vector of continues numbers unique to the variable.
+
+Word2vec is a method of efficiently creating word embeddings. In addition to it's utility as a word embedding method, some of its concepts are being used in creating *recommendation engines* and making sense of sequential data in commercial, non-language tasks.
+
+Word2vec allows us to get the unique meanings of the words in vectors allowing us to do fascinating mathematical operations like --
+"King - man + woman = Queen" which is honestly mindblowing.
+[InsertImageHere]()
+In the above example, Word2vec computes the unique properties for each word through various computations and givnes us the final word vector as "Queen"!
+Let us take a look at a simple implementation using the Amazon reviews dataset for Cell Phones and accessories
+```python
+# We use the gensim library for implementing Word2vec
+# 1. Initialising the model
+import gensim
+model = gensim.models.Word2Vec(
+    window=10,
+    min_count=2,
+    workers=4,
+)
+
+# 2. Building the vocabulary
+model.build_vocab(review_text, progress_per=1000)
+
+# 3. Training the Word2Vec Model
+model.train(review_text, total_examples=model.corpus_count, epochs=model.epochs)
+
+# 4. Saving the model
+model.save("./word2vec-amazon-cell-accessories-reviews-short.model")
+
+# Finding Similar words and similarity between words
+model.wv.most_similar("bad")
+'''
+Output:
+[('terrible', 0.6617082357406616),
+ ('horrible', 0.6136840581893921),
+ ('crappy', 0.5805919170379639),
+ ('good', 0.5770503878593445),
+ ('shabby', 0.5749340653419495),
+ ('awful', 0.5492298007011414),
+ ('ok', 0.5294141173362732),
+ ('cheap', 0.5288074612617493),
+ ('legit', 0.5199155807495117),
+ ('okay', 0.5171135663986206)]
+
+'''
+# We check the similarities between "CHEAP" and "INEXPENSIVE"
+model.wv.similarity(w1="cheap", w2="inexpensive")
+'''
+output: 0.52680796
+'''
+# We check the similarities between "GREAT" and "GOOD"
+model.wv.similarity(w1="great", w2="good")
+'''
+Output: 0,7714355
+'''
+```
+### 📦 ***Depression-Detection-Project: Implementing the LSTM-CNN model #01***
+Even though I have already gotten a 78% accuracy with the GRU using Concat pooling model, next I have started implementing the LSTM-CNN model.
+
+Of course before that I had to learn more about implementing it all from the start. Thankfully this helped! 
+-> https://github.com/vxhl/Detecting-Depression-in-Social-Media-via-Twitter-Usage
+
+So for now I have tokenized and cleaned the tweets in a much better way than I did in my previous model. Will be adding the word embeds and be defining the Convolutional and LSTM layer tomorrow. 
+
+References : [Illustrated Word2Vec](https://jalammar.github.io/illustrated-word2vec/)
+[Codebasics Word2Vec](https://www.youtube.com/watch?v=hQwFeIupNP0)
+
+
+References: https://jalammar.github.io/illustrated-word2vec/
