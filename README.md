@@ -400,7 +400,7 @@ References :
 [Sentimental Analysis with Variable Length Sequences](https://medium.com/@sonicboom8/sentiment-analysis-with-variable-length-sequences-in-pytorch-6241635ae130)
 [LSTM-CNN Models](https://machinelearningmastery.com/cnn-long-short-term-memory-networks/#:~:text=A%20CNN%20LSTM%20can%20be,the%20features%20across%20time%20steps)
 
-## 📌Day 09 : Implementing and Learning about Word2vec + Implementing LSTM+CNN model on depression-detection-project 
+## 📌Day 09 : ***Implementing and Learning about Word2vec + Implementing LSTM-CNN model on depression-detection-project*** 
 ### 📊***Vector Embeddings using Word2vec***
 Before understanding Word2vec let us look into word embeddings/vector embeds.
 
@@ -412,7 +412,7 @@ Word2vec is a method of efficiently creating word embeddings. In addition to it'
 
 Word2vec allows us to get the unique meanings of the words in vectors allowing us to do fascinating mathematical operations like --
 "King - man + woman = Queen" which is honestly mindblowing.
-[InsertImageHere]()
+![InsertImageHere](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/word2vec.png)
 In the above example, Word2vec computes the unique properties for each word through various computations and givnes us the final word vector as "Queen"!
 Let us take a look at a simple implementation using the Amazon reviews dataset for Cell Phones and accessories
 ```python
