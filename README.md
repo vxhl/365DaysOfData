@@ -370,9 +370,9 @@ Concat Pooling in simple terms means taking max and average pools of the output 
 The following article gives a detailed implementation for GRU with concat pooling: 
 https://medium.com/@sonicboom8/sentiment-analysis-with-variable-length-sequences-in-pytorch-6241635ae130
 
-## 📌Day 08: The LSTM+CNN Model & Sentiment Analysis with Variable Length Sequences in Pytorch
+## 📌Day 08: ***The LSTM+CNN Model & Sentiment Analysis with Variable Length Sequences in Pytorch***
 
-#### THE CNN-LSTM ARCHITECTURE
+### 📦 ***THE CNN-LSTM ARCHITECTURE***
 The CNN-LSTM architecture involves using Convulational layers for feature extraction on input data combined with LSTMs to support sequence prediction.
 
 This architecture is primarily aimed towards --- Generating textual description of an activity demonstarted in a sequence of images ( Videos ) or a single image.
@@ -386,7 +386,7 @@ In other words this model is appropriate for the following kinds of problems --
 
 A CNN-LSTM layer can be implemented in Keras by taking two sub-models i.e, the CNN model for feature extraction and the LSTM model for interpreting the features along the time steps.
 
-#### Sentimental Analysis with Variable Length Sequence in Pytorch
+### 🔥 ***Sentimental Analysis with Variable Length Sequence in Pytorch***
 Studied up on the essential steps for working with Variable length sequences in Pytorch. Again.
 While I am quite confident that it will take a little too much time to implement on my own, atleast studying up on this gave me the proper structure that I need to follow for problems like these. For example---
 - Building the vocabulary for all the unique words in lowercae, then converting the sequences to indices and calculating the length of each index. We use spaCy for this process.
@@ -400,7 +400,7 @@ References :
 [Sentimental Analysis with Variable Length Sequences](https://medium.com/@sonicboom8/sentiment-analysis-with-variable-length-sequences-in-pytorch-6241635ae130)
 [LSTM-CNN Models](https://machinelearningmastery.com/cnn-long-short-term-memory-networks/#:~:text=A%20CNN%20LSTM%20can%20be,the%20features%20across%20time%20steps)
 
-## 📌Day 08 : Implementing and Learning about Word2vec + Implementing LSTM+CNN model on depression-detection-project 
+## 📌Day 09 : Implementing and Learning about Word2vec + Implementing LSTM+CNN model on depression-detection-project 
 ### 📊***Vector Embeddings using Word2vec***
 Before understanding Word2vec let us look into word embeddings/vector embeds.
 
@@ -471,6 +471,3 @@ So for now I have tokenized and cleaned the tweets in a much better way than I d
 
 References : [Illustrated Word2Vec](https://jalammar.github.io/illustrated-word2vec/)
 [Codebasics Word2Vec](https://www.youtube.com/watch?v=hQwFeIupNP0)
-
-
-References: https://jalammar.github.io/illustrated-word2vec/
