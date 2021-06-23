@@ -471,3 +471,99 @@ So for now I have tokenized and cleaned the tweets in a much better way than I d
 
 References : [Illustrated Word2Vec](https://jalammar.github.io/illustrated-word2vec/)
 [Codebasics Word2Vec](https://www.youtube.com/watch?v=hQwFeIupNP0)
+
+## 📌Day 10: Understanding Batch Normalization and implementing HandTracker using google's mediapipe
+
+### 📈Batch Normalization📈
+Normalization is one of the most important preprocessing techniques where we rescale our different input data having different varying ranges into a range of 0 -> 1
+
+Similar to this, Batch normalization is instead applied on the input that is being fed into each batch of our neural network, thus stabilizing the learning process and also reducing the number of epochs required to achieve a desirable outcome.
+
+Normalizing our input data ensures that our data is between the same small fixed range. 
+
+Why Batch Normalization?
+1. Increases the speed of training
+2. Decreases the importance of initial weights since all our input data points converge easily within the same range
+3. Regularizes the model to some extent.
+
+In more algorithmic terms-- 
+
+The first thing that Batch normalization does is normalize the output for our activation function. After normalizing the output from the AF, batch norm then multiplies this normalized output with some arbitrary parameter and adds another arbitrary parameter to this product. This calculation with the new arbitrary parameters sets a new standard deviation and mean of the data. The mean, std deviation and arbitrary parameters are all trainable meaning they will keep getting optmized durint the training process. This makes it so that the weights within the network do not become imbalanced with extremely high or low values since normalization is included in the gradient process.
+
+Implementation in Keras -
+```python
+
+# Without Batch Normalization
+model_1 = Sequential()
+model_1.add(Conv2D(32, (3,3), activation="relu"))
+model_1.add(MaxPooling2D((2, 2)))
+model_1.add(Conv2D(64, (3,3), activation="relu"))
+model_1.add(MaxPooling2D((2, 2)))
+model_1.add(Conv2D(64, (3,3), activation="relu"))
+model_1.add(Flatten())
+model_1.add(Dense(64, activation="relu"))
+model_1.add(Dense(10, activation="softmax"))
+model_1.compile(loss='categorical_crossentropy',
+              optimizer='adam',
+              metrics=['accuracy'])
+batch_size = 128
+epochs = 5
+model_1_history = model_1.fit(X_train, y_train,
+                              batch_size=batch_size,
+                              epochs=epochs,
+                              verbose=1,
+                              validation_data=(X_test, y_test))
+'''
+Epoch 1/5
+469/469 [==============================] - 2s 5ms/step - loss: 0.2422 - accuracy: 0.9293 - val_loss: 0.0567 - val_accuracy: 0.9836
+Epoch 2/5
+469/469 [==============================] - 2s 4ms/step - loss: 0.0583 - accuracy: 0.9819 - val_loss: 0.0350 - val_accuracy: 0.9888
+Epoch 3/5
+469/469 [==============================] - 2s 4ms/step - loss: 0.0416 - accuracy: 0.9869 - val_loss: 0.0298 - val_accuracy: 0.9898
+Epoch 4/5
+469/469 [==============================] - 2s 4ms/step - loss: 0.0325 - accuracy: 0.9893 - val_loss: 0.0317 - val_accuracy: 0.9899
+Epoch 5/5
+469/469 [==============================] - 2s 4ms/step - loss: 0.0263 - accuracy: 0.9917 - val_loss: 0.0297 - val_accuracy: 0.9900
+'''
+
+# With Batch Normalization
+model_2 = Sequential()
+model_2.add(Conv2D(32, (3,3), activation="relu"))
+model_2.add(MaxPooling2D((2, 2)))
+model_2.add(Conv2D(64, (3,3), activation="relu"))
+model_2.add(MaxPooling2D((2, 2)))
+model_2.add(Conv2D(64, (3,3), activation="relu"))
+model_2.add(Flatten())
+model_2.add(Dense(64))
+model_2.add(BatchNormalization())
+model_2.add(Activation("relu"))
+model_2.add(Dense(10))
+model_2.add(BatchNormalization())
+model_2.add(Activation("softmax"))
+
+model_2.compile(loss='categorical_crossentropy',
+              optimizer='adam',
+              metrics=['accuracy'])
+model_2_history = model_2.fit(X_train, y_train,
+                              batch_size=batch_size,
+                              epochs=epochs,
+                              verbose=1,
+                              validation_data=(X_test, y_test))
+'''
+Epoch 1/5
+469/469 [==============================] - 3s 6ms/step - loss: 0.3604 - accuracy: 0.9630 - val_loss: 0.3049 - val_accuracy: 0.9866
+Epoch 2/5
+469/469 [==============================] - 3s 5ms/step - loss: 0.1420 - accuracy: 0.9888 - val_loss: 0.0891 - val_accuracy: 0.9910
+Epoch 3/5
+469/469 [==============================] - 2s 5ms/step - loss: 0.0868 - accuracy: 0.9919 - val_loss: 0.0760 - val_accuracy: 0.9887
+Epoch 4/5
+469/469 [==============================] - 2s 5ms/step - loss: 0.0584 - accuracy: 0.9940 - val_loss: 0.0469 - val_accuracy: 0.9930
+Epoch 5/5
+469/469 [==============================] - 2s 5ms/step - loss: 0.0423 - accuracy: 0.9954 - val_loss: 0.0553 - val_accuracy: 0.9917
+'''
+```
+As we can see the normalized model reaches the maximum accuracy more quickly when compared to the non batch-normalized dataset. Even though this looks small now, this difference gets magnified immensely on bigger batches.
+
+I also implemented the HandTracking module using `mediapipe` and `opencv` today which was surprisingly easy. 
+![insert]()
+
