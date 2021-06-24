@@ -567,7 +567,7 @@ As we can see the normalized model reaches the maximum accuracy more quickly whe
 I also implemented the HandTracking module using `mediapipe` and `opencv` today which was surprisingly easy. 
 ![insert](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/handtracker.png)
 
-## 📌Day 11: From Sliding Windows to YOLO ( You Only Look Once ) 
+## 📌Day 11: From Sliding Windows to Faster R-CNN 
 I have been reading up on a research paper on [Driver Distraction Detection and Early Prediction and avoidance of accidents using CNN](https://iopscience.iop.org/article/10.1088/1742-6596/1770/1/012007#:~:text=The%20behaviour%20of%20drivers%20under,processing%20and%20computer%20vision%20problem). While trying to read and understand the terms in the said paper I came across the concept of Sliding Windows which I was unfamiliar with at the moment.
 
 ### ✂ Sliding Windows Object Detection: 
