@@ -596,3 +596,7 @@ In this level we abandon the fixed property of the selective search algorithm si
 As we can see Faster R-CNN is even faster.
 
 I will cover till here for now since this will get a little too long If I go into YOLO now. Will go into more details with YOLO on some other day. 
+
+References: https://towardsdatascience.com/r-cnn-fast-r-cnn-faster-r-cnn-yolo-object-detection-algorithms-36d53571365e
+
+youtube.com/watch?v=AimW3j7M2Uw
