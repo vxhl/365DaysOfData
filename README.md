@@ -599,4 +599,4 @@ I will cover till here for now since this will get a little too long If I go int
 
 References: https://towardsdatascience.com/r-cnn-fast-r-cnn-faster-r-cnn-yolo-object-detection-algorithms-36d53571365e
 
-youtube.com/watch?v=AimW3j7M2Uw
+https://www.youtube.com/watch?v=AimW3j7M2Uw
