@@ -567,3 +567,32 @@ As we can see the normalized model reaches the maximum accuracy more quickly whe
 I also implemented the HandTracking module using `mediapipe` and `opencv` today which was surprisingly easy. 
 ![insert](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/handtracker.png)
 
+## 📌Day 11: From Sliding Windows to YOLO ( You Only Look Once ) 
+I have been reading up on a research paper on [Driver Distraction Detection and Early Prediction and avoidance of accidents using CNN](https://iopscience.iop.org/article/10.1088/1742-6596/1770/1/012007#:~:text=The%20behaviour%20of%20drivers%20under,processing%20and%20computer%20vision%20problem). While trying to read and understand the terms in the said paper I came across the concept of Sliding Windows which I was unfamiliar with at the moment.
+
+### ✂ Sliding Windows Object Detection: 
+In this algorithm a NxM window slides from the top left of an image and each time we try to get a sample which is given to a CNN. The CNN determines whether the given image of the said object or not. If it is not the said object then we continue to slide our window till we find our required image. 
+
+However we notice that the window size cannot be predetermined for the given image, because of this reason we initially pass a random size of say nXm and we keep on increasing or decreasing the window size according to our required object. But of course this requires an immense amount of computation time since we have to select an immense number of regions and thus is inefficient, even more so with multiple object detection.
+
+### 📈R-CNN -> Fast R-CNN -> Faster R-CNN
+#### 1. R-CNN
+Inorder to bypass the problem of selecting a huge number of regions and adjusting them, the RCNN method uses selective search of the image to get 2000 regions from the image. So instead of iterating over the huge number of matrices we instead work with just 2000 selected regions generated using the ["selective search algorithm"](https://learnopencv.com/selective-search-for-object-detection-cpp-python/#:~:text=Selective%20Search%20is%20a%20region,texture%2C%20size%20and%20shape%20compatibility)    
+
+To know more about the selective search algorithm, follow this [link](https://ivi.fnwi.uva.nl/isis/publications/2013/UijlingsIJCV2013/UijlingsIJCV2013.pdf).
+
+Problems: 
+- It would still take a large amount of time to train the network since we would have to computer 2000 regions per image
+- It cannot be implemented real time since it take approx. 47 seconds to test each image. 
+- The selective algorithm is fixed. So no learning is happening at that stage to tweak the process. 
+#### 2. Fast R-CNN
+Fast R-CNN is faster than the normal one since here we do not need to feed 2000 region proposals for each image in our dataset to the CNN. Instead we do the convolutional operation once per image. From the convolutional feature maps we then extract the region proposals and then warp then reshape them using something called RoI pooling layer which I did not go in depth on, to feed them into a fully connected layer. 
+![Insert](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/rcnnvsfastrcnn.png)
+As we can see, fast R-CNN is significantly faster than R-CNN
+
+#### 3. Faster R-CNN
+In this level we abandon the fixed property of the selective search algorithm since it is slow and time consuming. Here we instead use another network to predict the regions from our convolutional feature map. Then similarly we use the RoI pooling layer to reshape the regions which are then used to classify the image within the regions. 
+![Insert](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/fastestRCNN.png)
+As we can see Faster R-CNN is even faster.
+
+I will cover till here for now since this will get a little too long If I go into YOLO now. Will go into more details with YOLO on some other day. 
