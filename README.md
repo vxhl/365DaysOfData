@@ -600,3 +600,62 @@ I will cover till here for now since this will get a little too long If I go int
 References: https://towardsdatascience.com/r-cnn-fast-r-cnn-faster-r-cnn-yolo-object-detection-algorithms-36d53571365e
 
 https://www.youtube.com/watch?v=AimW3j7M2Uw
+
+## 📌Day 12: Revisiting Data Augmentation techniques + Improving model performance for Depression-Detection-Project
+
+### ⛰ Data Augmentation ⛰
+
+This concept allows us to increase the diversity and amount of data for our training models to gain better results. 
+
+Our supervised deep learning models require a substantial amount of data and the diversity of it to provide reliable results during training. Deep Learning models require a huge amount of data to achieve high performance.
+
+Models trained to achieve high performance on complex tasks generally have a large number of hidden neurons and as the number of neurons increases, so does the number of trainable parameters. 
+
+So the amount of data is proportional to the number of learnable parameters in the model.
+
+So in cases where the number of training data is less or there is less diversity in the training data we use ***Data Augmentation***. In addition this concept is also used in addressing class imabalance in classificaion tasks. 
+
+Our Deep Learning models are dumb so we can just change the orientation or composition of the image and it will be considered as a completely different image by our model. There are many types of augmentations that are possible using the `ImageDataGenerator` class of `keras` like -> Random Zoom, Random Brightness, Random Rotation Augmentation, etc.
+
+Let us look at a random brightness augmentation example for images of macaws or whatever this bird is
+
+```python
+# example of brighting image augmentation
+from numpy import expand_dims
+from keras.preprocessing.image import load_img
+from keras.preprocessing.image import img_to_array
+from keras.preprocessing.image import ImageDataGenerator
+from matplotlib import pyplot
+# load the image
+img = load_img('bird.jpg')
+# convert to numpy array
+data = img_to_array(img)
+# expand dimension to one sample
+samples = expand_dims(data, 0)
+# create image data augmentation generator
+datagen = ImageDataGenerator(brightness_range=[0.2,1.0])
+# prepare iterator
+it = datagen.flow(samples, batch_size=1)
+# generate samples and plot
+for i in range(9):
+	# define subplot
+	pyplot.subplot(330 + 1 + i)
+	# generate batch of images
+	batch = it.next()
+	# convert to unsigned integers for viewing
+	image = batch[0].astype('uint8')
+	# plot raw pixel data
+	pyplot.imshow(image)
+# show the figure
+pyplot.show()
+
+```
+Output:
+![bird](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/bird.png)
+
+As we can see the algorithm changes the exposure for the images of the birds and creates them into new data points.
+
+### Depression-Detection-Project: Improving model performance
+So I had achieved a val_acc of 75% for the GRU model which is pretty bad. So today I looked into some hyperparameter tuning practices to improve the model.
+
+Applied dropout of 0.5 and reduced batch_size from 32 to 16 which increased the accuracy to 78% for now. But still haven't figured out how to implement augmentation for this, or if this even needs augmentation. Will look into it tomorrow. 
