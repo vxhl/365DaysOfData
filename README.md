@@ -600,7 +600,6 @@ I will cover till here for now since this will get a little too long If I go int
 References: https://towardsdatascience.com/r-cnn-fast-r-cnn-faster-r-cnn-yolo-object-detection-algorithms-36d53571365e
 
 https://www.youtube.com/watch?v=AimW3j7M2Uw
-<<<<<<< HEAD
 
 ## 📌Day 12: Revisiting Data Augmentation techniques + Improving model performance for Depression-Detection-Project
 
@@ -660,5 +659,3 @@ As we can see the algorithm changes the exposure for the images of the birds and
 So I had achieved a val_acc of 75% for the GRU model which is pretty bad. So today I looked into some hyperparameter tuning practices to improve the model.
 
 Applied dropout of 0.5 and reduced batch_size from 32 to 16 which increased the accuracy to 78% for now. But still haven't figured out how to implement augmentation for this, or if this even needs augmentation. Will look into it tomorrow. 
-=======
->>>>>>> 597bef7a788b21d8993babaa8dcd78588d49566d
