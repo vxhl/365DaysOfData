@@ -567,7 +567,7 @@ As we can see the normalized model reaches the maximum accuracy more quickly whe
 I also implemented the HandTracking module using `mediapipe` and `opencv` today which was surprisingly easy. 
 ![insert](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/handtracker.png)
 
-## 📌Day 11: From Sliding Windows to YOLO ( You Only Look Once ) 
+## 📌Day 11: From Sliding Windows to Faster R-CNN 
 I have been reading up on a research paper on [Driver Distraction Detection and Early Prediction and avoidance of accidents using CNN](https://iopscience.iop.org/article/10.1088/1742-6596/1770/1/012007#:~:text=The%20behaviour%20of%20drivers%20under,processing%20and%20computer%20vision%20problem). While trying to read and understand the terms in the said paper I came across the concept of Sliding Windows which I was unfamiliar with at the moment.
 
 ### ✂ Sliding Windows Object Detection: 
@@ -600,6 +600,7 @@ I will cover till here for now since this will get a little too long If I go int
 References: https://towardsdatascience.com/r-cnn-fast-r-cnn-faster-r-cnn-yolo-object-detection-algorithms-36d53571365e
 
 https://www.youtube.com/watch?v=AimW3j7M2Uw
+<<<<<<< HEAD
 
 ## 📌Day 12: Revisiting Data Augmentation techniques + Improving model performance for Depression-Detection-Project
 
@@ -659,3 +660,5 @@ As we can see the algorithm changes the exposure for the images of the birds and
 So I had achieved a val_acc of 75% for the GRU model which is pretty bad. So today I looked into some hyperparameter tuning practices to improve the model.
 
 Applied dropout of 0.5 and reduced batch_size from 32 to 16 which increased the accuracy to 78% for now. But still haven't figured out how to implement augmentation for this, or if this even needs augmentation. Will look into it tomorrow. 
+=======
+>>>>>>> 597bef7a788b21d8993babaa8dcd78588d49566d
