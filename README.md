@@ -659,3 +659,37 @@ As we can see the algorithm changes the exposure for the images of the birds and
 So I had achieved a val_acc of 75% for the GRU model which is pretty bad. So today I looked into some hyperparameter tuning practices to improve the model.
 
 Applied dropout of 0.5 and reduced batch_size from 32 to 16 which increased the accuracy to 78% for now. But still haven't figured out how to implement augmentation for this, or if this even needs augmentation. Will look into it tomorrow. 
+
+## 📌Day 13: ⌚ Going in depth with Time-Series Forecasting #01
+Ok, I've been kind of vague and all over the place tbh, so in the next few days, I will be focusing on Time Series Forecasting while implementing a project on the AirPassengers dataset. 
+
+Before that let us look into the what and why's of time series. 
+
+A machine learning dataset is a collection of observations. We make future predictions on the basis of prior observations but of course, while keeping in mind the idea of "concept drift" to maintain our accuracy for the relevant data. For example, We may use past data only from the last two years of observations rather than all the data available to us. 
+
+In predictive analytics and machine learning, concept drift means that the statistical properties of the target variable, which the model is trying to predict, change over time in unforeseen ways. This causes problems because the predictions become less accurate as time passes.
+
+However, a time series dataset is different. Time series adds an explicit order dependence between observations which is of course a time dimension.
+
+This additiona dimension is both a constraint and as structure that provides a source of additional information.
+
+A Time Series Dataset may be said to be a sequence of observations taken sequentially in time.
+
+Time Series Analysis can help us make better predictions. It involves developing models that best capture or describe an observed time series in order to understand the impact of time on the underlying classes. 
+
+ Making predictions about the future is called extrapolation in the classical statistical handling of time series data. It is also referred to as Time Series Forecasting. 
+
+Forecasting involves taking models fit on historical data and using them to predict future observations. What's different about forecasting is tht the future is completely unavailable and must only be estimated from what has already happened. 
+
+## What are the components of the Time Series:
+
+The most useful components of time series :
+
+1. Level → The Baseline value for the seris 
+2. Trend → The linear icreasing or decreasing of the behaviour with respect to time
+3. Seasonality → The Repeating cycles in trends with respect to a specfic time of the year
+4. Noise → The optional variability that cannot be explained by the model. 
+
+All Time Series have a level and a must have noise. The Trend and Seasonality are optional. 
+
+References: [https://machinelearningmastery.com/time-series-forecasting/](https://machinelearningmastery.com/time-series-forecasting/)
