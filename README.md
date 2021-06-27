@@ -749,3 +749,5 @@ Though the variation in standard deviation is small, mean is clearly increasing 
 
 The underlying principle to remove the stationarity in a time series dataset is to model or estimate the trend and seasonality in the series and remove those from the series to get a stationary series. Then statistical forecasting techniques can be implemented on this series. The final step would be to convert the forecasted values into the original scale by applying trend and seasonality constraints back.
 
+References: [Detecting Stationary in time series data](https://www.kdnuggets.com/2019/08/stationarity-time-series-data.html#:~:text=Stationarity%20is%20an%20important%20concept%20in%20time%20series%20analysis.&text=Stationarity%20means%20that%20the%20statistical,and%20models%20rely%20on%20it)
+[Shay Palachy Stationary in Time series analysis](https://towardsdatascience.com/stationarity-in-time-series-analysis-90c94f27322)
