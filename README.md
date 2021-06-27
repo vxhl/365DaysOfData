@@ -699,7 +699,7 @@ All-Time Series have a level and a must-have noise. The Trend and Seasonality ar
 
 References: https://machinelearningmastery.com/time-series-forecasting/
 
-## 📌Day 14: ⏳ Going in-depth with Time-Series Forecasting-
+## 📌Day 14: ⏳ Going in-depth with Time-Series Forecasting #02
 ### Detecting Stationarity in Time Series Data
 Unless our time series is stationary we cannot build a time series model.
 A Time Series being stationary means that the statistical properties of a time series do not change over time. Bein stationary is important because many useful analytical tools and statistical tests and models rely on it.
