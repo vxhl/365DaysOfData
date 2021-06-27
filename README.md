@@ -698,3 +698,54 @@ Noise → The optional variability that cannot be explained by the model.
 All-Time Series have a level and a must-have noise. The Trend and Seasonality are optional.
 
 References: https://machinelearningmastery.com/time-series-forecasting/
+
+## 📌Day 14: ⏳ Going in-depth with Time-Series Forecasting-
+### Detecting Stationarity in Time Series Data
+Unless our time series is stationary we cannot build a time series model.
+A Time Series being stationary means that the statistical properties of a time series do not change over time. Bein stationary is important because many useful analytical tools and statistical tests and models rely on it.
+
+There are 2 major reasons behind non-stationaruty of a TS:
+1. Trend – varying mean over time. For eg, in this case we saw that on average, the number of passengers was growing over time.
+2. Seasonality – variations at specific time-frames. eg people might have a tendency to buy cars in a particular month because of pay increment or festivals.
+
+The criterions used to define stationarity are:
+1. Constant Mean
+2. Constant Variance
+3. An autocovariance that does not depend on time.
+
+***Checking Stationarity using python:***
+We can check stationarity using the following:
+1. Plotting Rolling Statistics: We can plot the moving average or moving variance and see if it varies with time. By moving average/variance we mean that at any instant ‘t’, we’ll take the average/variance of the last year, i.e. last 12 months. But again this is more of a visual technique.
+2. Dickey-Fuller Test: This is one of the statistical tests for checking stationarity. Here the null hypothesis is that the TS is non-stationary. The test results comprise of a Test Statistic and some Critical Values for difference confidence levels. If the ‘Test Statistic’ is less than the ‘Critical Value’, we can reject the null hypothesis and say that the series is stationary.
+```python
+from statsmodels.tsa.stattools import adfuller
+def test_stationarity(timeseries):
+    
+    #Determing rolling statistics
+    rolmean = pd.rolling_mean(timeseries, window=12)
+    rolstd = pd.rolling_std(timeseries, window=12)
+
+    #Plot rolling statistics:
+    orig = plt.plot(timeseries, color='blue',label='Original')
+    mean = plt.plot(rolmean, color='red', label='Rolling Mean')
+    std = plt.plot(rolstd, color='black', label = 'Rolling Std')
+    plt.legend(loc='best')
+    plt.title('Rolling Mean & Standard Deviation')
+    plt.show(block=False)
+    
+    #Perform Dickey-Fuller test:
+    print 'Results of Dickey-Fuller Test:'
+    dftest = adfuller(timeseries, autolag='AIC')
+    dfoutput = pd.Series(dftest[0:4], index=['Test Statistic','p-value','#Lags Used','Number of Observations Used'])
+    for key,value in dftest[4].items():
+        dfoutput['Critical Value (%s)'%key] = value
+    print dfoutput
+test_stationary(ts)
+```
+Output:
+![bird](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/stationary.png)
+
+Though the variation in standard deviation is small, mean is clearly increasing with time and this is not a stationary series. Also, the test statistic is way more than the critical values.
+
+The underlying principle to remove the stationarity in a time series dataset is to model or estimate the trend and seasonality in the series and remove those from the series to get a stationary series. Then statistical forecasting techniques can be implemented on this series. The final step would be to convert the forecasted values into the original scale by applying trend and seasonality constraints back.
+
