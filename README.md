@@ -699,7 +699,7 @@ All-Time Series have a level and a must-have noise. The Trend and Seasonality ar
 
 References: https://machinelearningmastery.com/time-series-forecasting/
 
-## 📌Day 14: ⏳ Going in-depth with Time-Series Forecasting #02
+## 📌Day 14: ⏳ Going in-depth with Time-Series Forecasting #02 ⌛
 ### Detecting Stationarity in Time Series Data
 Unless our time series is stationary we cannot build a time series model.
 A Time Series being stationary means that the statistical properties of a time series do not change over time. Bein stationary is important because many useful analytical tools and statistical tests and models rely on it.
@@ -750,4 +750,79 @@ Though the variation in standard deviation is small, mean is clearly increasing 
 The underlying principle to remove the stationarity in a time series dataset is to model or estimate the trend and seasonality in the series and remove those from the series to get a stationary series. Then statistical forecasting techniques can be implemented on this series. The final step would be to convert the forecasted values into the original scale by applying trend and seasonality constraints back.
 
 References: [Detecting Stationary in time series data](https://www.kdnuggets.com/2019/08/stationarity-time-series-data.html#:~:text=Stationarity%20is%20an%20important%20concept%20in%20time%20series%20analysis.&text=Stationarity%20means%20that%20the%20statistical,and%20models%20rely%20on%20it)
-[Shay Palachy Stationary in Time series analysis](https://towardsdatascience.com/stationarity-in-time-series-analysis-90c94f27322)
+
+## 📌Day 15: ⏳ Going in-depth with Time-Series Forecasting #03 ⌛
+### ⌚ Time Series Forecasting on AirPassengers dataset: 
+#### Loading and Handling Time Series in Pandas:
+Before working with our data we need to parse our indices in the dataset into date format using the `datetime` module inorder to have better access to the data. We basically convert the dates that are in Object dtypes into `datetime64[ns]`. 
+
+```python
+dateparse = lambda dates: pd.datetime.strptime(dates, '%Y-%m')
+# We use this to split our dates into a dateparse string
+data = pd.read_csv('AirPassengers.csv', parse_dates=['Month'], index_col='Month',date_parser=dateparse)
+print (data.head())
+
+# We then define ts as our time series 
+ts = data['#Passengers']
+ts.head(10)
+```
+#### Checking Stationarity in the Dataset: 
+We also check for stationarity in the data which even though I did implement yesterday I did not have the right context for it. So let us look into both checking stationarity using Plot Rolling Statistics and Dickey-Fuller Method and removing the stationarity using the rolling average elimiation method.
+
+```python
+# Checking the Stationarity using these tests
+from statsmodels.tsa.stattools import adfuller
+def test_stationarity(timeseries):
+    
+    #Determing rolling statistics
+    rolmean = timeseries.rolling(window=12).mean()
+    rolstd = timeseries.rolling(window=12).std()
+
+    #Plot rolling statistics:
+    plt.figure(figsize=(12,5))
+    orig = plt.plot(timeseries, color='blue',label='Original')
+    mean = plt.plot(rolmean, color='red', label='Rolling Mean')
+    std = plt.plot(rolstd, color='black', label = 'Rolling Std')
+    plt.legend(loc='best')
+    plt.title('Rolling Mean & Standard Deviation')
+    plt.show(block=False)
+    
+    #Perform Dickey-Fuller test:
+    print ('Results of Dickey-Fuller Test:')
+    dftest = adfuller(timeseries, autolag='AIC')
+    dfoutput = pd.Series(dftest[0:4], index=['Test Statistic','p-value','#Lags Used','Number of Observations Used'])
+    for key,value in dftest[4].items():
+        dfoutput['Critical Value (%s)'%key] = value
+    print(dfoutput)
+
+test_stationarity(ts)
+```
+![before](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/beforefixing.png)
+#### Test Results: 
+***Rolling Statistics Test***: As we can see their is a very small variation in standard deviation but our mean clearly increases at an exponential rate. 
+
+***Dickey-Fuller Test***: We see that the test statistic is much greater than the critical values so we accept the null hypothesis that TS is non-stationary.  
+
+#### Fixing Stationarity in the Dataset:
+We use one of the Smoothing method: Moving average to eliminate the trends
+```python
+ts_log = np.log(ts)
+plt.plot(ts_lodatg)
+
+moving_avg = ts_log.rolling(window=12).mean()
+plt.plot(ts_log)
+plt.plot(moving_avg, color='red')
+
+# Now let us eliminate the values contributing to the rolling average in our dataset.
+ts_log_moving_avg_diff = ts_log - moving_avg
+ts_log_moving_avg_diff.head(12)
+
+ts_log_moving_avg_diff.dropna(inplace=True)
+ts_log_moving_avg_diff.head()
+# Now let us once again test the Stationarity in our dataset
+test_stationarity(ts_log_moving_avg_diff)
+```
+![wf](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/fixed.png)
+##### Test Results:
+1. Plot Rolling Statistics: As we can see both our mean and standard deviation are moving at a good constant rate through time indicating stationary.
+2. Dickey-Fuller Test: We can see the Test Statistic value `-3.1` to be lesser than the critical values `-2.57` so we reject the null hypothesis that Time Series is non-statiionary.
