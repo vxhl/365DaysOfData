@@ -826,3 +826,79 @@ test_stationarity(ts_log_moving_avg_diff)
 ##### Test Results:
 1. Plot Rolling Statistics: As we can see both our mean and standard deviation are moving at a good constant rate through time indicating stationary.
 2. Dickey-Fuller Test: We can see the Test Statistic value `-3.1` to be lesser than the critical values `-2.57` so we reject the null hypothesis that Time Series is non-statiionary.
+ 
+## 📌Day 16: ⏳ Going in-depth with Time-Series Forecasting #04 ⌛
+### Exponentially Weighted Average: 
+This is another type of moving average that places a greater weight on the most recent data points unlike the simple moving average that applies an equal weight to all data points. 
+
+Both EWM and simple WM are lagging indicators, i.e, an observable or measurable factor that changes sometimes after the domain it is correlated with changes. 
+
+EWM smoothens out our average more than the Simple moving average, let us look at the implementation
+
+```python
+ts_log = np.log(ts)
+expweighted_avg = ts_log.ewm(halflife=12).mean()
+ts_log_ewma_diff = ts_log - expweighted_avg
+test_stationarity(ts_log_ewma_diff)
+```
+![insertimage](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/EWM.png)
+### Differencing:
+This is a method of transforming a time series dataset. 
+Differencing is performed by subtracting the previous observation from the current observation.
+
+`difference(t) = observation(t) - observation(t-1)`
+
+Inverting the process is required when a prediction must be converted back into the original scale.
+
+This process can be reversed by adding the observation at the prior time step to the difference value.
+
+`inverted(t) = differenced(t) + observation(t-1)`
+Let us look at the implementation on the air_passengers dataset:
+```python
+#Take first difference:
+plt.figure(figsize=(10,5))
+ts_log_diff = ts_log - ts_log.shift()
+plt.plot(ts_log_diff)
+plt.figure(figsize=(12,6))
+ts_log_diff.dropna(inplace=True)
+test_stationarity(ts_log_diff)
+```
+![differencing](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/differencing.png)
+
+### Decomposition: 
+Time Series decomposition involves thinking of a series as a combination of level, trend, seasonality and noise components. 
+This is used to inform forecastig models on our problem.
+It provides a structured way of thinking about a time series both generally in terms of modelling complexity and specifically in terms of how to best capture each of these components in a given model.
+
+The statsmodels library provides an implementation of the naive, or classical, decomposition method in a function called `seasonal_decompose()`. It requires that we specify whether the model is `additive` or `multiplicative`.
+
+`Additive`: We can crete a time series comprised fo linearly increasing trend from 1 to 99 and some random noise and decompose it as an additive model.
+
+`Multiplicative`: We can contrive a quadratic time series as a square of the time step from 1 to 99, and then decompose it assuming a multiplicative model. 
+
+```python
+from statsmodels.tsa.seasonal import seasonal_decompose
+decomposition = seasonal_decompose(ts_log)
+
+trend = decomposition.trend
+seasonal = decomposition.seasonal
+residual = decomposition.resid
+
+plt.figure(figsize=(10,5))
+plt.subplot(411)
+plt.plot(ts_log, label='Original')
+plt.legend(loc='best')
+plt.subplot(412)
+plt.plot(trend, label='Trend')
+plt.legend(loc='best')
+plt.subplot(413)
+plt.plot(seasonal,label='Seasonality')
+plt.legend(loc='best')
+plt.subplot(414)
+plt.plot(residual, label='Residuals')
+plt.legend(loc='best')
+plt.tight_layout()
+```
+![dec](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/decomposition.png)
+
+References: https://machinelearningmastery.com/decompose-time-series-data-trend-seasonality/
