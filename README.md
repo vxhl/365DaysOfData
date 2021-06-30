@@ -865,16 +865,19 @@ test_stationarity(ts_log_diff)
 ```
 ![differencing](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/differencing.png)
 
-### Decomposition: 
+## 📌Day 17: ⏳ Going in-depth with Time-Series Forecasting #05 ⌛
+### Decomposition on a Time Series Dataset: 
 Time Series decomposition involves thinking of a series as a combination of level, trend, seasonality and noise components. 
-This is used to inform forecastig models on our problem.
+
+This is used to inform forecasting models on our problem.
 It provides a structured way of thinking about a time series both generally in terms of modelling complexity and specifically in terms of how to best capture each of these components in a given model.
+
+Each of these components are something we may need to think about and address during data preparation, model selection and tuning. We may address it explicitly in terms of modeling the trend and subtracting it from our data, or implicitly by providing enough history for an algorithm to model a trend if it may exist. 
+
+However we may not be able to break down our model as an additive or multiplicative model. Real-world problems are noisy and may have both additive and multiplicative components. There may be non-repeating cycles mixed in with repeating seasonal trends. 
 
 The statsmodels library provides an implementation of the naive, or classical, decomposition method in a function called `seasonal_decompose()`. It requires that we specify whether the model is `additive` or `multiplicative`.
 
-`Additive`: We can crete a time series comprised fo linearly increasing trend from 1 to 99 and some random noise and decompose it as an additive model.
-
-`Multiplicative`: We can contrive a quadratic time series as a square of the time step from 1 to 99, and then decompose it assuming a multiplicative model. 
 
 ```python
 from statsmodels.tsa.seasonal import seasonal_decompose
