@@ -906,7 +906,7 @@ plt.tight_layout()
 
 References: https://machinelearningmastery.com/decompose-time-series-data-trend-seasonality/
 
-## 📌Day 18: Exploratory Data Analysis on SampleSuperstore dataset
+## 📌Day 18: 📊***Getting Started with Tableau***
 Today marks the start for my first internship!
 I managed to get selected for an internship at [The Sparks Foundation](https://www.thesparksfoundationsingapore.org/) for the Data Science and Business Analytics role and for the next month I will be executing 3 projects on differing domains and use visual analytics tools like Tableau to create interactive visual analytics in the form of dashboards. I will also be creating video demonstrations, explaining the approaches and steps i followed for the project and showcasing what the said project has achieved.
 
