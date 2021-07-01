@@ -905,3 +905,13 @@ plt.tight_layout()
 ![dec](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/decomposition.png)
 
 References: https://machinelearningmastery.com/decompose-time-series-data-trend-seasonality/
+
+## 📌Day 18: Exploratory Data Analysis on SampleSuperstore dataset
+Today marks the start for my first internship!
+I managed to get selected for an internship at [The Sparks Foundation](https://www.thesparksfoundationsingapore.org/) for the Data Science and Business Analytics role and for the next month I will be executing 3 projects on differing domains and use visual analytics tools like Tableau to create interactive visual analytics in the form of dashboards. I will also be creating video demonstrations, explaining the approaches and steps i followed for the project and showcasing what the said project has achieved.
+
+Before all that, of course I need to get familiar with Tableau. So I referred to a crash course from freecodecamp to understand the interface of Tableau which was pretty intuitive. I made a very basic dashboard with the Titanic Dataset. 
+
+![dec](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/tab.png)
+
+Today was all about planning out the next few weeks with the projects. Tomorrow I will start with the first project - ***Exploratory Data Analysis on Retail data for a superstore*** 
