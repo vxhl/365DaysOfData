@@ -912,6 +912,6 @@ I managed to get selected for an internship at [The Sparks Foundation](https://w
 
 Before all that, of course I need to get familiar with Tableau. So I referred to a crash course from freecodecamp to understand the interface of Tableau which was pretty intuitive. I made a very basic dashboard with the Titanic Dataset. 
 
-![dec](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/tab.png)
+![lib](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/tab.png)
 
 Today was all about planning out the next few weeks with the projects. Tomorrow I will start with the first project - ***Exploratory Data Analysis on Retail data for a superstore*** 
