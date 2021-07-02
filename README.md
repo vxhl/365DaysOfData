@@ -915,3 +915,21 @@ Before all that, of course I need to get familiar with Tableau. So I referred to
 ![lib](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/tab.png)
 
 Today was all about planning out the next few weeks with the projects. Tomorrow I will start with the first project - ***Exploratory Data Analysis on Retail data for a superstore*** 
+
+## 📌Day 19: 📊***Building Interactive Dashboards with Tableau***
+### 📊Building Interactive Dashboard for EDA with Sample Superstore dataset
+Tableau is amazing. Ngl I've never had this much fun with data before xD, made some interesting inferences with the SampleSuperstore dataset and I am mostly done, other than of course, the organising as you can see the clutter. I might need to remove some irrelevant fields that do not contribute to the achievements at hand.
+
+I am basically trying to find out in what areas the losses are being incurred for the company and after some EDA with Tableau I was able to determine that the most losses are the highest and most significant in the following cities:
+**Philadelphia, Houston, Chicago** 
+
+and the profit is the highest at cities like: 
+
+**New York, Seattle, San Francisco, Los Angeles**. 
+
+The losses are highest with the Category of furniture due to a disproportion between sales and discount. 
+
+Next I will document the learnings from the EDA and hopefully create the video explaining the project tomorrow. 
+
+![project1](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/project1.png)
+
