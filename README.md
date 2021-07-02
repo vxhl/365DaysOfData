@@ -918,18 +918,19 @@ Today was all about planning out the next few weeks with the projects. Tomorrow 
 
 ## 📌Day 19: 📊***Building Interactive Dashboards with Tableau***
 ### 📊Building Interactive Dashboard for EDA with Sample Superstore dataset
-Tableau is amazing. Ngl I've never had this much fun with data before xD, made some interesting inferences with the SampleSuperstore dataset and I am mostly done, other than of course, the organising as you can see the clutter. I might need to remove some irrelevant fields that do not contribute to the achievements at hand.
+Tableau is amazing. Ngl I've never had this much fun with data before xD, made some interesting inferences with the SampleSuperstore dataset, and I am mostly done, other than of course, organizing and applying some better practices for the sheets. I can say I am at least familiar now with the interface to a good extent. I will put some more work into the dashboard before making the video demonstration for the project. 
 
-I am basically trying to find out in what areas the losses are being incurred for the company and after some EDA with Tableau I was able to determine that the most losses are the highest and most significant in the following cities:
-**Philadelphia, Houston, Chicago** 
+In this project, my task is to find out what factors the losses are being incurred for the company and what we can do to reduce those losses. After some EDA with Tableau, I was able to determine that the losses are the highest and most significant in the following cities: 
 
-and the profit is the highest at cities like: 
+Philadelphia, Houston, Chicago.
 
-**New York, Seattle, San Francisco, Los Angeles**. 
+And the profit is the highest in cities like:
 
-The losses are highest with the Category of furniture due to a disproportion between sales and discount. 
+New York, Seattle, San Francisco, Los Angeles.
 
-Next I will document the learnings from the EDA and hopefully create the video explaining the project tomorrow. 
+The losses are highest with the Category of furniture due to a disproportion between sales and discounts in the cities with losses. 
+
+There is a lot more to uncover which I will be explaining in the video demonstration.
 
 ![project1](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/project1.png)
 
