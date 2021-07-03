@@ -916,8 +916,8 @@ Before all that, of course I need to get familiar with Tableau. So I referred to
 
 Today was all about planning out the next few weeks with the projects. Tomorrow I will start with the first project - ***Exploratory Data Analysis on Retail data for a superstore*** 
 
-## 📌Day 19: 📊***Building Interactive Dashboards with Tableau***
-### 📊Building Interactive Dashboard for EDA with Sample Superstore dataset
+## 📌Day 19: 📊***Building Interactive Dashboards with Tableau #01***
+### 📊Building Interactive Dashboard for EDA with Sample Superstore dataset Day-01
 Tableau is amazing. Ngl I've never had this much fun with data before xD, made some interesting inferences with the SampleSuperstore dataset and I am mostly done, other than of course, the organising as you can see the clutter. I might need to remove some irrelevant fields that do not contribute to the achievements at hand.
 
 I am basically trying to find out in what areas the losses are being incurred for the company and after some EDA with Tableau I was able to determine that the most losses are the highest and most significant in the following cities:
@@ -933,3 +933,49 @@ Next I will document the learnings from the EDA and hopefully create the video e
 
 ![project1](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/project1.png)
 
+## 📌Day 20: 📊***Building Interactive Dashboards with Tableau #02***
+### 📊Building Interactive Dashboard for EDA with Sample Superstore dataset Day-02
+Today I completed building and organising the dashboard for the SampleSuperstore dataset. 
+In the displayed worksheet I have taken the size of the circles as the amount of sales in any particular category. BLUE colour is on the positive side of profit whereas RED is on the negative side of it. 
+
+### Overview of the Dashboard
+
+#### Profit/Sales by City
+For this category I have designated the size of the circles as indicators for the number of sales in any particular city. From that knowledge we can deduce that: 
+
+New York, Seattle, San Francisco, Los Angeles, Houston and Philadelphia have the most considerable amount of sales. 
+
+Also considering the colours of the circles we can deduct the following: 
+
+New York, Seattle, San Francisco, Los Angeles are making us an immense amount of profit with New York being the most profitable with the darkest shade of blue. 
+
+Philadelphia, Houston and Chicago are in shades of red and are in fact experiencing negative profit ,i.e , losses. We need to understand the factors affecting these regions and implement the practices from the blue regions onto these regions. 
+
+#### Profit/Sales by Ship Mode
+Ship Mode is the means by which our goods are shipped to the customer. A shipping mode is a combination of a shipping carrier and the shipping service that is offered by that carrier. 
+
+In the overall circle chart we can see that Standard Mode of shipping has both the higher number of sales and the higher number of profits. Whereas First class, Second Class and Same Day are going at a loss. The company needs to focus on increasing the cost for the First Class, Second Class and Same Day shipping modes to decrease the loses to some extent. 
+
+#### Profit/Sales by Region
+We see East and West having both the highest number of sales and profit whereas Central and South are going at an immense loss with Central incurring the heaviest losses. We thus need to understand the practices in the West region and apply them to the Central and South regions.
+
+#### Profit/Sales by Segment 
+We see Consumers having a large amount of profit wherease Corporate and Home Office going at a loss. This can contribute to a number of factors like heavier discount because of bulk buying by the Corporate and Home Office segments.
+
+#### Profit/Sales by Category
+Here Sales are in YELLOW and Profit is same as before (-RED->0->+BLUE)
+Here we go to the root of it all. We can see while all three of the categories have a desirable amount of sales the losses in the furniture category is extremely concerning. Inorder to understand this we go through our Sub-categories and analyse them by Profit, Sales and Discount on the products. 
+
+#### Profit/Sales/Discount by Subcategories 
+Here we have Profit as (-RED->0->+BLUE) Sales as (YELLOW) and Discount as (TEAL BLUE)
+
+Looking into the Furnitures sub-categories we can clearly see that the tables and bookcases are running at losses. This is probably due to a disproportionate amount of discount on the said sub-categories as we can see from the graphs. 
+
+On the other hand we have Office Supplies running at a decent profit with some loss for Supplies.
+
+Our Technology sub-categories as we can see are doing really well however Machines are running at a high discount rate which may be reduced to increase the profit. 
+
+I have more to discuss here, I will do that in the video. 
+
+
+![dashboard](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/dashboard.png)
