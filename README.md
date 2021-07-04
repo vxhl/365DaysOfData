@@ -935,7 +935,6 @@ There is a lot more to uncover which I will be explaining in the video demonstra
 ![project1](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/project1.png)
 
 ## 📌Day 20: 📊***Building Interactive Dashboards with Tableau #02***
-### 📊Building Interactive Dashboard for EDA with Sample Superstore dataset Day-02
 Today I completed building and organizing the dashboard for the SampleSuperstore dataset. In the displayed worksheet I have taken the size of the circles as the number of sales in any particular category. The BLUE color is on the positive side of profit whereas RED is on the negative side of it.
 ### 👁 Overview of the Dashboard
 #### Profit/Sales by City
@@ -976,3 +975,10 @@ I have more to discuss here, I will do that in the video.
 
 
 ![dashboard](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/dashboard.png)
+
+## 📌Day 21: ***📊Building Interactive Dashboards with Tableau #03***
+Today was all about scripting and recording the video so barely had any time to study anything else. Meanwhile took a little time to just read up on some older topics. 
+
+Ended up going through this blog post by Karpathy again for the day: 
+https://karpathy.github.io/2015/05/21/rnn-effectiveness/
+
