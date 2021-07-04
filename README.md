@@ -916,15 +916,9 @@ Before all that, of course I need to get familiar with Tableau. So I referred to
 
 Today was all about planning out the next few weeks with the projects. Tomorrow I will start with the first project - ***Exploratory Data Analysis on Retail data for a superstore*** 
 
-<<<<<<< HEAD
-## 📌Day 19: 📊***Building Interactive Dashboards with Tableau #01***
-### 📊Building Interactive Dashboard for EDA with Sample Superstore dataset Day-01
-Tableau is amazing. Ngl I've never had this much fun with data before xD, made some interesting inferences with the SampleSuperstore dataset and I am mostly done, other than of course, the organising as you can see the clutter. I might need to remove some irrelevant fields that do not contribute to the achievements at hand.
-=======
 ## 📌Day 19: 📊***Building Interactive Dashboards with Tableau***
 ### 📊Building Interactive Dashboard for EDA with Sample Superstore dataset
 Tableau is amazing. Ngl I've never had this much fun with data before xD, made some interesting inferences with the SampleSuperstore dataset, and I am mostly done, other than of course, organizing and applying some better practices for the sheets. I can say I am at least familiar now with the interface to a good extent. I will put some more work into the dashboard before making the video demonstration for the project. 
->>>>>>> 92c96745f49f409c012bff9b5fb578c72bec4346
 
 In this project, my task is to find out what factors the losses are being incurred for the company and what we can do to reduce those losses. After some EDA with Tableau, I was able to determine that the losses are the highest and most significant in the following cities: 
 
