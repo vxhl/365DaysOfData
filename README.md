@@ -982,3 +982,11 @@ Today was all about scripting and recording the video so barely had any time to 
 Ended up going through this blog post by Karpathy again for the day: 
 https://karpathy.github.io/2015/05/21/rnn-effectiveness/
 
+## 📌Day 22: ***📊EDA with Sample Superstore Dataset***
+Following are the conclusions I came up with after deeper analysis of the Sample Superstore dataset using Tableau. There are probably more, but I have more projects to cover so I skipped going more in depth with them. 
+
+- Most amount of losses are happening in the Furnitures category, with tables taking over most of the losses.  Reducing the manufacture for the tables in most of the regions experiencing losses will probably lead to better profits for the company and cutting out on the discounts for the furnitures as well. 
+- Our Machines sub-category from technologies is having a large amount of discount offered on it throughout the various regions that is causing losses so we need to reduce the discount on it to gain better profits out of it.
+- For our Central Region more profit is observed in the corporate segment whereas more losses in the Consumer segment. So we need to transfer the goods that are making losses in the Customer segment  into the Corporate segment to make a good profit out of them. 
+- Ship mode has a minimal amount of variation between the different regions with Standard Mode of shipping always having the most amount of sales and profit. 
+- Philadelphia is an abnormality with the most amount of losses in all the categories even when it has a decent amount of sales, mainly because of the large amount of discounts that are being offered for the different sub-categories in the city. Of course there may be more reasons for this and there might be some more data that we are not seeing for this abnormality. 
