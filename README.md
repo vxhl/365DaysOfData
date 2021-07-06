@@ -991,7 +991,7 @@ Following are the conclusions I came up with after deeper analysis of the Sample
 - Ship mode has a minimal amount of variation between the different regions with Standard Mode of shipping always having the most amount of sales and profit. 
 - Philadelphia is an abnormality with the most amount of losses in all the categories even when it has a decent amount of sales, mainly because of the large amount of discounts that are being offered for the different sub-categories in the city. Of course there may be more reasons for this and there might be some more data that we are not seeing for this abnormality. 
 
-## 📌Day 23: OpenAI GPT-3 
+## 📌Day 23: 🤖 OpenAI GPT-3 
 Today I got curious about the model behind Github's copilot and so did a little overview on the GPT-3 and this model honestly blew me away. Specifying such a small amount of data to get amazing results is honestly revolutionary. Maybe I am late to the party xD, but still I am glad I checked it out. Here's a summary---
 
 GPT-3 has been created by OpenAI, Put simply, it is an AI that is better at creating content that has a language structure – human or machine language – than anything that has come before it.
