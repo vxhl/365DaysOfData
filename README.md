@@ -990,3 +990,85 @@ Following are the conclusions I came up with after deeper analysis of the Sample
 - For our Central Region more profit is observed in the corporate segment whereas more losses in the Consumer segment. So we need to transfer the goods that are making losses in the Customer segment  into the Corporate segment to make a good profit out of them. 
 - Ship mode has a minimal amount of variation between the different regions with Standard Mode of shipping always having the most amount of sales and profit. 
 - Philadelphia is an abnormality with the most amount of losses in all the categories even when it has a decent amount of sales, mainly because of the large amount of discounts that are being offered for the different sub-categories in the city. Of course there may be more reasons for this and there might be some more data that we are not seeing for this abnormality. 
+
+## 📌Day 23: OpenAI GPT-3 
+Today I got curious about the model behind Github's copilot and so did a little overview on the GPT-3 and this model honestly blew me away. Specifying such a small amount of data to get amazing results is honestly revolutionary. Maybe I am late to the party xD, but still I am glad I checked it out. Here's a summary---
+
+GPT-3 has been created by OpenAI, Put simply, it is an AI that is better at creating content that has a language structure – human or machine language – than anything that has come before it.
+
+First of all GPT stands for Generative Pretrained Transformer. In short this means that it generates text using algorithms that are pretrained,i.e, they have already been fed all of the data they need to carry out the task that we specify. 
+
+GPT-3 has more than 175Billion parameters to it which is mind boggling. In other words it has 570GB of text information gathered by crawling the internet. Example: Apparently a publicly available dataset called CommonCrawl was used along with other texts selected by OpenAI, including the text of Wikipedia. 
+
+If you ask it a question, you would expect the most useful response would be an answer. If you ask it to carry out a task such as creating a summary or writing a poem, you will get a summary or a poem.
+
+More technically, it has also been described as the largest artificial neural network every created!
+
+Today I went through a small implementation of GPT-3 to convert simple English text into SQL like query text -- 
+
+
+```python
+!pip install openai
+import json
+import openai
+
+with open('GPT_SECRET_KEY.json') as f:
+    data = json.load(f)
+
+
+openai.api_key = data["API_KEY"]
+
+from gpt import GPT
+from gpt import Example
+
+gpt = GPT(engine="davinci",
+          temperature=0.5,
+          max_tokens=100)
+
+# Adding Examples for the GPT model
+gpt.add_example(Example('Fetch unique values of DEPARTMENT from Worker table.', 
+                        'Select distinct DEPARTMENT from Worker;'))
+gpt.add_example(Example('Print the first three characters of FIRST_NAME from Worker table.', 
+                        'Select substring(FIRST_NAME,1,3) from Worker;'))
+
+gpt.add_example(Example("Find the position of the alphabet ('a') in the first name column 'Amitabh' from Worker table.", 
+                        "Select INSTR(FIRST_NAME, BINARY'a') from Worker where FIRST_NAME = 'Amitabh';"))
+
+gpt.add_example(Example("Print the FIRST_NAME from Worker table after replacing 'a' with 'A'.", 
+                        "Select CONCAT(FIRST_NAME, ' ', LAST_NAME) AS 'COMPLETE_NAME' from Worker;"))
+
+gpt.add_example(Example("Display the second highest salary from the Worker table.", 
+                        "Select max(Salary) from Worker where Salary not in (Select max(Salary) from Worker);"))
+
+gpt.add_example(Example("Display the highest salary from the Worker table.", 
+                        "Select max(Salary) from Worker;"))
+
+gpt.add_example(Example("Fetch the count of employees working in the department Admin.", 
+                        "SELECT COUNT(*) FROM worker WHERE DEPARTMENT = 'Admin';"))
+
+gpt.add_example(Example("Get all details of the Workers whose SALARY lies between 100000 and 500000.", 
+                        "Select * from Worker where SALARY between 100000 and 500000;"))
+
+gpt.add_example(Example("Get Salary details of the Workers", 
+                        "Select Salary from Worker"))
+
+# EXAMPLES
+
+prompt = "Display the lowest salary from the Worker table."
+output = gpt.submit_request(prompt)
+output.choices[0].text
+'''
+'output: Select min(Salary) from Worker;\n'
+
+'''
+prompt = "Tell me the count of employees working in the department HR."
+output = gpt.submit_request(prompt)
+output.choices[0].text
+'''
+"output: SELECT COUNT(*) FROM worker WHERE DEPARTMENT = 'HR';\n"
+
+'''
+
+
+
+```
