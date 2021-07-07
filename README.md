@@ -1068,7 +1068,91 @@ output.choices[0].text
 "output: SELECT COUNT(*) FROM worker WHERE DEPARTMENT = 'HR';\n"
 
 '''
+```
+## 📌Day 24: Prediction using Decision Tree Algorithm
+Decision Tree is one of the most commonly used, practical approaches for supervised learning. It can also be used for Classification tasks. The decision of making strategic splits heavily affects a tree’s accuracy. The decision criteria is different for classification and regression trees.Decision trees regression normally use mean squared error (MSE) to decide to split a node in two or more sub-nodes. For each subset, it will calculate the MSE separately. The tree chooses the value with results in smallest MSE value.
+
+The purpose of this project is to create a Decision Tree Classifier and visualize it graphically. Feeding any data into this classifier, the model should be able to predict the right class of the said element.
+
+```python
+# importing the libraries 
+from sklearn.datasets import load_iris                             # We will be using the iris dataset for this project
+from sklearn.tree import DecisionTreeClassifier, export_graphviz   # graphviz is used to visualize our decision tree classifier
+from sklearn.model_selection import train_test_split
+import sklearn.metrics as sm
+
+import pandas as pd
+import numpy as np
+import seaborn as sns
+
+import matplotlib.pyplot as plt
+from io import StringIO
+import pydot # is an interface to Graphviz
+from IPython.display import Image
+
+## Step 1 - Loading the Dataset
+# Loading Dataset
+iris = load_iris()
+X = iris.data[:,:]
+y = iris.target
+
+## Step 2 - Decision Tree Modelling 
+# Model Training
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.1, random_state=1) 
+tree_classifier = DecisionTreeClassifier()
+tree_classifier.fit(X_train,y_train)
+print("Training Complete.")
+y_pred = tree_classifier.predict(X_test)
+
+## Step 3 - Model Visualization
+# Visualizing the trained Decision Tree Classifier taking all 4 features in consideration
+import os
+os.environ["PATH"] += os.pathsep + 'C:/Program Files/Graphviz/bin/'
+
+export_graphviz(
+        tree_classifier,
+        out_file="img\desision_tree.dot",
+        feature_names=iris.feature_names[:],
+        class_names=iris.target_names,
+        rounded=True,
+        filled=True
+)
+(graph,) = pydot.graph_from_dot_file('img\desision_tree.dot')
+graph.write_png('img\desision_tree.png')
+Image(filename='img\desision_tree.png') 
+
+```
+Output: 
+![dtree](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/dtree.png)
+```python
 
 
+## Step 4 - We test our model on some random variables
+print("Class Names = ",iris.target_names)
+# Estimating class probabilities
+print()
+print("Estimating Class Probabilities for flower whose petals length width are 4.7cm and 3.2cm and sepal length and width are 1.3cm and 0.2cm. ")
+print()
+print('Output = ',tree_classifier.predict([[4.7, 3.2, 1.3, 0.2]]))
+print()
+print("Our model predicts the class as 0, that is, setosa.")
 
+'''
+Output: 
+Class Names =  ['setosa' 'versicolor' 'virginica']
+
+Estimating Class Probabilities for flower whose petals length width are 4.7cm and 3.2cm and sepal length and width are 1.3cm and 0.2cm. 
+
+Output =  [0]
+
+Our model predicts the class as 0, that is, setosa.
+'''
+## Step 8 - Calculating the Model accuracy 
+print("ACCURACY: ", sm.accuracy_score(y_test, y_pred))
+
+'''
+Output: 
+ACCURACY:  1.0
+
+'''
 ```
