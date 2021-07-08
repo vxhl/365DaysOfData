@@ -1156,3 +1156,29 @@ ACCURACY:  1.0
 
 '''
 ```
+
+📌Day 25: Understanding Decision Trees Algorithms
+A decision tree works in a step wise manner where we have a tree structure where the nodes are split using a feature based on some criterion. 
+
+Today we look into how these features get selected.
+
+There are 3 main splitting criteria for decision trees: 
+1. Gini Impurity: In simple terms, this is the measure of impurity of a node. In more technical terms - 
+
+A measure of how often a randomly chosen element from the set would be incorrectly labeled if it was randomly labeled according to the distribution of labels in the subset.
+
+![dtree](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/gini.png)
+2. Entropy: Entropy is th measure of randomness in the system. 
+
+![dtree](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/entr.png)
+3. Variance: Gini and Entropy work well only for classification scenarios, however in case of regeression we use the weighted variance of the nodes.
+
+![dtree](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/var.png) 
+4. Information Gain: A Statistical Property that governs how well a given attribute separates the training examples according to their target classification.
+
+The basic idea behind the algorithm: 
+1. We select the best attributes using the Attribute selection measures which are the above 3 splitting criteria we have defined. 
+2. Make that attribute a decision node and break the dataset into smaller subsets.
+3. Start tree building by repeating this process recusively for each chuld until there are no more remaining attributes.
+
+References: https://datascience.foundation/sciencewhitepaper/understanding-decision-trees-with-python#:~:text=We%20will%20be%20using%20the,%2D%20petal%20length%20%2D%20petal%20width.&text=There%20are%20three%20classes%20of,versicolor'%20and%20'virginica'.
