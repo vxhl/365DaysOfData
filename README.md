@@ -1185,3 +1185,16 @@ The basic idea behind the algorithm:
 3. Start tree building by repeating this process recusively for each chuld until there are no more remaining attributes.
 
 References: https://datascience.foundation/sciencewhitepaper/understanding-decision-trees-with-python#:~:text=We%20will%20be%20using%20the,%2D%20petal%20length%20%2D%20petal%20width.&text=There%20are%20three%20classes%20of,versicolor'%20and%20'virginica'.
+
+## 📌Day 26: 🪓 The Gini Impurity Measure
+Today I went into the mathematics behind Gini index and also recorded the video for the 2nd project which I should be editing and posting tomorrow. 
+
+The Gini impurity measure is one of the methods used in decision tree algorithms to decide the optimal split from a root node, and subsequent splits.
+
+To put it into context, a decision tree is trying to create sequential questions such that it partitions the data into smaller groups. Once the partition is complete a predictive decision is made at this terminal node (based on a frequency).
+
+Suppose we have a list of observations, that indicates if a person decided to stay home from work. We also have two features, namely if they are sick and their temperature.
+We need to choose which feature, emotion or temperature, to split the data on. A Gini Impurity measure will help us make this decision.
+ 
+Gini Impurity tells us what is the probability of misclassifying an observation.
+Note that the lower the Gini the better the split. In other words the lower the likelihood of misclassification.
