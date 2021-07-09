@@ -1069,7 +1069,7 @@ output.choices[0].text
 
 '''
 ```
-## 📌Day 24: Prediction using Decision Tree Algorithm
+## 📌Day 24: 🌳Prediction using Decision Tree Algorithm📈
 Decision Tree is one of the most commonly used, practical approaches for supervised learning. It can also be used for Classification tasks. The decision of making strategic splits heavily affects a tree’s accuracy. The decision criteria is different for classification and regression trees.Decision trees regression normally use mean squared error (MSE) to decide to split a node in two or more sub-nodes. For each subset, it will calculate the MSE separately. The tree chooses the value with results in smallest MSE value.
 
 The purpose of this project is to create a Decision Tree Classifier and visualize it graphically. Feeding any data into this classifier, the model should be able to predict the right class of the said element.
@@ -1157,7 +1157,7 @@ ACCURACY:  1.0
 '''
 ```
 
-📌Day 25: Understanding Decision Trees Algorithms
+## 📌Day 25: 🌳Understanding Decision Trees Algorithms
 A decision tree works in a step wise manner where we have a tree structure where the nodes are split using a feature based on some criterion. 
 
 Today we look into how these features get selected.
