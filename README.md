@@ -1198,3 +1198,32 @@ We need to choose which feature, emotion or temperature, to split the data on. A
  
 Gini Impurity tells us what is the probability of misclassifying an observation.
 Note that the lower the Gini the better the split. In other words the lower the likelihood of misclassification.
+
+```python
+def Ginx(P1,P2):
+    #P1 and P2 are the counts for each class after the split
+    denom = P1 + P2
+    Ginx = 2 * (P1/denom) * (P2/denom)
+    return(Ginx)
+
+def Wght_Ginx(G1,G2,PL,PR):
+    # G1 G2 are the gini impurity for each split, and PL PR are the proportion of the split
+    WG = PL * G1 + PR * G2
+    return(WG)
+
+import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
+X=np.arange(0.0,1.0,0.01)
+Y=X[::-1]
+
+Gini=Ginx(X,Y)
+plt.plot(X,Gini)
+plt.axhline(y=0.5,color='r',linestyle='--')
+plt.title('Gini Impurity Graph')
+plt.xlabel('P1=1')
+plt.ylabel('Impurity Measure')
+plt.ylim([0,1.1])
+plt.show()
+```
+![gini1](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/gini1.png) 
