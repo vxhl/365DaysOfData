@@ -1245,5 +1245,5 @@ From our pairplot we determine the distributions for each Species of flowers.
 
 #### Observations from the pairplot: 
 1. Petal Length andPetal Width are the most useful features to identify various flower types.
-2. White Setosa can be easily identified ( linearly Separable ) 
-Reference: https://www.youtube.com/watch?v=b7JuBsswDlo
+2. White Setosa can be easily identified (linearly separable), Virginica and Versicolor have some overlap (almost linearly separable)
+3. We can find "lines" and "if-else" conditions to build a simple model to classify the flower types.
