@@ -1227,3 +1227,23 @@ plt.ylim([0,1.1])
 plt.show()
 ```
 ![gini1](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/gini1.png) 
+
+## 📌Day 27: 📉 What are PairPlots exactly? 📈 
+Since we cannot visualize multiple dimensions in a single graph, for that purpose we use pairpolots that is basically a matrix of the features distributed in a way to understand the distribution of the features more easily. For example:
+
+Let us first plot the pairplot using the `seaborn.pairplot` library method in python for the iris dataset. 
+```python
+# Input data visualization
+plt.close();
+sns.set_style("whitegrid")
+sns.pairplot(df, hue = "Species");
+plt.show()
+```
+![pplot](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/pairplot.png)
+
+From our pairplot we determine the distributions for each Species of flowers.
+
+#### Observations from the pairplot: 
+1. Petal Length andPetal Width are the most useful features to identify various flower types.
+2. White Setosa can be easily identified ( linearly Separable ) 
+Reference: https://www.youtube.com/watch?v=b7JuBsswDlo
