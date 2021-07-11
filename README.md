@@ -1247,3 +1247,23 @@ From our pairplot we determine the distributions for each Species of flowers.
 1. Petal Length andPetal Width are the most useful features to identify various flower types.
 2. White Setosa can be easily identified (linearly separable), Virginica and Versicolor have some overlap (almost linearly separable)
 3. We can find "lines" and "if-else" conditions to build a simple model to classify the flower types.
+
+## 📌Day 28: 👁 EDA with pandas practice
+***About the dataset:***
+We will look into different ways of plotting data with python by utilizing data from the World Happiness Report 2019. I enriched the World Happiness Report data with information from Gapminder and Wikipedia to allow for the exploration of new relationships and visualizations.
+
+Reference: https://towardsdatascience.com/plotting-with-python-c2561b8c0f1f
+
+The World Happiness Report tries to answer which factors influence happiness throughout the world. Happiness in the report is defined as the responses to the “Cantril ladder question” asking respondents to value their lives today on a 0 to 10 scale, with the worst possible life as a 0 and the best possible life as a 10. The World Happiness Report tries to answer which factors influence happiness throughout the world. Happiness in the report is defined as the responses to the “Cantril ladder question” asking respondents to value their lives today on a 0 to 10 scale, with the worst possible life as a 0 and the best possible life as a 10.
+
+![pplot1](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/plotting1.png)
+
+![pplot2](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/plotting2.png)
+
+![pplot3](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/plotting3.png)
+
+![pplot4](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/plotting4.png)
+
+### Conclusion on plotting with Pandas: 
+Plotting with pandas is convenient. It is easily accessible, and it is fast. The plots are fairly ugly. Deviating from defaults is borderline impossible, and that is okay because we have other tools for more aesthetically appealing charts. Moving on to seaborn.
+
