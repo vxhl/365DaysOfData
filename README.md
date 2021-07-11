@@ -1250,9 +1250,26 @@ From our pairplot we determine the distributions for each Species of flowers.
 
 ## 📌Day 28: 👁 EDA with pandas practice
 ***About the dataset:***
-We will look into different ways of plotting data with python by utilizing data from the World Happiness Report 2019. I enriched the World Happiness Report data with information from Gapminder and Wikipedia to allow for the exploration of new relationships and visualizations.
+We will look into different ways of plotting data with python by utilizing data from the World Happiness Report 2019. The author of the below article has enriched the World Happiness Report data with information from Gapminder and Wikipedia to allow for the exploration of new relationships and visualizations.
 
 Reference: https://towardsdatascience.com/plotting-with-python-c2561b8c0f1f
+
+The dataset contains values for the following columns:
+- Year: The year of measurement (from 2007 to 2018)
+- Life Ladder: respondents measure of the value their lives today on a 0 to 10 scale (10 best) based on Cantril ladder
+- Log GDP per capita: GDP per capita is in terms of Purchasing Power Parity (PPP) adjusted to constant 2011 international dollars, taken from the World - Development Indicators (WDI) released by the World Bank on November 14, 2018
+- Social support: Answer to question: “If you were in trouble, do you have relatives or friends you can count on to help you whenever you need them, or not?”
+- Healthy life expectancy at birth: Life expectancy at birth is constructed based on data from the World Health Organization (WHO) Global Health Observatory data repository, with data available for 2005, 2010, 2015, and 2016.
+- Freedom to make life choices: Answer to question: “Are you satisfied or dissatisfied with your freedom to choose what you do with your life?”
+- Generosity: Responses to “Have you donated money to a charity in the past month?” compared to GDP per capita
+- Perceptions of corruption: Answer to “Is corruption widespread throughout the government or not?” and “Is corruption widespread within businesses or not?”
+- Positive affect: comprises the average frequency of happiness, laughter, and enjoyment on the previous day.
+- Negative affect: comprises the average frequency of worry, sadness, and anger on the previous day.
+- Confidence in national government: Self-explanatory
+- Democratic Quality: how democratic is a country
+- Delivery Quality: How well a country delivers on its policies
+- Gapminder Life Expectancy: Life expectancy from Gapminder
+- Gapminder Population: Population of a country
 
 The World Happiness Report tries to answer which factors influence happiness throughout the world. Happiness in the report is defined as the responses to the “Cantril ladder question” asking respondents to value their lives today on a 0 to 10 scale, with the worst possible life as a 0 and the best possible life as a 10. The World Happiness Report tries to answer which factors influence happiness throughout the world. Happiness in the report is defined as the responses to the “Cantril ladder question” asking respondents to value their lives today on a 0 to 10 scale, with the worst possible life as a 0 and the best possible life as a 10.
 
