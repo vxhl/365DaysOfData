@@ -1284,3 +1284,43 @@ The World Happiness Report tries to answer which factors influence happiness thr
 ### Conclusion on plotting with Pandas: 
 Plotting with pandas is convenient. It is easily accessible, and it is fast. The plots are fairly ugly. Deviating from defaults is borderline impossible, and that is okay because we have other tools for more aesthetically appealing charts. Moving on to seaborn.
 
+## 📌Day 29: 👁 EDA with seaborn practice
+Seaborn utilizes plotting defaults. To make sure that your results match mine, run the following commands.
+### Plotting univariate distributions
+Histograms and kernel density distributions alike are potent ways of visualizing the critical features of a particular variable. Let’s look at how we generate distributions for a single variable or distributions of multiple variables in one chart.
+
+![sea1](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/sea1.png)
+Left chart: Histogram and kernel density estimation of “Life Ladder” for Asian countries in 2018; Right chart: Kernel density estimation of “Life Ladder” for five buckets of GDP per Capita — Money can buy happiness
+
+### Plotting bivariate distributions
+Exploring the relationship between two or multiple variables visually, it typically comes down to some form of scatterplot and an assessment of distributions. There are three variations of a conceptually similar plot. In each of those plots, the center graph (scatter, bivariate KDE, and hexbin) helps to understand the joint frequency distribution between two variables. Additionally, at the right and top border of the center graph, the marginal univariate distribution of the respective variable is depicted (as a KDE or histogram).
+
+```python
+sns.jointplot(
+    x='Log GDP per capita',
+    y='Life Ladder',
+    data=data,
+    kind='scatter' # or 'kde' or 'hex'
+)
+```
+![sea2](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/sea2.png)
+
+Seaborn jointplot with scatter, bivariate kde, and hexbin in the center graph and marginal distributions left and on top of the center graph.
+
+### Scatterplot
+A scatterplot is a way of visualizing the joint density distribution of two variables. We can throw a third variable in the mix by adding a hue and a fourth variable by adding the size parameter.
+
+```python
+sns.scatterplot(
+    x='Log GDP per capita',
+    y='Life Ladder',
+    data=data[data['Year'] == 2018],    
+    hue='Continent',
+    size='Gapminder Population'
+)
+# both, hue and size are optional
+sns.despine() # prettier layout
+```
+![sea3](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/sea3.png)
+
+Log GDP per capita against Life Ladder, colors based on the continent and size on population
