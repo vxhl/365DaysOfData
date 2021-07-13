@@ -1324,3 +1324,93 @@ sns.despine() # prettier layout
 ![sea3](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/sea3.png)
 
 Log GDP per capita against Life Ladder, colors based on the continent and size on population
+
+
+## 📌Day 30: Prediction using simple linear regression 
+**Aim of the project**: Predict the percentage of an student based on the no. of study hours.
+What will be predicted score if a student studies for 9.25 hrs/ day?
+
+Dataset: https://raw.githubusercontent.com/AdiPersonalWorks/Random/master/student_scores%20-%20student_scores.csv
+
+Simple Linear Regression: it concerns two-dimensional sample points with one independent variable and one dependent variable (conventionally, the x and y coordinates in a Cartesian coordinate system) and finds a linear function (a non-vertical straight line) that, as accurately as possible, predicts the dependent variable values as a function of the independent variable. The adjective simple refers to the fact that the outcome variable is related to a single predictor.(Wiki)
+
+```python
+from sklearn.model_selection import train_test_split 
+from sklearn.linear_model import LinearRegression
+import matplotlib.pyplot as plt
+import pandas as pd
+import numpy as np 
+
+url = r"https://raw.githubusercontent.com/AdiPersonalWorks/Random/master/student_scores%20-%20student_scores.csv"
+df = pd.read_csv(url)
+
+df.plot(x='Hours', y='Scores', style='o')  
+plt.title('Hours vs Percentage')  
+plt.xlabel('Hours Studied')  
+plt.ylabel('Percentage Score')  
+plt.show()
+```
+![l1](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/l1.png)
+
+```python
+X = df.iloc[:,:-1].values
+y = df.iloc[:,1].values
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=0) 
+regressor = LinearRegression()  
+regressor.fit(X_train.reshape(-1,1), y_train) 
+
+# Plotting the regression line
+line = regressor.coef_*X+regressor.intercept_
+
+# Plotting for the test data
+plt.scatter(X, y)
+plt.plot(X, line,color='red');
+plt.show()
+```
+![l2](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/l2.png)
+
+```python
+# Model Prediction 
+y_pred = regressor.predict(X_test)
+#Estimating training and test score
+print("Training Score:",regressor.score(X_train,y_train))
+print("Test Score:",regressor.score(X_test,y_test))
+'''
+Training Score: 0.9515510725211552
+Test Score: 0.9454906892105354
+'''
+# Plotting the Bar graph to depict the difference between the actual and predicted value
+
+df.plot(kind='bar',figsize=(5,5))
+plt.grid(which='major', linewidth='0.5', color='red')
+plt.grid(which='minor', linewidth='0.5', color='blue')
+plt.show()
+```
+![l3](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/l3.png)
+```python
+# Testing the model with our own data
+hours = 9.25
+test = np.array([hours])
+test = test.reshape(-1, 1)
+own_pred = regressor.predict(test)
+print("No of Hours = {}".format(hours))
+print("Predicted Score = {}".format(own_pred[0]))
+'''
+No of Hours = 9.25
+Predicted Score = 93.69173248737539
+'''
+
+from sklearn import metrics  
+print('Mean Absolute Error:',metrics.mean_absolute_error(y_test, y_pred)) 
+print('Mean Squared Error:', metrics.mean_squared_error(y_test, y_pred))
+print('Root Mean Squared Error:', np.sqrt(metrics.mean_squared_error(y_test, y_pred)))
+print('R-2:', metrics.r2_score(y_test, y_pred))
+'''
+Mean Absolute Error: 4.183859899002982
+Mean Squared Error: 21.598769307217456
+Root Mean Squared Error: 4.647447612100373
+R-2: 0.9454906892105354
+'''
+```
+We thus get a great R-2 score depicting 94% of accuracy in the mode. 
