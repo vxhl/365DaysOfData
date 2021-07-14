@@ -1414,3 +1414,27 @@ R-2: 0.9454906892105354
 '''
 ```
 We thus get a great R-2 score depicting 94% of accuracy in the mode. 
+
+
+## 📌Day 31: Interpreting R-squared in Regression Analysis 
+R-squared is a goodness-of-fit measure for linear regression models.
+R-squared measures the strength of the relationship between our model and the dependent variable on a convenient 0 – 1 scale.
+
+After fitting a linear regression model, you need to determine how well the model fits the data. Linear regression identifies the equation that produces the smallest difference between all the observed values and their fitted values. To be precise, linear regression finds the smallest sum of squared residuals that is possible for the dataset.
+(Residuals are the distance between the observed value and the fitted value.)
+
+Residual plots can expose a biased model far more effectively than the numeric output ( R-squared ) by displaying problematic patterns in the residuals. If our model is biased, you cannot trust the results. If your residual plots look good, go ahead and assess our R-squared and other statistics.
+
+R-squared evaluates the scatter of the data points around the fitted regression line. It is also called the coefficient of determination. For the same data set, higher R-squared values represent smaller differences between the observed data and the fitted values and thus an overall better model. 
+
+R-squared is always between 0 and 1:
+
+- 0 represents a model that does not explain any of the variation in the response variable around its mean. The mean of the dependent variable predicts the dependent variable as well as the regression model.
+- 1 represents a model that explains all the variation in the response variable around its mean.
+- Usually, the larger the R2, the better the regression model fits your observations. 
+
+```R^2 = Variance explained by the model / Total Variance```
+
+![rsq](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/rsq.png)
+
+The R-squared for the regression model on the left is 15%, and for the model on the right it is 85%. When a regression model accounts for more of the variance, the data points are closer to the regression line. In practice, we’ll never see a regression model with an R^2 of 100%. In that case, the fitted values equal the data values and, consequently, all the observations fall exactly on the regression line.
