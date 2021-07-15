@@ -1438,3 +1438,24 @@ R-squared is always between 0 and 1:
 ![rsq](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/rsq.png)
 
 The R-squared for the regression model on the left is 15%, and for the model on the right it is 85%. When a regression model accounts for more of the variance, the data points are closer to the regression line. In practice, we’ll never see a regression model with an R^2 of 100%. In that case, the fitted values equal the data values and, consequently, all the observations fall exactly on the regression line.
+
+## 📌Day 32: K-means Clustering 
+Clustering is used to get an intuition about the structure of the data. 
+
+It is used for creting different sub-groups in a data, such that the data in the sub-groups are all widely different from each other. 
+
+This is an unsupervised learning algorithm since we do not have any ground truth to compare the output of our clustering algorithm to the true labels and evaluate its performance. 
+
+K-means is one of the most used clustering algorithm due to it's simplicity. 
+
+It uses an iterative approach where it tries to partition the dataset into K pre-defined distinct non-overlapping subgroups of course, depending on the dataset.  
+
+It assigns data points to a cluster such that the sum of the squared distance between the data points and the cluster’s centroid (arithmetic mean of all the data points that belong to that cluster) is at the minimum. The less variation we have within clusters, the more similar the data points are within the same cluster.
+
+How it works? 
+
+1. Specify the number of clusters. 
+2. We initialize the centroids by shuffling the dataset and then randomly selecting K data points for the centroids without replacement. 
+3. Keep iterating until there are no changes in the centroids ( meaning the data points of the clusters are not changing )
+
+The approach kmeans follows to solve the problem is called Expectation-Maximization. The E-step is assigning the data points to the closest cluster. The M-step is computing the centroid of each cluster.
