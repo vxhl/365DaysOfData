@@ -1459,3 +1459,27 @@ How it works?
 3. Keep iterating until there are no changes in the centroids ( meaning the data points of the clusters are not changing )
 
 The approach kmeans follows to solve the problem is called Expectation-Maximization. The E-step is assigning the data points to the closest cluster. The M-step is computing the centroid of each cluster.
+
+
+## 📌Day 33: YOLO → You Only Look Once
+Today I implemented the unsupervised ML clustering project for the internship and moved on to the Computer vision projects. I'll be working on a Social Distance Detector project, to detect if two or more people are in a proximity of 2M(metres) between each other. If their proximity < 2M we return a high chance of exposure to the disease, and if >=2M we return safe. 
+
+I will be using YOLO for this, but for that a lot of installations had to be done, the list goes like: 
+- CUDA 
+- CUDANN (Neural Network for CUDA)
+- CMAKE 
+- Compatible Open CV files
+
+And I am still not done with setting it up yet. Maybe I should be allocating more time for the sessions.
+
+Anyway, what is YOLO exactly 
+
+YOLO is an algorithm that uses neural networks to provide real-time object detection. This algorithm is popular because of its speed and accuracy. It has been used in various applications to detect traffic signals, people, parking meters, and animals.
+
+Object detection in YOLO is done as a regression problem and provides the class probabilities of the detected images. YOLO algorithm employs convolutional neural networks (CNN) to detect objects in real-time. As the name suggests, the algorithm requires only a single forward propagation through a neural network to detect objects.
+
+This means that prediction in the entire image is done in a single algorithm run. The CNN is used to predict various class probabilities and bounding boxes simultaneously.
+
+Presently the latest version is YOLO v4.
+
+You may read the official YOLO v4 research paper here: https://arxiv.org/abs/2004.10934
