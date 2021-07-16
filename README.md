@@ -1483,3 +1483,5 @@ This means that prediction in the entire image is done in a single algorithm run
 Presently the latest version is YOLO v4.
 
 You may read the official YOLO v4 research paper here: https://arxiv.org/abs/2004.10934
+
+![yolo2](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/yolo2.png)
