@@ -1485,3 +1485,101 @@ Presently the latest version is YOLO v4.
 You may read the official YOLO v4 research paper here: https://arxiv.org/abs/2004.10934
 
 ![yolo2](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/yolo2.png)
+
+## 📌Day 34: Social Distancing Detector #01
+This project basically has 3 projects integrated in it -> 
+object detection, object tracking and measuring the distances between the objects. 
+
+First we implement for detecting the people. We first define our: 
+- Minimum probability to filter out weak detections
+- The NMS threshold when applying non-maxima suppression
+- Minimum safe distance between two people(we may consider this to be 2M for now)
+
+We then use cv2 to preprocess our images in the detect_people function. Here we define our frames, our darknet framework(as net), the layer names from darknet (as ln) and we get the personIdx to get position for each person dynamically in the image. ( Things will be clearer tomorrow, today I am just playing around with the code )
+
+```python
+# initialise minimum probability to filter out weak detections. 
+MIN_CONF = 0.3  
+# We also define the threshold when applying non-maxima suppression
+NMS_THRESH = 0.3
+
+# We define the minimum safe distance that two people can be at
+MIN_DISTANCE = 50 # This is defined in pixels, not standard metrics
+
+# importing the necessary packages
+import numpy as np
+import cv2
+
+# Inside our function we define the frame that we display around the people
+def detect_people(frame, net, ln, personIdx=0):
+  # We get the dimensions of the frame 
+  (H,W) = frame.shape[:,2]
+  results = []
+
+  blob = cv2.dnn.blobFromImage(frame, 1 / 255.0, (416, 416),swapRB=True, crop=False)
+  net.setInput(blob)
+  layerOutputs = net.forward(ln)
+
+	# initialize our lists of detected bounding boxes, centroids, and
+	# confidences, respectively
+  boxes = []
+  centroids = []
+  confidences = []
+
+	# loop over each of the layer outputs
+  for output in layerOutputs:
+		# loop over each of the detections
+  	for detection in output:
+			# extract the class ID and confidence (i.e., probability)
+			# of the current object detection
+  		scores = detection[5:]
+  		classID = np.argmax(scores)
+  		confidence = scores[classID]
+
+			# filter detections by (1) ensuring that the object
+			# detected was a person and (2) that the minimum
+			# confidence is met
+  		if classID == personIdx and confidence > MIN_CONF:
+				# scale the bounding box coordinates back relative to
+				# the size of the image, keeping in mind that YOLO
+				# actually returns the center (x, y)-coordinates of
+				# the bounding box followed by the boxes' width and
+				# height
+  			box = detection[0:4] * np.array([W, H, W, H])
+  			(centerX, centerY, width, height) = box.astype("int")
+
+				# use the center (x, y)-coordinates to derive the top
+				# and and left corner of the bounding box
+  			x = int(centerX - (width / 2))
+  			y = int(centerY - (height / 2))
+
+				# update our list of bounding box coordinates,
+				# centroids, and confidences
+  			boxes.append([x, y, int(width), int(height)])
+  			centroids.append((centerX, centerY))
+  			confidences.append(float(confidence))
+
+	# apply non-maxima suppression to suppress weak, overlapping
+	# bounding boxes
+  idxs = cv2.dnn.NMSBoxes(boxes, confidences, MIN_CONF, NMS_THRESH)
+
+
+
+	# ensure at least one detection exists
+  if len(idxs) > 0:
+		# loop over the indexes we are keeping
+  	for i in idxs.flatten():
+			# extract the bounding box coordinates
+  		(x, y) = (boxes[i][0], boxes[i][1])
+  		(w, h) = (boxes[i][2], boxes[i][3])
+
+			# update our results list to consist of the person
+			# prediction probability, bounding box coordinates,
+			# and the centroid
+  		r = (confidences[i], (x, y, x + w, y + h), centroids[i])
+  		results.append(r)
+
+	# return the list of results
+  return results
+
+```
