@@ -1586,9 +1586,7 @@ def detect_people(frame, net, ln, personIdx=0):
 
 ## 📌Day 35: Social Distancing Detector #02
 Completed the project implementation wise but there are some interesting concepts to this that I will discuss later on. For now, the way the detector works-
-
-Detects the people who are not at the required desirable distances between each other and append the value for the `violate` variable to with 1. We can see the actual visualization below. The value for `violate` keeps changing in real time for every frame in our video and returns the number of violations in real time. I will add the distances between them later.
-
+Detects the people who are not at the required desirable distances between each other and increment the value for the violate variable by 1. We can see the actual visualization below. The value for violate may keep changing in real-time for every frame in our video depending on the object's position. I will add the distances between them later.
 ```python
 # USAGE
 # python social_distance_detector.py --input pedestrians.mp4
