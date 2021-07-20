@@ -1719,3 +1719,68 @@ while True:
 
 ```
 ![mall2](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/mall.png)
+
+
+## 📌Day 36: Non-Maxima Suppression
+NMS is a technique used mainly in object detection that aims at selecting the best bounding box out of a set of overlapping boxes. 
+
+IOU is a term used to describe the extent of overlap of two boxes. The greater the region we overlap the greater is the value of IOU
+### ***Algorithm***
+1. We define a value for `confidence_threshold` and `IOU_threshold`. 
+2. Sort the bounding boxes in a descending order of confidence.
+3. Remove the boxes that have a `confidence` < `confidence_threshold`
+4. Loop over all the boxes in descending order of confidence. 
+5. Calculate the IOU of the current box with every remaining box that belong to the same class. 
+6. If the IOU of the 2 boxes > `IOU_threshold`, we remove the box with a lower confidence from our list of boxes. 
+7. We repeat this operation until we have gone through all the boxes in the list. 
+### `CODE`
+```python
+def nms(boxes, MIN_CONF=0.7, MIN_IOU=0.4):
+    box_list = []
+    box_list_new = []
+    # Stage-1__We sort the boxes and filter out the ones with the low confidence
+    boxes_sorted = sorted(boxes, reverse = True, key = lambda x: x[5])
+    for box in boxes_sorted:
+        if box[5]>MIN_CONF:
+            box_list.append(box)
+        else:
+            pass
+    
+    # Stage-2__We now loop over all the boxes and remove the boxes that have a high IOU
+    while(len(box_list)>0):
+        current_box = box_list.pop(0)
+        box_list_new.append(current_box)
+        for box in box_list:
+            if current_box[4] == box[4]:
+                iou = IOU(current_box[:4], box[:4])
+                if iou>MIN_IOU:
+                    box_list.remove(box)
+    return box_list_new
+
+def IOU(boxA, boxB):
+    # determine the (x, y)-coordinates of the intersection rectangle
+    xA = max(boxA[0], boxB[0])
+    yA = max(boxA[1], boxB[1])
+    xB = min(boxA[2], boxB[2])
+    yB = min(boxA[3], boxB[3])
+
+    # compute the area of intersection rectangle
+    interArea = abs(max((xB - xA, 0)) * max((yB - yA), 0))
+    if interArea == 0:
+        return 0
+    # compute the area of both the prediction and ground-truth
+    # rectangles
+    boxAArea = abs((boxA[2] - boxA[0]) * (boxA[3] - boxA[1]))
+    boxBArea = abs((boxB[2] - boxB[0]) * (boxB[3] - boxB[1]))
+
+    # compute the intersection over union by taking the intersection
+    # area and dividing it by the sum of prediction + ground-truth
+    # areas - the interesection area
+    iou = interArea / float(boxAArea + boxBArea - interArea)
+
+    # return the intersection over union value
+    return iou
+```
+References: https://medium.com/analytics-vidhya/non-max-suppression-nms-6623e6572536
+https://medium.com/analytics-vidhya/iou-intersection-over-union-705a39e7acef
+
