@@ -1725,6 +1725,9 @@ while True:
 NMS is a technique used mainly in object detection that aims at selecting the best bounding box out of a set of overlapping boxes. 
 
 IOU is a term used to describe the extent of overlap of two boxes. The greater the region we overlap the greater is the value of IOU
+
+![nms](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/nms.png)
+
 ### ***Algorithm***
 1. We define a value for `confidence_threshold` and `IOU_threshold`. 
 2. Sort the bounding boxes in a descending order of confidence.
@@ -1781,6 +1784,7 @@ def IOU(boxA, boxB):
     # return the intersection over union value
     return iou
 ```
+![nms1](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/nms2.png)
 References: https://medium.com/analytics-vidhya/non-max-suppression-nms-6623e6572536
 https://medium.com/analytics-vidhya/iou-intersection-over-union-705a39e7acef
 
