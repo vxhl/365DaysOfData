@@ -1863,7 +1863,8 @@ cv2.destroyAllWindows()
 ```
 ![jojo1](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/jojo.png)
 
-I also made a youtube video explaining the process of how the algorithm works and exhibited an overall implementation of the algorithm in this post. 
+I also made a youtube video explaining the process of how the algorithm works and exhibited an overall implementation of the project: 
+https://www.youtube.com/watch?v=-BDKSZTCtGA&t=10s 
 
 This was the last project I implemented from the Sparks Foundation Internship and I learnt a lot from them. When I started doing the first video explanation for EDA retail I honestly struggled a lot, I was exhausted even. Now after making 5 video explanations for different projects I can say that I have gained a reliable experience in the explaining side of things atleast and that was the most valuable experience I gained from this internship.
 
