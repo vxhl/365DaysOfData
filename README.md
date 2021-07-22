@@ -1869,7 +1869,7 @@ https://www.youtube.com/watch?v=-BDKSZTCtGA&t=10s
 This was the last project I implemented from the Sparks Foundation Internship and I learnt a lot from them. When I started doing the first video explanation for EDA retail I honestly struggled a lot, I was exhausted even. Now after making 5 video explanations for different projects I can say that I have gained a reliable experience in the explaining side of things atleast and that was the most valuable experience I gained from this internship.
 
 
-## 📌Day 37: ⌛ Time Series Forecasting #4 ⏳
+## 📌Day 38: ⌛ Time Series Forecasting #4 ⏳
 Now that my internship is over it's time to get back to the usual. 
 
 Today I got back to Time Series Forecasting. I put it on halt cause of the internship since there were no projects related to it in there.
