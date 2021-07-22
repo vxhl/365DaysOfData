@@ -1868,3 +1868,43 @@ https://www.youtube.com/watch?v=-BDKSZTCtGA&t=10s
 
 This was the last project I implemented from the Sparks Foundation Internship and I learnt a lot from them. When I started doing the first video explanation for EDA retail I honestly struggled a lot, I was exhausted even. Now after making 5 video explanations for different projects I can say that I have gained a reliable experience in the explaining side of things atleast and that was the most valuable experience I gained from this internship.
 
+
+## 📌Day 37: ⌛ Time Series Forecasting #4 ⏳
+Now that my internship is over it's time to get back to the usual. 
+
+Today I got back to Time Series Forecasting. I put it on halt cause of the internship since there were no projects related to it in there.
+
+### ARIMA -> Auto Regressor Integrated Moving Average
+An ARIMA model is a form of regression analysis that gauges the strength of one dependent variable relative to other changing variables. 
+
+Instead of predicting the time series itself, we use ARIMA in predicting the differences of the time series from one time stamp to the next time stamp.  
+
+- AR: Autoregression. A model that uses the dependent relationship between an observation and some number of lagged observations.
+- I: Integrated. The use of differencing of raw observations (e.g. subtracting an observation from an observation at the previous time step) in order to make the time series stationary.
+- MA: Moving Average. A model that uses the dependency between an observation and a residual error from a moving average model applied to lagged observations.
+
+Each of these components are explicitly specified in the model as a parameter. A standard notation is used of `ARIMA(p,d,q)` where the parameters are substituted with integer values to quickly indicate the specific ARIMA model being used.
+
+`ARIMA(1,1,1)` is the simplest ARIMA model. 
+
+The parameters of the ARIMA model are defined as follows:
+
+- p: The number of lag observations included in the model, also called the lag order.
+- d: The number of times that the raw observations are differenced, also called the degree of differencing.
+- q: The size of the moving average window, also called the order of moving average.
+
+```python
+from statsmodels.tsa.arima_model import ARIMA
+model = ARIMA(ts_log, order=(2, 1, 2))  
+results_ARIMA = model.fit(disp=-1)  
+
+plt.figure(figsize=(12,5))
+plt.plot(ts_log_diff)
+plt.plot(results_ARIMA.fittedvalues, color='red')
+plt.title('RSS: %.4f'% sum((results_ARIMA.fittedvalues-ts_log_diff)**2))
+```
+![arima](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/arima.png)
+
+I'll go into more depth tomorrow, this was just an introduction. 
+
+Reference: https://machinelearningmastery.com/arima-for-time-series-forecasting-with-python/
