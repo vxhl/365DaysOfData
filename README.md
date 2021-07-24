@@ -1908,3 +1908,48 @@ plt.title('RSS: %.4f'% sum((results_ARIMA.fittedvalues-ts_log_diff)**2))
 I'll go into more depth tomorrow, this was just an introduction. 
 
 Reference: https://machinelearningmastery.com/arima-for-time-series-forecasting-with-python/
+
+## 📌Day 39: ⌛ Time Series Forecasting #5 ⏳
+### the ACF and PACF 
+
+The ACF stands for Autocorrelation function and PACF stands for Partial Autocorrelation function. Looking at these two plots together can help us form and idea of what models to fit. 
+
+ACF is the correaltion between the observation at the current time stamp and the observation at the previous time stamps all having an indirect effect on the current time stamp. 
+
+PACF on the other hand is the correlation at two time spots in such a way that we don't consider all the other indirect effects on the time stamps between them. 
+
+For example: The price of petrol today can be correlated to the day before yesterday, and yesterday can also be correalted to the day before yesterday. Then PACF of yesterday is the "real" correlation between today and yesterday after taking out the influence of the day before yesterday. 
+
+For finding ACF we simply use the pearson correlation algorithm lining up our dataset comparing the previous time periods to the present one. 
+
+However for PACF we build a regression function and getting the coefficient of that term. 
+
+In our ARIMA model we use ACF and PACF plots to detect the AR(Auto Regression) and MA(Mean Average) in our time series. 
+
+```python
+#ACF and PACF plots:
+from statsmodels.tsa.stattools import acf, pacf  
+
+lag_acf = acf(ts_log_diff, nlags=20)
+lag_pacf = pacf(ts_log_diff, nlags=20, method='ols')
+
+#Plot ACF:  
+#plt.figure(figsize=(10,5))
+plt.subplot(121)    
+plt.plot(lag_acf)
+plt.axhline(y=0,linestyle='--',color='gray')
+plt.axhline(y=-1.96/np.sqrt(len(ts_log_diff)),linestyle='--',color='gray')
+plt.axhline(y=1.96/np.sqrt(len(ts_log_diff)),linestyle='--',color='gray')
+plt.title('Autocorrelation Function')
+
+#Plot PACF:
+#plt.figure(figsize=(10,5))
+plt.subplot(122)
+plt.plot(lag_pacf)
+plt.axhline(y=0,linestyle='--',color='gray')
+plt.axhline(y=-1.96/np.sqrt(len(ts_log_diff)),linestyle='--',color='gray')
+plt.axhline(y=1.96/np.sqrt(len(ts_log_diff)),linestyle='--',color='gray')
+plt.title('Partial Autocorrelation Function')
+plt.tight_layout()
+```
+![auto](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/autocorr.png)
