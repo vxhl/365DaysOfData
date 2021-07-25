@@ -1953,3 +1953,22 @@ plt.title('Partial Autocorrelation Function')
 plt.tight_layout()
 ```
 ![auto](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/autocorr.png)
+
+## 📌Day 40: Understanding the Intuition for Ridge Regression
+The difference between Ridge Regression and Simple Linear Regression(OLS regression) is that the former implements a penalty to the loss function to decrease the variance for the model and prevent overfitting. 
+
+Ridge regression has a low sensitivity to changes made in the model parameters because of the additional penalty we have in the loss function. This is not the case for OLS regression since very small changes can result in large changes in the regression model. 
+
+In more mathematical terms: 
+
+When implementing Ridge Regression using gradient descent, the added L2 regularisation ( the penalty term ) terms lead to reducing the weights of our model to 0 or close to 0. Because of this penalization our model gets less prone to overfitting since it gets simpler or more generalised. 
+
+### The Cost Function for Linear Regression 
+
+![line](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/linreg.png)
+
+### Modified to Ridge Regression by adding the additional penalty terms (lambda)
+
+![rid](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/Ridgereg.png)
+
+References: https://machinelearningcompass.com/machine_learning_models/ridge_regression/
