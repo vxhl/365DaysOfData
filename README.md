@@ -1961,7 +1961,7 @@ Ridge regression has a low sensitivity to changes made in the model parameters b
 
 In more mathematical terms: 
 
-When implementing Ridge Regression using gradient descent, the added L2 regularisation ( the penalty term ) terms lead to reducing the weights of our model to 0 or close to 0. Because of this penalization our model gets less prone to overfitting since it gets simpler or more generalised. 
+When implementing Ridge Regression using gradient descent, the added L2 regularisation ( the penalty term ) terms lead to reducing the weights of our model to 0 or close to 0. Because of this penalization, our model gets less prone to overfitting since it gets simpler or more generalized. 
 
 ### The Cost Function for Linear Regression 
 
