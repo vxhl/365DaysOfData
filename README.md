@@ -1967,8 +1967,19 @@ When implementing Ridge Regression using gradient descent, the added L2 regulari
 
 ![line](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/linreg.png)
 
+h(x(i)) represents the hypothetical function for prediction.
+
+y(i) represents the value of target variable for ith example.
+
+m is the total number of training examples in the given dataset.
+
 ### Modified to Ridge Regression by adding the additional penalty terms (lambda)
 
 ![rid](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/Ridgereg.png)
+
+Here, lambda is our penalty
+
+wj represents the weight for jth feature.
+
 
 References: https://machinelearningcompass.com/machine_learning_models/ridge_regression/
