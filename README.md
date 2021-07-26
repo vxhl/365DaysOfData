@@ -1983,3 +1983,23 @@ wj represents the weight for jth feature.
 
 
 References: https://machinelearningcompass.com/machine_learning_models/ridge_regression/
+
+
+## 📌Day 41: L1 and L2 Regularisation 
+These regularisation techniques are used to address overfitting and feature selection.
+
+A regression model that uses the L1 regularisation technique is called Lasso Regression and the model which uses L2 regularisation is Ridge Regression. 
+
+The key difference between these two is the penalty term that is added to the loss functions for the algorithms. 
+
+Ridge Regression adds "square magnitude" of coefficient as penalty term to the loss function. If the value is 0 then it becomes normal OLS regression, on the other hand, if the value is too large it may lead to overfitting. 
+
+Lasso Regression where LASSO stands for Least Absolute Shrinkage and Selection Operator. This adds the "absolute value of magnitude" of coefficient as a penalty term to the loss function. 
+
+Here if the value of 0 we get back the OLS regression whereas large values, of course, lead to underfitting. 
+
+> The key difference between these techniques is that Lasso shrinks the less important feature’s coefficient to zero thus, removing some features altogether. So, this works well for feature selection in case we have a huge number of features.
+
+These features are a great alternative when we are dealing with a large set of features. 
+
+References: https://towardsdatascience.com/l1-and-l2-regularization-methods-ce25e7fc831c
