@@ -1994,7 +1994,11 @@ The key difference between these two is the penalty term that is added to the lo
 
 Ridge Regression adds "square magnitude" of coefficient as penalty term to the loss function. If the value is 0 then it becomes normal OLS regression, on the other hand, if the value is too large it may lead to overfitting. 
 
+![ried](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/ridge.png)
+
 Lasso Regression where LASSO stands for Least Absolute Shrinkage and Selection Operator. This adds the "absolute value of magnitude" of coefficient as a penalty term to the loss function. 
+
+![riedL](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/LASSO.png)
 
 Here if the value of 0 we get back the OLS regression whereas large values, of course, lead to underfitting. 
 
