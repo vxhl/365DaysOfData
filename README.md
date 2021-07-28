@@ -2110,3 +2110,14 @@ if __name__ == "__main__" :
 ```
 ![rL](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/ridgeee.png)
 
+
+## 📌Day 43: Lasso Regression 
+Lasso Regression where LASSO stands for Least Absolute Shrinkage and Selection Operator. This adds the "absolute value of magnitude" of coefficient as a penalty term to the loss function. 
+
+![riedL](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/LASSO.png)
+
+Lasso Regression is very similar to Ridge regression, the superficial difference between Ridge regression squares the variables and Lasso takes the absolute value.
+
+The big difference and advantage of LASSO however is that it can exclude useless varibales from equations. This makes the equation simpler and easier to interpret. 
+
+![lass](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/lass.png)
