@@ -2285,3 +2285,19 @@ Trained b         26505.43
 
 ```
 ![lwfrqass](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/lassimp.png)
+
+
+## 📌Day 45: 💻 Practicing MYSQL 
+I could barely get used to SQL during the semester classes, so this week will be all about writing the most basic queries to maybe some more advanced ones by the end of the week.
+
+I went through a few resources online and at the end of it [Mosh Hamedani's youtube tutorial](https://www.youtube.com/watch?v=7S_tz1z_5bA&t=662s) was by far the quickest and more concise ones out of all of them. So following the tutorial -- 
+
+Today I did some basic operations on a STORE database having data on customers, order_items, products, shippers, etc. 
+
+![regexp](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/sql.png)
+![gfw1231eg](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/sql5.png)
+![gfwe2415g](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/sql8.png)
+![gfweg](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/7.png)
+![regexp](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/sql.png)
+
+
