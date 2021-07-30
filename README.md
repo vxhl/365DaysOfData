@@ -2295,7 +2295,7 @@ I went through a few resources online and at the end of it [Mosh Hamedani's yout
 Today I did some basic operations on a STORE database having data on customers, order_items, products, shippers, etc. 
 
 ![regexp](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/sql.png)
-![gfw1231eg](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/sql5.png)
+![gfw1231eg](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/SQL5.png)
 ![gfwe2415g](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/sql8.png)
 ![gfweg](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/7.png)
 ![regexp](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/sql.png)
