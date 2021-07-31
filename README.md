@@ -2287,7 +2287,7 @@ Trained b         26505.43
 ![lwfrqass](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/lassimp.png)
 
 
-## 📌Day 45: 💻 Practicing MYSQL 
+## 📌Day 45: 💻 Practicing MYSQL #01
 I could barely get used to SQL during the semester classes, so this week will be all about writing the most basic queries to maybe some more advanced ones by the end of the week.
 
 I went through a few resources online and at the end of it [Mosh Hamedani's youtube tutorial](https://www.youtube.com/watch?v=7S_tz1z_5bA&t=662s) was by far the quickest and more concise ones out of all of them. So following the tutorial -- 
@@ -2300,4 +2300,55 @@ Today I did some basic operations on a STORE database having data on customers, 
 ![gfweg](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/7.png)
 ![regexp](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/sql.png)
 
+## 📌Day 46: 💻 Practicing MYSQL #02
+Today I performed a few operations using the `ORDER BY` and `LIMIT` clauses, also started from the fundamentals of `JOIN` operations with `INNER JOINS`,JOINING ACROSS DATABASES and SELF JOINS. 
 
+```sql
+-- => MySQL Practice #02 <=
+
+-- ## 1. ORDER BY CLAUSE ##
+
+-- SELECT *, quantity * unit_price AS total_price
+-- FROM order_items
+-- WHERE order_id = 2
+-- ORDER BY total_price DESC
+-- # In MySQL we can sort data by any columns whether that col is in the select clause or not
+
+-- ## 2. THE LIMIT CLAUSE ##
+
+-- # How to limit the number of records returned from our queries? 
+-- Q. Get the top 3 loyal customers
+-- SELECT * 
+-- FROM customers
+-- ORDER BY points DESC
+-- LIMIT 3
+-- LIMIT 6,3	 -- Skip the first 6 records and pick 3 customers after that
+
+-- ## 3. INNER JOINS ##
+-- # Selecting columns from multiple tables
+-- SELECT order_id, oi.product_id, quantity, oi.unit_price
+-- FROM order_items oi
+-- JOIN products p ON oi.product_id = p.product_id
+-- ## 4. JOINING ACROSS DATABASES ## 
+-- # How to combine columns from tables across multiple databases
+-- Q. We want to join the order_items table with the products table in the sql_inventory database  
+-- SELECT *
+-- FROM order_items oi
+-- JOIN sql_inventory.products p
+-- 	ON oi.product_id = p.product_id
+
+-- ## 5. SELF JOINS
+-- # Joining a table with itself
+-- Q. We write a query to join the employees table with itself so we can select the name
+-- of each employee and their manager
+-- USE sql_hr;
+-- SELECT 
+-- 	e.employee_id,
+--  e.first_name,
+--  m.first_name AS Manager
+-- FROM employees e
+-- JOIN employees m
+-- 	ON e.reports_to = m.employee_id
+
+```
+References: [Mosh Hamedani's youtube tutorial](https://www.youtube.com/watch?v=7S_tz1z_5bA&t=662s)
