@@ -2352,3 +2352,21 @@ Today I performed a few operations using the `ORDER BY` and `LIMIT` clauses, als
 
 ```
 References: [Mosh Hamedani's youtube tutorial](https://www.youtube.com/watch?v=7S_tz1z_5bA&t=662s)
+
+
+## 📌Day 47: 👁 Introduction to BERT
+BERT (Bidirectional Encoder Representations from Transformers) is a language model that was introduced by google back in 2018. 
+
+BERT makes use of Transformer, an attention mechanism that learns contextual relations between words (or sub-words) in a text. 
+
+As opposed to directional models, which read the text input sequentially (left-to-right or right-to-left), the Transformer encoder reads the entire sequence of words at once. Therefore it is considered bidirectional, though it would be more accurate to say that it’s non-directional. This characteristic allows the model to learn the context of a word based on all of its surroundings (left and right of the word).
+
+BERT’s bidirectional approach (Masked LM) converges slower than left-to-right approaches (because only 15% of words are predicted in each batch) but bidirectional training still outperforms left-to-right training after a small number of pre-training steps.
+
+[Bert Source Code](https://github.com/google-research/bert)
+
+![bert](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/bert.png)
+
+
+
+References: https://towardsdatascience.com/bert-explained-state-of-the-art-language-model-for-nlp-f8b21a9b6270
