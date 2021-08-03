@@ -2370,3 +2370,99 @@ BERT’s bidirectional approach (Masked LM) converges slower than left-to-right 
 
 
 References: https://towardsdatascience.com/bert-explained-state-of-the-art-language-model-for-nlp-f8b21a9b6270
+
+## 📌Day 48: 💻 Practicing MYSQL #03
+Today I learnt about: 
+
+- JOINING MULTIPLE TABLES
+- COMPOUND JOIN CONDITIONS
+- OUTER JOINS
+- OUTER JOINS with Multiple tables
+
+And did a few practice exercises for the same. 
+
+So far SQL is just what I expected, I'll be done with the entire tutorial by tomorrow and then work on more complex databases to wrap up the SQL week. 
+
+```sql
+-- => MySQL Practice #03 <=
+
+## 1. JOINING MULTIPLE TABLES ## 
+-- Joining 3 Tables 
+-- SELECT 
+-- 	o.order_id,
+--  o.order_date,
+--  c.first_name,
+--  c.last_name,
+--  os.name AS status  
+--  FROM orders o
+--  JOIN customers c 
+--  	ON o.customer_id = c.customer_id
+--  JOIN order_statuses os
+--  	ON o.status = os.order_status_id
+
+-- Q. PRODUCE A REPORT THAT SHOWS A PAYMENT WITH MORE DETAILS SUCH AS THE NAME OF THE CLIENT AND
+-- PAYMENT METHOD
+-- USE sql_invoicing;
+-- SELECT p.date, p.invoice_id, p.amount, c.name, pm.name
+-- FROM payments p 
+-- JOIN clients c
+--  ON p.client_id = c.client_id
+-- JOIN payment_methods pm
+--  ON p.payment_method = pm.payment_method_id
+ 
+## 2. COMPOUND JOIN CONDITIONS ##
+-- When we have more than two primary key columns it is called a composite primary key
+-- USE sql_store;
+-- SELECT *
+-- FROM order_items oi
+-- JOIN order_item_notes oin
+-- 	ON oi.order_id = oin.order_id
+--   AND oi.product_id = oin.product_id
+
+## 3. IMPLICIT JOIN SYNTAX ##
+-- SELECT * 
+-- FROM orders o, customers c
+-- WHERE o.customer_id = c.customer_id
+-- # It is always better to do the explicit JOIN syntax becaue of the cross join problem 
+
+## 4. OUTER JOINS
+-- => Two kinds: LEFT JOINS and RIGHT JOINS
+-- => When we use a LEFT JOIN all the records from the left table are returned 
+-- => whether the given condition is true or not. Similarly for RIGHT JOIN
+-- => OUTER keyword is optional 
+-- SELECT 
+-- 	c.customer_id,
+--  c.first_name ,
+--  o.order_id
+-- FROM customers c
+-- LEFT JOIN orders o
+-- 	ON c.customer_id = o.customer_id
+-- ORDER BY customer_id
+
+## 5. OUTER JOIN MULTIPLE TABLES ##
+-- # Q. Joining Orders table with the shippers -- table to display the name of shipper
+-- SELECT 
+-- 	c.customer_id,
+-- 	c.first_name ,
+-- 	o.order_id
+-- FROM customers c
+-- LEFT JOIN orders o
+-- 	ON c.customer_id = o.customer_id
+-- LEFT JOIN shippers sh
+-- 	ON o.shipper_id = sh.shipper_id
+-- ORDER BY c.customer_id
+-- =======================================
+-- SELECT 
+-- 	o.order_id,
+--    o.order_date ,
+--    c.first_name AS customer,
+--    sh.name AS shipper,
+-- 		os.name AS status
+-- FROM orders o
+-- JOIN customers c
+-- 	ON o.customer_id = c.customer_id
+-- LEFT JOIN shippers sh
+-- 	ON o.shipper_id = sh.shipper_id
+-- JOIN order_statuses os
+-- 	ON o.status = os.order_status_id
+``` 
