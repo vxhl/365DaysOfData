@@ -2466,3 +2466,76 @@ So far SQL is just what I expected, I'll be done with the entire tutorial by tom
 -- JOIN order_statuses os
 -- 	ON o.status = os.order_status_id
 ``` 
+## 📌Day 49: 💻 Practicing MYSQL #04
+
+Today I learnt about
+
+- SELF-OUTER JOINS
+- The USING clause
+- NATURAL JOIN
+- CROSS JOINS
+
+```sql
+
+-- => MYSQL PRACTICE #04 <=
+##1. SELF-OUTER JOINS ##
+-- USE sql_hr;
+-- SELECT
+-- 	e.employee_id,
+--  e.first_name,
+--  m.first_name AS manager
+--  FROM employees e
+--  LEFT JOIN employees m
+-- 	ON e.reports_to = m.employee_id
+
+##2. THE USING CLAUSE
+-- # For shortening the syntax we use USING instead of the ON keyword
+-- USE sql_store;
+-- SELECT 
+--  o.order_id,
+--  c.first_name,
+--  sh.name as shipper
+-- FROM orders o
+-- JOIN customers c
+	-- #ON o.customer_id = c.customer_id
+--    USING (customer_id) 
+-- LEFT JOIN shippers sh
+-- 	USING(shipper_id)
+
+-- # This also works well for composite conditions
+-- SELECT *
+-- FROM order_items oi
+-- JOIN order_item_notes oin
+-- 		USING (order_id, product_id)
+
+## 3. NATURAL JOINS ##
+-- THE database engine looks at the tables and it joins them based on the common columns
+-- SELECT 
+-- o.order_id,
+--    c.first_name
+-- FROM orders o
+-- NATURAL JOIN customers c
+-- # These can be dangerous since we let the database engine figure out or guess the join, We do not have control over it
+-- # So they can produce unexpected results. 
+
+## 4. CROSS JOINS ## 
+-- # We use them to join or combine or join every record in the first table with every record in the second table 
+-- USE sql_store;
+-- SELECT 
+-- 	c.first_name AS customer,
+--     p.name AS product
+-- FROM customers c
+-- CROSS JOIN products p 
+-- ORDER BY c.first_name
+
+-- # Q. DO A CROSS JOIN between shippers and products using the Implicit and the Explicit sytax
+-- SELECT
+-- 	sh.name AS shipper, 
+--  p.name as products
+-- #IMPLICIT
+-- FROM shippers sh, products p
+-- #EXPLICIT
+-- FROM shippers sh
+-- CROSS JOIN products p
+-- ORDER BY sh.name
+```
