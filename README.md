@@ -2539,3 +2539,112 @@ Today I learnt about
 -- CROSS JOIN products p
 -- ORDER BY sh.name
 ```
+## 📌Day 50: 💻 Practicing MYSQL #05
+Today I learnt about: 
+1. UNIONS
+2. Inserting Rows
+3. Inserting Hierarchical Rows
+4. Creating a copy of a table 
+
+```sql
+-- 1. UNIONS --
+ SELECT 
+	order_id,
+    order_date,
+    'Active' AS status
+FROM orders
+WHERE order_date >= '2019-01-01'
+UNION
+SELECT 
+	order_id,
+    order_date,
+    'Archived' AS status
+FROM orders
+WHERE order_date < '2019-01-01'
+
+# Exercise: Sort customers by BRONZE, SILVER and GOLD on the basis of the points
+SELECT 
+	customer_id,
+    first_name, 
+    points,
+    'BRONZE' AS type
+FROM customers
+WHERE points < 2000
+UNION
+SELECT 
+	customer_id,
+    first_name, 
+    points,
+    'SILVER' AS type
+FROM customers
+WHERE points BETWEEN 2000 AND 3000
+UNION
+SELECT 
+	customer_id,
+    first_name, 
+    points,
+    'GOLD' AS type
+FROM customers
+WHERE points > 3000
+ORDER BY first_name
+
+-- 2. COLUMN ATTRIBUTES -- 
+-- How to insert, update and delete data 
+
+-- ## INSERTING A ROW ##
+INSERT INTO customers (
+	first_name,
+    last_name,
+    birth_date,
+    address,
+    city,
+    state
+    )
+# Now in VALUES we supply the values for every column in customers
+VALUES (
+    'John', 
+    'Smith', 
+    '1990-01-01', 
+    'address',
+    'city',
+    'CA'
+    ) 
+-- ## INSERTING MULTIPLE ROWS ## 
+INSERT INTO shippers(name)
+VALUES ('Shipper1'),
+		('Shipper2'),
+        ('Shipper3')
+
+-- ## INSERTING HIERARCHICAL ROWS ##
+INSERT INTO orders 
+(customer_id, order_date, status)
+VALUES ( 1, '2019-01-02', 1);
+INSERT INTO order_items
+VALUES(LAST_INSERT_ID(), 1,1,2.95),
+	(LAST_INSERT_ID(), 2,1,2.92),
+    (LAST_INSERT_ID(), 3,1,3.95)
+
+-- ## CREATING A COPY OF A TABLE ## -- 
+CREATE TABLE orders_archived AS
+SELECT * FROM orders
+------------------------productsorders_archived
+INSERT INTO orders_archived
+SELECT * 
+FROM orders 
+WHERE order_date < '2019-01-01'
+
+-- EXERCISE
+USE sql_invoicing;
+
+CREATE TABLE invoices_archived AS
+SELECT
+	i.invoice_id,
+    i.number,
+    c.name AS client,
+    i.invoice_total,
+    i.payment_total,
+    i.due_date
+FROM invoices i
+JOIN clients c 
+	USING (client_id) 
+```
