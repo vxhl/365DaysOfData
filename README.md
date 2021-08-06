@@ -2648,3 +2648,62 @@ FROM invoices i
 JOIN clients c 
 	USING (client_id) 
 ```
+
+## 📌Day 51: 💻 Practicing MYSQL #06
+Today I learnt about: 
+1. updating records 
+2. using subqueries in UPDATE 
+3. deleting records
+
+```sql
+-- MYSQL PRACTICE #06 -- 
+
+# 1. Updating a Single Row 
+USE sql_invoicing;
+UPDATE invoices
+SET payment_total = 10, payment_date = '2019-03-01'
+WHERE invoice_id = 1;
+
+# 2. Updating Multiple Rows 
+UPDATE invoices
+SET
+	payment_total = invoice_total * 0.5,
+    payment_date = due_date 
+WHERE client_id IN(3,4)
+
+-- Q. Write a SQL statement to give any customers born before 1990 50 extra points
+USE sql_store;
+
+UPDATE customers
+SET points = points + 50
+WHERE birth_date < '1990-01-01'
+
+# 3. Using subqueries in Update 
+USE sql_invoicing;
+UPDATE invoices
+SET
+	payment_total = invoice_total * 0.5,
+    payment_date = due_date 
+WHERE client_id IN
+	(SELECT client_id
+    FROM clients
+    WHERE state IN('CA', 'NY'))
+
+# Q. Exercise
+UPDATE orders
+SET comments = 'Gold Customer'
+WHERE customer_id IN
+	(SELECT customer_id
+	from customers
+	WHERE points>3000);
+
+# 4. DELETEING ROWS
+DELETE FROM invoices 
+WHERE client_id = 
+(
+	SELECT *
+	FROM clients
+	WHERE name = 'Myworks'
+)
+```
+I'll be keeping the SQL studies on hold for now. Serious college stuff is going down need to prepare for all that. 
