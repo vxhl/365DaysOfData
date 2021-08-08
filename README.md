@@ -2707,3 +2707,27 @@ WHERE client_id =
 )
 ```
 I'll be keeping the SQL studies on hold for now. Serious college stuff is going down need to prepare for all that. 
+
+## 📌Day 52: ***🎵 Generating Music using LSTM in Keras #01***
+Let us first look into the tools and terminologies required for the project concept. 
+
+### 1. ***Recurrent Neural Networks***: 
+Recurrent Neural Networks make use of sequential information. They perform the same operation for every single element. So the results are dependent on various computations. For this project, we will be using LSTM Neural Networks which is also a type of RNN. LSTM's are extremely useful in solving problems where the network has to remember information for a long period of time as is the case in musical information 
+
+### 2. Music21
+
+[music21: a Toolkit for Computer-Aided Musicology](http://web.mit.edu/music21/)
+
+Music21 is a set of tools for helping scholars and other active listeners answer questions about music quickly and simply.
+
+It can help us with questions like “I wonder how often Eminem does that” or “I wish I knew which band was the first to use these chords in this order” chances are the methods provided by `music21` can help us with that.
+
+Or even questions like, "I’ll bet we’d know more about Renaissance counterpoint (or Indian ragas or post-tonal pitch structures or the form of minutes) if I could write a program to automatically write more of them"
+
+### 3. Keras 
+We'll be using the Keras library to create and train the LSTM model. Once the model is trained we will use it to generate musical notation for our music 
+
+### Training 
+For training the model we will be using Zelda and Final Fantasy soundtracks. Final Fantasy has more consistency to it and there is a large amount of those out there. 
+
+GitHub Repository: [https://github.com/Skuldur/Classical-Piano-Composer](https://github.com/Skuldur/Classical-Piano-Composer)
