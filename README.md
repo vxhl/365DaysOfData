@@ -2731,3 +2731,69 @@ We'll be using the Keras library to create and train the LSTM model. Once the mo
 For training the model we will be using Zelda and Final Fantasy soundtracks. Final Fantasy has more consistency to it and there is a large amount of those out there. 
 
 GitHub Repository: [https://github.com/Skuldur/Classical-Piano-Composer](https://github.com/Skuldur/Classical-Piano-Composer)
+
+## 📌Day 53: ***🎵 Generating Music using LSTM in Keras #02***
+### Training 
+The Data splits into Notes and Chords. Note objects contain information about the pitch, octave, and offset of the Note. 
+
+- Octave: Refer to which set of pitches we use on a piano
+- Offset: refers to where the note is located in the piece
+
+Chord objects are essentially a container for a set of nodes that are played at the same time. 
+
+Inorder to generate music accurately we need to be able to predict which note or chord is next. So this means our prediction array will have to contain every note and chord object that we encounter in our training set. 
+
+Below we can see an excerpt from a midi file that has been read using Music21:
+```
+...
+<music21.note.Note F>
+<music21.chord.Chord A2 E3>
+<music21.chord.Chord A2 E3>
+<music21.note.Note E>
+<music21.chord.Chord B-2 F3>
+<music21.note.Note F>
+<music21.note.Note G>
+<music21.note.Note D>
+<music21.chord.Chord B-2 F3>
+<music21.note.Note F>
+<music21.chord.Chord B-2 F3>
+<music21.note.Note E>
+<music21.chord.Chord B-2 F3>
+<music21.note.Note D>
+<music21.chord.Chord B-2 F3>
+<music21.note.Note E>
+<music21.chord.Chord A2 E3>
+...
+```
+For the dataset we'll be using, the total number of different notes and chords was 352. So we will be handling this using LSTM.
+
+Next we predict on where we want to actually put the notes. The distribution of the notes is diverse depending on the different songs where some may be really close together and others may occur after a long pause. 
+
+So now let us read another excerpt but this time we add the offset as well to understand the interval between the different nodes and chords.
+
+```
+...
+<music21.note.Note B> 72.0
+<music21.chord.Chord E3 A3> 72.0
+<music21.note.Note A> 72.5
+<music21.chord.Chord E3 A3> 72.5
+<music21.note.Note E> 73.0
+<music21.chord.Chord E3 A3> 73.0
+<music21.chord.Chord E3 A3> 73.5
+<music21.note.Note E-> 74.0
+<music21.chord.Chord F3 A3> 74.0
+<music21.chord.Chord F3 A3> 74.5
+<music21.chord.Chord F3 A3> 75.0
+<music21.chord.Chord F3 A3> 75.5
+<music21.chord.Chord E3 A3> 76.0
+<music21.chord.Chord E3 A3> 76.5
+<music21.chord.Chord E3 A3> 77.0
+<music21.chord.Chord E3 A3> 77.5
+<music21.chord.Chord F3 A3> 78.0
+<music21.chord.Chord F3 A3> 78.5
+<music21.chord.Chord F3 A3> 79.0
+...
+```
+Observing the result, the most common intervals betweent he nodes and chords in `0.5`. So we can simplify our model by removing the data that don't have that said difference. This may sounds aggressive but this won't be affecting the melodies as much and should be reliable for training. 
+
+References: https://towardsdatascience.com/how-to-generate-music-using-a-lstm-neural-network-in-keras-68786834d4c5
