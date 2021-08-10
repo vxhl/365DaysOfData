@@ -2797,3 +2797,18 @@ So now let us read another excerpt but this time we add the offset as well to un
 Observing the result, the most common intervals betweent he nodes and chords in `0.5`. So we can simplify our model by removing the data that don't have that said difference. This may sounds aggressive but this won't be affecting the melodies as much and should be reliable for training. 
 
 References: https://towardsdatascience.com/how-to-generate-music-using-a-lstm-neural-network-in-keras-68786834d4c5
+
+
+## 📌Day 54: What is Dropout exactly? 
+Deep learning neural networks are likely to quickly overfit a training dataset. 
+
+Ensembling neural networks are known to reduce overfitting, bu they require additional expense of training multiple models. 
+
+A single model can be used to simulate having a large number of different network architectures by randomly dropping out nodes during training. This is called dropout and offers a very computationally cheap and efficient regularisation method to reduce overfitting and improve generalisation error. 
+
+DROPOUT is implemented per layer in a neural network. It can be used with most types of layers such as dense fully connected layers, convolutional layers and recurrent layers such as the LSTM network layers. The term is quite literal meaning dropping out units in a neural network. 
+
+A new hyperparameter is introduced that specifies the probability at which outputs of the layer are dropped out, or inversely, the probability at which outputs of the layer are retained. 
+
+The default interpretation of the dropout hyperparameter is the probability of training a given node in a layer, where 1.0 means no dropout, and 0.0 means no outputs from the layer. 
+A good value for dropout in a hidden layer is between 0.5 and 0.8. Input layers use a larger dropout rate, such as of 0.8.
