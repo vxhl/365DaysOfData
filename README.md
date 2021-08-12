@@ -2814,7 +2814,7 @@ The default interpretation of the dropout hyperparameter is the probability of t
 A good value for dropout in a hidden layer is between 0.5 and 0.8. Input layers use a larger dropout rate, such as of 0.8.
 
 
-## 📌Day 55: ***🎵 Generating Music using LSTM in Keras #02***
+## 📌Day 55: ***🎵 Generating Music using LSTM in Keras #03***
 In the previous post the data was examind and the features that we want to use are notes and chords as the input and output of our LSTM network. Now let us prepare the data for the network
 
 Firt we load our data into an array called notes
@@ -2871,7 +2871,7 @@ In this example we have taken the sequence_length ( hidden layers ) as 100. This
 The final step would be to normalise the input and one-hot encode the output. 
 
 
-## 📌Day 56: ***🎵 Generating Music using LSTM in Keras #02***
+## 📌Day 56: ***🎵 Generating Music using LSTM in Keras #04***
 In the previous post we preprocessed our data, now let us define our model architecture which will be having 4 different types of layers: 
 - LSTM Layers: RNN layer that takes a sequence as an input and can return either sequences or a matrix. 
 - Dropout Layers: A regularisation technique that consists of setting a fraction of input units to 0 at each update during the training to prevent overfitting.
