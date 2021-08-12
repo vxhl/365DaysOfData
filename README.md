@@ -2869,3 +2869,30 @@ network_output = np_utils.to_categorical(network_output)
 In this example we have taken the sequence_length ( hidden layers ) as 100. This means that to predict the next note in the sequence our LSTM network has the previous 100 notes to help make the prediction. This is all about hyperparameter tuning and it can change depending on the batches of data so keep experimenting. 
 
 The final step would be to normalise the input and one-hot encode the output. 
+
+
+## 📌Day 56: ***🎵 Generating Music using LSTM in Keras #02***
+In the previous post we preprocessed our data, now let us define our model architecture which will be having 4 different types of layers: 
+- LSTM Layers: RNN layer that takes a sequence as an input and can return either sequences or a matrix. 
+- Dropout Layers: A regularisation technique that consists of setting a fraction of input units to 0 at each update during the training to prevent overfitting.
+- Dense layers or fully connected layers is a fully connected neural network layer where each input node is connected to each output node.
+- The Activation layer determines what activation function our neural network will use to calculate the output of a node.
+
+```python
+model = Sequential()
+    model.add(LSTM(
+        256,
+        input_shape=(network_input.shape[1], network_input.shape[2]),
+        return_sequences=True
+    ))
+    model.add(Dropout(0.3))
+    model.add(LSTM(512, return_sequences=True))
+    model.add(Dropout(0.3))
+    model.add(LSTM(256))
+    model.add(Dense(256))
+    model.add(Dropout(0.3))
+    model.add(Dense(n_vocab))
+    model.add(Activation('softmax'))
+    model.compile(loss='categorical_crossentropy', optimizer='rmsprop')
+
+```
