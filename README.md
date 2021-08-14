@@ -2894,5 +2894,16 @@ model = Sequential()
     model.add(Dense(n_vocab))
     model.add(Activation('softmax'))
     model.compile(loss='categorical_crossentropy', optimizer='rmsprop')
-
 ```
+
+## 📌Day 57: ***🎵 Generating Music using LSTM in Keras #05***
+Let us now look into our model configurations. 
+
+For each LSTM, Dense and Activation layer the first parameter determines how many nodes the layer should have. For the dropout layer, the first parameter is the fraction of input units that should be dropped during training. 
+
+For the first laer we have to provide a unique parameter called input_shape.  The purpose of the parameter is to inform the network of the shape of the data it will be training. The last layer should always contain the same amount of nodes as the number different outputs our system has. 
+
+We will use a simple network consisting of three LSTM layers, three Dropout layers, two Dense layers and one activation layer. We will tweak these accordingly later. 
+
+To calculate the loss for each iteration of the training we will be using categorical cross entropy since each of our outputs only belongs to a single class and we have more than two classes to work with. And to optimise our network we will use a RMSprop optimizer as it is usually a very good choice for recurrent neural networks.
+
