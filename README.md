@@ -2911,3 +2911,15 @@ To calculate the loss for each iteration of the training we will be using catego
 After defining our architecture we start our training. The model.fit() function in Keras is used to train the network. The first parameter is the list of input sequences from our data preparation phase and the second is a list of their respective outputs. We are to be training the network for 200 epochs, with each batch that is propagated through the network will be having 64 samples.
 
 Now we implement a concept called model checkpoints. What this does is it gives us the accesibility to stop the training at any point in time without losing the previous information. It basically provides us with a way to save the weights of the network nodes to a file after every epoch. This allows us to stop running the neural network once we are satisfied with the loss value without having to worry about losing the weights. Otherwise we would have to wait until the network has finished going through all 200 epochs before we could get the chance to save the weights to a file.
+
+```python
+filepath = "weights-improvement-{epoch:02d}-{loss:.4f}-bigger.hdf5"    
+checkpoint = ModelCheckpoint(
+    filepath, monitor='loss', 
+    verbose=0,        
+    save_best_only=True,        
+    mode='min'
+)    
+callbacks_list = [checkpoint]     
+model.fit(network_input, network_output, epochs=200, batch_size=64, callbacks=callbacks_list)
+```
