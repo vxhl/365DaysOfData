@@ -3053,3 +3053,51 @@ if __name__ == '__main__':
 Although it seems like there is some problem with the code here. Since it actually stopped after an epoch -_-. Anyway, to deal with the frustration I listened to the music that we are actually training on, i.e, Final Fantasy music, which more often than not are pretty uplifting. 
 
 https://www.youtube.com/watch?v=7Iweue-OcMo&t=1285s
+
+# 📌Day 60: ***🎵 Generating Music using LSTM in Keras #08***
+-> Actually Generating the music <-
+While the model is training, which is going to take a long time, I read up on how we are gonna be using the model in generating the music from it.
+
+Inorder to generate music we will have to put our neural network into the same state as before. We load the weight that we saved during the training into our model. And so we can use the trained model to start generating notes. 
+
+```python
+model = Sequential()
+model.add(LSTM(
+    512,
+    input_shape=(network_input.shape[1], network_input.shape[2]),
+    return_sequences=True
+))
+model.add(Dropout(0.3))
+model.add(LSTM(512, return_sequences=True))
+model.add(Dropout(0.3))
+model.add(LSTM(512))
+model.add(Dense(256))
+model.add(Dropout(0.3))
+model.add(Dense(n_vocab))
+model.add(Activation('softmax'))
+model.compile(loss='categorical_crossentropy', optimizer='rmsprop')
+# Load the weights to each node
+model.load_weights('weights.hdf5')
+```
+
+Since we have a full list of note sequences, we pick a random index in the list as our starting point, this allows us to rerun the generation code without changing anything different and getting results everytime. 
+
+We also need to create a mapping function to decode the output of the network.This function maps the numerical data back into categorical data of the midi file, i.e, from integer to notes. 
+
+### Python program for decoding integer to notes
+```python
+start = numpy.random.randint(0, len(network_input)-1)
+int_to_note = dict((number, note) for number, note in enumerate(pitchnames))
+pattern = network_input[start]
+prediction_output = []
+# generate 500 notes
+for note_index in range(500):
+    prediction_input = numpy.reshape(pattern, (1, len(pattern), 1))
+    prediction_input = prediction_input / float(n_vocab)
+    prediction = model.predict(prediction_input, verbose=0)
+    index = numpy.argmax(prediction)
+    result = int_to_note[index]
+    prediction_output.append(result)
+    pattern.append(index)
+    pattern = pattern[1:len(pattern)]
+```
