@@ -3101,3 +3101,22 @@ for note_index in range(500):
     pattern.append(index)
     pattern = pattern[1:len(pattern)]
 ```
+
+# 📌Day 61: ***Sources of Biases in AI***
+With the placement trainings starting today, the time is cut a bit short for too complex stuff. Today I learnt about Sources of Bias in AI. 
+
+### ***Data Driver Bias:*** 
+The output as we know is always determined by the output it receives. Confusion about predicting a said class from a dataset often arises because our model has been learning from skewed example sets. This problem is fixable by some better preprocessing and dataset construction rules, so that our results align with the things that we are training with. 
+Example: Nikon's confusion in recognising skin tones between different races was a result of learning from skewed example sets. 
+
+### ***Bias through Interaction***
+In AI there are systems that learn through interactions. Here Bias arises based on the biases of the users driving the interaction. A somewhat scary example was the Twitter-based chatbot, Microsoft's Tay. Tay was influenced by a community of users that gave input to data to be racist and misogynistic. The community repeatedly tweeted offensive statements at Tay and those statements were learnt for later responses. 
+
+Tay is an example of how these systems learn the biases of their surroundings and people and reflect the opinions of the people who traied them.
+
+### ***Emergent Bias***
+This refers more towards a bias bubble that is formed out of personalisation algorithms. As recommendation algorithms get better, they keep conforming us to an existing belief that we have and builds on it over time. This is a troublesome aspect of the algorithms as the result we get is a flow of information for the user that is skewed towards a user's existing beliefs. This "confirmation bias" may be good at times, but can incite the depths in people without much contemplation. 
+
+At the end of the day, these systems are built by us and humans are not free from bias, and we end up reflecting our biases. By understanding the bias themselves and the source of the problems we cn actively design systems to avoid them. 
+
+Reference: https://techcrunch.com/2016/12/10/5-unexpected-sources-of-bias-in-artificial-intelligence/
