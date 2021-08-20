@@ -3102,7 +3102,7 @@ for note_index in range(500):
     pattern = pattern[1:len(pattern)]
 ```
 
-# 📌Day 61: ***Sources of Biases in AI***
+## 📌Day 61: ***Sources of Biases in AI***
 With the placement trainings starting today, the time is cut a bit short for too complex stuff. Today I learnt about Sources of Bias in AI. 
 
 ### ***Data Driver Bias:*** 
@@ -3120,3 +3120,12 @@ This refers more towards a bias bubble that is formed out of personalisation alg
 At the end of the day, these systems are built by us and humans are not free from bias, and we end up reflecting our biases. By understanding the bias themselves and the source of the problems we cn actively design systems to avoid them. 
 
 Reference: https://techcrunch.com/2016/12/10/5-unexpected-sources-of-bias-in-artificial-intelligence/
+
+## 📌Day 62: ***Transfer Learning for NLP with TensorFlow Hub***
+Today I started out with a new project for implementing Transfer Learning in NLP. I started out with a new coursera course with a hands on project for Quora Insincere Questions dataset. Here the insincere questions are marked as 1 and the sincere are categorised as 0. 
+
+Our task is to detect the toxic questions online using these models. 
+
+We will be using pre-trained NLP text embedding and their associated models including universal sentence encoder, nnlm,etc. These can be used as ordinary Keras replacing the traditional embedding layers. So we can just plug and play with them and in addition to that these modules include test preprocessing as a part of their tf graph. We can also further choose to fine tune these embeddings. 
+
+![xx](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/nnn.png)
