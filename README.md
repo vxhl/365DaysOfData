@@ -3135,7 +3135,7 @@ After analysing the balance of the target values in our data (sincere/insincere)
 
 Making that assumption we create our training and validation splits such that this class imbalance is maintained in both of them. 
 
-🎯 Context-based Representations
+### 🎯 Context-based Representations
 Context-based representations may use language models to generate vectors of sentences. So, instead of learning vectors for individual words in the sentence, they compute a vector for sentences on the whole, by taking into account the order of words and the set of co-occurring words.
 Examples of deep contextualised vectors include:
 1. Embeddings from Language Models (ELMo): uses character-based word representations and bidirectional LSTMs. The pre-trained model computes a contextualised vector of 1024 dimensions. ELMo is available on Tensorflow Hub.
