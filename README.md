@@ -3129,3 +3129,19 @@ Our task is to detect the toxic questions online using these models.
 We will be using pre-trained NLP text embedding and their associated models including universal sentence encoder, nnlm,etc. These can be used as ordinary Keras replacing the traditional embedding layers. So we can just plug and play with them and in addition to that these modules include test preprocessing as a part of their tf graph. We can also further choose to fine tune these embeddings. 
 
 ![xx](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/nnn.png)
+
+## 📌Day 63: ***Transfer Learning for NLP with TensorFlow Hub #02***
+After analysing the balance of the target values in our data (sincere/insincere) we find that there is a large baunlance between them. But in the case for this project we do not handle this unbalance using undersampling, oversampling or SMOTE technique and instead we will be using a Stratified sampling strategy meaning we assume that this unbalance is reflected in the real world. 
+
+Making that assumption we create our training and validation splits such that this class imbalance is maintained in both of them. 
+
+🎯 Context-based Representations
+Context-based representations may use language models to generate vectors of sentences. So, instead of learning vectors for individual words in the sentence, they compute a vector for sentences on the whole, by taking into account the order of words and the set of co-occurring words.
+Examples of deep contextualised vectors include:
+1. Embeddings from Language Models (ELMo): uses character-based word representations and bidirectional LSTMs. The pre-trained model computes a contextualised vector of 1024 dimensions. ELMo is available on Tensorflow Hub.
+2. Universal Sentence Encoder (USE): The encoder uses a Transformer architecture that uses attention mechanism to incorporate information about the order and the collection of words. The pre-trained model of USE that returns a vector of 512 dimensions is also available on Tensorflow Hub.
+3. Neural-Net Language Model (NNLM): The model simultaneously learns representations of words and probability functions for word sequences, allowing it to capture semantics of a sentence. We will use a pretrained models available on Tensorflow Hub, that are trained on the English Google News 200B corpus, and computes a vector of 128 dimensions for the larger model and 50 dimensions for the smaller model.
+
+
+![xqfqx](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/day63.png)
+
