@@ -3145,3 +3145,11 @@ Examples of deep contextualised vectors include:
 
 ![xqfqx](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/day63.png)
 
+## 📌Day 64: ***Transfer Learning for NLP with TensorFlow Hub #03***
+Today I Learned how to implement the different models and log them to histories by naming the different models and then using TensorBoard to visualize these pre-trained embeddings like Swivel (20 dimensions), and Neural-Net Language Model (NNLM)(both 128 and 50 dimension models) on the Quora Insincere Questions dataset and gauge their performance comparing Epochs with Accuracy. We find NNLM 128 dims having the best performance and Swivel giving us the worst performance. We apply some fine tuning to the model by setting `Trainable = true` and thus improving it's performance. 
+
+![xqf](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/TASK7.png)
+
+![xq1x](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/Graphs.png)
+
+![tboard](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/tboard.png)
