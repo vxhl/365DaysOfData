@@ -3153,3 +3153,12 @@ Today I Learned how to implement the different models and log them to histories 
 ![xq1x](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/Graphs.png)
 
 ![tboard](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/tboard.png)
+
+## 📌Day 64: ***Latent Direchlit Allocation (LDA) - Topic Modelling***
+Latent Dirichlet Allocation (LDA) is a type of Topic Modelling technique. Topic Modelling is a field of research focused on finding out ways to cluster documents in order to discover latent distinguishing markers which can characterize them based on their content. Therefore, Topic Modelling can also be considered in this as a dimensionality reduction technique since it allows us to reduce our initial data to a limited set of clusters.
+
+![tmodel](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/topicmodelling.png)
+
+LDA is an unsupervised learning technique used to find out latent topics which can characterize different documents and cluster together similar ones. This algorithm takes as input the number N of topics which are believed exists and then groups the different documents into N clusters of documents which are closely related to each other.
+
+What characterises LDA from other clustering techniques such as K-Means Clustering is that LDA is a soft-clustering technique (each document is assigned to a cluster based on a probability distribution). For example, a document can be assigned to a Cluster A because the algorithm determines that it is 80% likely that this document belongs to this class, while still taking into account that some characteristics embedded into this document
