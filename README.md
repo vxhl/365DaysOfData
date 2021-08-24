@@ -3161,4 +3161,13 @@ Latent Dirichlet Allocation (LDA) is a type of Topic Modelling technique. Topic 
 
 LDA is an unsupervised learning technique used to find out latent topics which can characterize different documents and cluster together similar ones. This algorithm takes as input the number N of topics which are believed exists and then groups the different documents into N clusters of documents which are closely related to each other.
 
-What characterises LDA from other clustering techniques such as K-Means Clustering is that LDA is a soft-clustering technique (each document is assigned to a cluster based on a probability distribution). For example, a document can be assigned to a Cluster A because the algorithm determines that it is 80% likely that this document belongs to this class, while still taking into account that some characteristics embedded into this document
+What characterises LDA from other clustering techniques such as K-Means Clustering is that LDA is a soft-clustering technique (each document is assigned to a cluster based on a probability distribution). For example, a document can be assigned to a Cluster A because the algorithm determines that it is 80% likely that this document belongs to this class, while still taking into account that some characteristics embedded into this document.
+
+## 📌Day 66: Transformers in NLP
+Transformers represent the current state of the art NLP models in order to analyse text data. 
+
+Before the creation of Transformers, Recurrent Neural Networks (RNNs) represented the most efficient way to analyse sequentially text data for prediction but this approach found quite difficult to reliably make use of long term dependencies (eg. our network might find difficult to understand if a word fed in several iterations ago might result to be useful for the current iteration).
+
+Transformers successfully managed to overcome this limitation thanks to a mechanism called Attention (which is used in order to determine which parts of the text to focus on and give more weight). Additionally, Transformers made easier to process text data in parallel rather than sequentially (therefore improving execution speed).
+
+Transformers can nowadays be easily implemented in Python thanks to Hugging Face library.
