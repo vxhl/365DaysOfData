@@ -3172,7 +3172,7 @@ Transformers successfully managed to overcome this limitation thanks to a mechan
 
 Transformers can nowadays be easily implemented in Python thanks to Hugging Face library.
 
-## 📌Day 67: ***🎵 Generating Music using LSTM in Keras #08***
+## 📌Day 67: ***🎵 Generating Music using LSTM in Keras #09***
 Link to #07 - 
 In the previous post from #Day60 I learned and implemented how to decode the integers into notes and chords after preprocessing and building is over.
 
