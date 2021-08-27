@@ -3172,8 +3172,7 @@ Transformers successfully managed to overcome this limitation thanks to a mechan
 
 Transformers can nowadays be easily implemented in Python thanks to Hugging Face library.
 
-## 📌Day 67: ***🎵 Generating Music using LSTM in Keras #09***
-Link to #07 - 
+## 📌Day 67: ***🎵 Generating Music using LSTM in Keras #09*** 
 In the previous post from #Day60 I learned and implemented how to decode the integers into notes and chords after preprocessing and building is over.
 
 We chose to generate 500 notes using the network since that is roughly two minutes of music and gives the network plenty of space to create a melody. 
@@ -3211,3 +3210,15 @@ for pattern in prediction_output:
     # increase offset each iteration so that notes do not stack
     offset += 0.5
 ```
+
+## 📌Day 68: ***🎵 Generating Music using LSTM in Keras #10*** 
+Training the model came up with the insufficient memory error in Jupyter notebook, on transfering the project to Google colab it seems as though a lot of changes need to be made with the file imports which I don't seem to be well versed at as of yet. Will deal with this error tomorrow. 
+
+Meanwhile I explored other OS projects focusing on generating music and came across Jukebox for the first time.
+
+Provided with genre, artist, and lyrics as input, Jukebox outputs a new music sample produced from scratch. 
+
+You may read the paper here: https://openai.com/blog/jukebox/
+
+Jukebox repository: https://github.com/openai/jukebox/
+
