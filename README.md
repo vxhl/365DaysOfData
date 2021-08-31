@@ -3243,3 +3243,33 @@ Back in our example, we had two features. Some real uses of SVM in other fields 
 ### Putting it all together
 
 Now the only thing left to do is training! We have to take our set of labeled texts, convert them to vectors using word frequencies, and feed them to the algorithm — which will use our chosen kernel function — so it produces a model. Then, when we have a new unlabeled text that we want to classify, we convert it into a vector and give it to the model, which will output the tag of the text.
+
+## 📌Day 70-71: Content Based Anime Recommender #01
+I find myself way more invested in learning when I take on a project that feels interesting or significant. Simply going on and learning topics and not implementing them on use cases feels like a vague learning approach so I will try to steer clear of that most of the time. 
+
+Today I took on a project where the algorithm recommends anime based on a show one likes.
+
+For the purpose of this project we will be using the Anime Recommendations Database having two datasets namely `anime.csv` and `rating.csv`
+
+About the dataset: 
+
+Database link - https://www.kaggle.com/CooperUnion/anime-recommendations-database
+
+anime.csv features -- 
+
+- genre
+- type
+- episodes
+- rating
+- members
+
+rating.csv features -- 
+
+- user_id
+- anime_id
+- rating
+
+From any recommendation algorithm one of the most a simple approach would be to apply the K-NN algorithm on primarily the features - genres, type, rating and episodes since those can best characterise the series or movies similarities. 
+
+### Data Preprocessing
+There are a few challenges that arise during Data Preprocessing stages. First of all the anime that are ongoing when the data was collected have unknown number of episodes and thus their number of episodes is said to be unknown/null. We can tackle this by filling in the number of episodes for the current timeline of the project which may be a bit tedious but should be doable. I'll be tackling that problem the rest of the night and update on the progress and what I did tomorrow. 
