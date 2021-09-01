@@ -3273,3 +3273,41 @@ From any recommendation algorithm one of the most a simple approach would be to 
 
 ### Data Preprocessing
 There are a few challenges that arise during Data Preprocessing stages. First of all the anime that are ongoing when the data was collected have unknown number of episodes and thus their number of episodes is said to be unknown/null. We can tackle this by filling in the number of episodes for the current timeline of the project which may be a bit tedious but should be doable. I'll be tackling that problem the rest of the night and update on the progress and what I did tomorrow. 
+
+## 📌Day 72: Content Based Anime Recommender #02 
+Let us handle the issues of missing or inconsistent values. One of the anomalies in this dataset is that the anime that were airing at the time of collecting this dataset are categorised as unknown number of episodes. So we need to handle that first.
+
+1. Anime that are grouped under hentai categories generally have 1-4 episodes so we will fill them with 2
+
+2. Anime grouped as OVA's only have 1-2 episodes so we will fill those with 1.`
+
+3. Anime grouped under movies are considered as 1 episode
+
+4. For other anime with unknown number of episodes we fill the unknown values with the median.
+
+Other than these, we will be filling up the anime whose episodes we know of in the list with the present values.
+
+```python
+anime.loc[(anime["genre"]=="Hentai") & (anime["episodes"]=="Unknown"),"episodes"] = "1"
+anime.loc[(anime["type"]=="OVA") & (anime["episodes"]=="Unknown"),"episodes"] = "1"
+
+anime.loc[(anime["type"] == "Movie") & (anime["episodes"] == "Unknown")] = "1"
+
+known_animes = {"Naruto Shippuuden":500, "One Piece":981,"Detective Conan":988, "Dragon Ball Super":132,
+                "Crayon Shin chan":1077, "Yu Gi Oh Arc V":148,"Shingeki no Kyojin Season 2":12,
+                "Boku no Hero Academia 2nd Season":25,"Little Witch Academia TV":25}
+
+for k,v in known_animes.items():    
+    anime.loc[anime["name"]==k,"episodes"] = v
+
+anime["episodes"] = anime["episodes"].map(lambda x:np.nan if x=="Unknown" else x)
+
+anime["episodes"].fillna(anime["episodes"].median(),inplace = True)
+
+```
+## Rating
+Many animes have unknown ratings. These were filled with the median of the ratings.
+```python
+anime["rating"] = anime["rating"].astype(float)
+anime["rating"].fillna(anime["rating"].median(),inplace = True)
+```
