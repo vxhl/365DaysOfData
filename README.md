@@ -3311,3 +3311,11 @@ Many animes have unknown ratings. These were filled with the median of the ratin
 anime["rating"] = anime["rating"].astype(float)
 anime["rating"].fillna(anime["rating"].median(),inplace = True)
 ```
+
+## 📌Day 73: Content-Based Anime Recommender #03
+Today I did some basic preprocessing on the dataset and built the model which was actually a lot simpler than I initially thought. This project was barely too much of a challenge to just keep it as a jupyter notebook so I'm gonna be making a web app out of it in the next week or so and that will be better practice to polish on my web dev skills as well. 
+
+
+![ppoc](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/preprocessing.png)
+
+![pfoc](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/feature.png)
