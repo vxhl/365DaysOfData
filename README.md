@@ -3328,7 +3328,7 @@ Collaborative Filtering: collaborative filtering uses similarities between users
 For now this seems intriguing but I will read more into it later. Got some busy weeks ahead with a Data Analytics training course so maybe I will write about my learnings from that as well.
 
 
-![naruto](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/Naruto.png)
+![naruto](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/naruto.png)
 
 
 ![pggfoc](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/AttackOnTitan.png)
