@@ -3319,3 +3319,22 @@ Today I did some basic preprocessing on the dataset and built the model which wa
 ![ppoc](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/preprocessing.png)
 
 ![pfoc](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/feature.png)
+
+## 📌Day 74: Content-Based Anime Recommender #04
+Just did some Query tests, and for the most part the model does what it is supposed to do. Since the features are not vague at all and there aren't many to determine the properties of any said show, this implementation was fairly simple. After completing this I looked into other people's projects and they were using something called Collaborative Filtering.
+
+Collaborative Filtering: collaborative filtering uses similarities between users and items simultaneously to provide recommendations. This allows for serendipitous recommendations; that is, collaborative filtering models can recommend an item to user A based on the interests of a similar user B. Furthermore, the embeddings can be learned automatically, without relying on hand-engineering of features.
+
+For now this seems intriguing but I will read more into it later. Got some busy weeks ahead with a Data Analytics training course so maybe I will write about my learnings from that as well.
+
+
+![naruto](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/Naruto.png)
+
+
+![pggfoc](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/AttackOnTitan.png)
+
+
+![pfoymymc](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/byid.png)
+
+
+![afawfpfoc](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/yourname.png)
