@@ -3338,3 +3338,86 @@ For now this seems intriguing but I will read more into it later. Got some busy 
 
 
 ![afawfpfoc](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/yourname.png)
+
+## 📌Day 75: Data Analytics and Visualization Training Updates #01 
+Today was the first day for the Data Analytics training program from cognibot and it was a fairly interesting one. Here are some of the most interesting things I gathered from it - 
+
+### 1. The Six Disruptive Models
+### 🎯 The Different Ways Data Analytics will be used -
+
+![disruptive](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/disruptive.png)
+
+- **Business models enabled by orthogonal data :**
+
+    Do we take data from different domains and apply it in our domain? 
+
+    Example: 
+
+    1. taking driving data and applying them in insurance companies
+    2. Make medical decisions by taking credit card transaction info and determine how much food and what food is being consumed
+- Hyper-Scale, Real-time Data:
+
+    Live data extraction from different sources. 
+
+    Example: 
+
+    1. Transportation and logistics 
+    2. Automotive
+- **Radical Personalization:**
+
+    Basically recommendation systems 
+
+    Example: 
+
+    1. Youtube recommendation systems 
+- **Massive Data Integration Capabilities**
+
+    Example: 
+
+    1. Banking
+    2. Insurance
+    3. Public Sector
+
+    For some bigger digitized banks, we can instantaneously get the bank statements for as long ago as we want really fast. This is possible because of MDI. Also works for instant loan sanctioning,
+
+- **Data-Driven Discovery**
+
+    Example:
+
+    1. Life sciences and pharma
+    2. Material sciences
+- **Enhanced Decision Making**
+
+    Example: 
+
+    1. Suggesting treatment/medicines for any disease possible using data analytics.
+
+### 2. Observing the impact and potential of different domains for using data analytics 
+
+![observations](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/observations.png)
+####  Observations:
+- Here we see the volume of data that is used in the world
+- We see Personalised advertising being the biggest domain around here with both the volume and impact at a high level
+- *Optimizing clinical trials:*  During covid, the vaccines analysis had a lot to do with data analytics.
+
+### 3. Country wise-impact 
+
+![ouss](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/countrywise.png)
+
+Why? Because of a lot of manufacturing. Japan has a lot of manufacturing value from Games to Cars to a lot of many more things. The same goes for Mexico since it is cheaper to manufacture in Mexico. 
+
+Immediately next to that, we have India and China. 
+
+Why India? → One of the world's largest service-based countries.
+
+On referring to the disrupt chart we see medical and banking being the most prevalent sectors
+
+### Medical Sectors Analysis: 
+![med](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/medical.png)
+
+![me1314d](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/financial.png)
+
+### Banking Sector Analysis 
+![bak](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/banking.png)
+
+Why did they decide to bring UPI? → They analyzed electronic transactions to banking to other platforms and saw how the point of sale terminals were the ones where the vast majority of transactions were happening. 
