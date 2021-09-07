@@ -3421,3 +3421,28 @@ On referring to the disrupt chart we see medical and banking being the most prev
 ![bak](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/banking.png)
 
 Why did they decide to bring UPI? → They analyzed electronic transactions to banking to other platforms and saw how the point of sale terminals were the ones where the vast majority of transactions were happening. 
+
+## 📌Day 76: Data Analytics and Visualization Training Updates #02
+Today was more about taking a look at different case studies in large scale companies and track the progress of DA in the said companies. We took a look a the DA Forum Survey Results and asked questions like: 
+
+### Q1. Do companies have a DA program?
+
+→ Nearly 60% do and 32% do not have while 19% are unsure about it. 
+
+### Q2. Does your DA program include areas beyond audit?
+
+![Untitled1412](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/e5f12141-ed91-4e98-b41b-ab0c28948636/Untitled.png)
+
+*Audit: an official inspection of an organization's accounts, typically by an independent body*
+
+### Q3. What DA tools are you leveraging?
+
+![Un14124titled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/daa6bb05-82f6-41e1-97ab-cc158d6ea9e1/Untitled.png)
+
+We also loooked at the different stages where the companies adopt data analytics and looked at a capability diagram. 
+
+![Untit124124led](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/2010803e-2e0d-4433-9343-79866843495f/Untitled.png)
+
+We also took a look at the Data Analytics architectural graph and discuessed on the various stages that in order of relevance and effort in each sector. 
+
+![Untitl3r2r23](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/b043c525-1812-4491-8642-a4d500c0128a/Untitled.png)
