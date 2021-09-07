@@ -3446,3 +3446,52 @@ We also loooked at the different stages where the companies adopt data analytics
 We took a look at the Data Analytics architectural graph and discuessed on the various stages that in order of relevance and effort in each sector. 
 
 ![Untitl3r2r23](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/archi.png)
+
+## 📌Day 77: Autocorrect With Python
+Autocorrect is of course based on Natural Language Processing, and we use it to correct errors in grammar and spellings while we type. 
+
+There a number of cases that comes to mind like, what if the word deos not exist in the vocabulary, in that case the program will suggest words that are similar to it. 
+
+We will be using the `textdistance` library for this task. 
+
+`pip install textdistance`
+
+### Step 1: We first make a list of words from The Project Gutenberg Ebook Moby Dick; or the Whale by Herman Melville
+
+```python
+import pandas as pd
+import numpy as np
+import textdistance
+import re
+from collections import Counter
+words = []
+with open('moby.txt', 'r') as f:
+    file_name_data = f.read()
+    file_name_data=file_name_data.lower()
+    words = re.findall('\w+',file_name_data)
+# This is our vocabulary
+V = set(words)
+print(f"The first ten words in the text are: \n{words[0:10]}")
+print(f"There are {len(V)} unique words in the vocabulary.")
+
+'''
+Output: 
+
+The first ten words in the text are: 
+['moby', 'dick', 'by', 'herman', 'melville', '1851', 'etymology', 'supplied', 'by', 'a']
+There are 17140 unique words in the vocabulary.
+'''
+```
+In the above code, we made a list of words, and now we need to build the frequency of those words, which can be easily done by using the counter function in Python:
+
+```python
+
+word_freq_dict = {}  
+word_freq_dict = Counter(words)
+print(word_freq_dict.most_common()[0:10])
+
+'''
+Output: 
+[('the', 14431), ('of', 6609), ('and', 6430), ('a', 4736), ('to', 4625), ('in', 4172), ('that', 3085), ('his', 2530), ('it', 2522), ('i', 2127)]
+'''
+```
