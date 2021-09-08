@@ -3495,3 +3495,53 @@ Output:
 [('the', 14431), ('of', 6609), ('and', 6430), ('a', 4736), ('to', 4625), ('in', 4172), ('that', 3085), ('his', 2530), ('it', 2522), ('i', 2127)]
 '''
 ```
+
+## 📌Day 78: Autocorrect With Python II 
+Today I implemented the textdistance library for building our `autocorrect` function and tested the it on different words by spelling and misspelling them.
+
+📝Thoughts: The last few entries have been kind of bland and unchallenging. I don't feel challenged in any way right now but also can't afford to pick up a super complex project cause of the time constraints with other work. Maybe I will gradually work on something while allocating the minimal amount of time for it, but idk we'll see.  
+
+```python
+def my_autocorrect(input_word):
+    input_word = input_word.lower() 
+    if input_word in V:
+        return('Your word seems to be correct')
+    else:
+        similarities = [1-(textdistance.Jaccard(qval=2).distance(v,input_word)) for v in word_freq_dict.keys()]
+        df = pd.DataFrame.from_dict(probs, orient='index').reset_index()
+        df = df.rename(columns={'index':'Word', 0:'Prob'})
+        df['Similarity'] = similarities
+        output = df.sort_values(['Similarity', 'Prob'], ascending=False).head()
+        return(output)
+
+my_autocorrect('nevertheless')
+'''
+Output: 
+Your word seems to be correct
+'''
+my_autocorrect('neverteless')
+'''
+Output: 
+Word	Prob	Similarity
+2571	nevertheless	0.000225	0.750000
+13657	boneless	0.000013	0.416667
+12684	elevates	0.000004	0.416667
+1105	never	0.000925	0.400000
+7136	level	0.000108	0.400000
+
+'''
+my_autocorrect('corect')
+
+'''
+Output:
+Word	Prob	Similarity
+8530	correct	0.000027	0.833333
+4546	record	0.000031	0.666667
+8447	correctly	0.000018	0.625000
+12272	incorrect	0.000004	0.625000
+16260	core	0.000004	0.600000
+'''
+
+```
+### Conclusion: 
+We have successfully made a simple model that suggests words on the basis of errors on it and returns correct if it is in fact correct. 
