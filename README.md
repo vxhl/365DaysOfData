@@ -3545,3 +3545,40 @@ Word	Prob	Similarity
 ```
 ### Conclusion: 
 We have successfully made a simple model that suggests words on the basis of errors on it and returns correct if it is in fact correct. 
+
+## 📌Day 79: Working with TextBlob - ***Correct Spellings with Python***
+TextBlob is a Python library for processing text data. It provides a simple API for delving into common natural language processing tasks such as tagging part of speech, extracting nominal sentences, analysing feeling, classifying, translating, and more. 
+
+Some useful features -- 
+1. Noun phrase extraction
+2. Part-of-speech tagging
+3. Sentiment analysis
+4. Classification
+5. Tokenization
+6. Word and phrase frequencies
+7. Parsing
+8. n-grams
+9. Word inflexion and lemmatization
+10. Spelling correction
+11. Add new models or languages through extensions
+12. WordNet integration
+
+### Python program to correct spellings using TextBlob
+```python 
+from textblob import TextBlob
+words =  ["Machne", "Learnin"]
+corrected_words = []
+for i in words:
+    corrected_words.append(TextBlob(i))
+print("Wrong words :", words)
+print("Corrected Words are :")
+for i in corrected_words:
+    print(i.correct(), end=" ")
+'''
+Output:
+Wrong words : ['Machne', 'Learnin']
+Corrected Words are :
+Machine Learning 
+'''
+```
+This is how we can write a python program using the TextBlob library for correcting spellings. This feature can be used in Natural language processing projects in Machine Learning.
