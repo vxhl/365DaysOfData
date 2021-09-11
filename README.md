@@ -3667,7 +3667,7 @@ SAP Developer                24
 Civil Engineer               24
 Advocate                     20
 Name: Category, dtype: int64
-
+'''
 ```
 ***1. Visualizing the categories***
 ```python
