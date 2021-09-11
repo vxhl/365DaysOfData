@@ -3582,3 +3582,136 @@ Machine Learning
 '''
 ```
 This is how we can write a python program using the TextBlob library for correcting spellings. This feature can be used in Natural language processing projects in Machine Learning.
+
+## 📌Day 80: Resume Screening Project #01
+Resume screening is the process of filtering out the best resume applications among many others. 
+
+Typically large companies do not have enough time to open each CV, so they use machine learning algorithms for the resume screening task.
+
+Today I explored the dataset that I'll be using for this and cleaned it using the python library for regular expressions for irrelevant data. 
+
+***Step 1: Importing the Libraries and Dataset***
+
+```python
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import warnings
+warnings.filterwarnings('ignore')
+from sklearn.naive_bayes import MultinomialNB
+from sklearn.multiclass import OneVsRestClassifier
+from sklearn import metrics
+from sklearn.metrics import accuracy_score
+from pandas.plotting import scatter_matrix
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn import metrics
+
+df = pd.read_csv('UpdatedResumeDataSet.csv' ,encoding='utf-8')
+df['cleaned_resume'] = ''
+df.head()
+
+'''
+output: 
+	Category	                                               Resume	   cleaned_resume
+0	Data Science	Skills * Programming Languages: Python (pandas...	
+1	Data Science	Education Details \r\nMay 2013 to May 2017 B.E...	
+2	Data Science	Areas of Interest Deep Learning, Control Syste...	
+3	Data Science	Skills â¢ R â¢ Python â¢ SAP HANA â¢ Table...	
+4	Data Science	Education Details \r\n MCA YMCAUST, Faridab...	
+'''
+```
+***Step 2: EDA***
+```python
+print("The Different job categories int he resume are: ")
+print(df['Category'].unique())
+
+'''
+Output:
+The Different job categories int he resume are: 
+['Data Science' 'HR' 'Advocate' 'Arts' 'Web Designing'
+ 'Mechanical Engineer' 'Sales' 'Health and fitness' 'Civil Engineer'
+ 'Java Developer' 'Business Analyst' 'SAP Developer' 'Automation Testing'
+ 'Electrical Engineering' 'Operations Manager' 'Python Developer'
+ 'DevOps Engineer' 'Network Security Engineer' 'PMO' 'Database' 'Hadoop'
+ 'ETL Developer' 'DotNet Developer' 'Blockchain' 'Testing']
+'''
+print("The Number of records belonging to each category: ")
+print(df['Category'].value_counts())
+
+'''
+output: 
+The Number of records belonging to each category: 
+Java Developer               84
+Testing                      70
+DevOps Engineer              55
+Python Developer             48
+Web Designing                45
+HR                           44
+Hadoop                       42
+Blockchain                   40
+ETL Developer                40
+Operations Manager           40
+Data Science                 40
+Sales                        40
+Mechanical Engineer          40
+Arts                         36
+Database                     33
+Electrical Engineering       30
+Health and fitness           30
+PMO                          30
+Business Analyst             28
+DotNet Developer             28
+Automation Testing           26
+Network Security Engineer    25
+SAP Developer                24
+Civil Engineer               24
+Advocate                     20
+Name: Category, dtype: int64
+
+```
+***1. Visualizing the categories***
+```python
+import seaborn as sns
+plt.figure(figsize=(15,15))
+plt.xticks(rotation=90)
+sns.countplot(y="Category", data=df)
+```
+Output: 
+
+![Untitlxx2r23](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/visResume.png)
+
+## 2. Visualizing the distribution of categories
+```python
+from matplotlib.gridspec import GridSpec
+targetCounts = df['Category'].value_counts()
+targetLabels  = df['Category'].unique()
+# Make square figures and axes
+plt.figure(1, figsize=(25,25))
+the_grid = GridSpec(2, 2)
+
+
+cmap = plt.get_cmap('coolwarm')
+colors = [cmap(i) for i in np.linspace(0, 1, 3)]
+plt.subplot(the_grid[0, 1], aspect=1, title='CATEGORY DISTRIBUTION')
+
+source_pie = plt.pie(targetCounts, labels=targetLabels, autopct='%1.1f%%', shadow=True, colors=colors)
+plt.show()
+
+```
+Output: 
+![ciro](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/circle.png)
+
+***Step 3: Data Preprocessing***
+Let us now clean the dataset from unnecessarry information like URLs, Hashtags, Special letters and Punctuations that are not necessary for our overall observations
+```python
+import re
+def cleanResume(resumeText):
+    resumeText = re.sub('http\S+\s*', ' ', resumeText) # remove URLs
+    resumeText = re.sub('#\s+', '', resumeText) # removing hashtags
+    resumeText = re.sub('[%s]' % re.escape("""!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~"""), ' ', resumeText)  # remove punctuations
+    resumeText = re.sub(r'[^\x00-\x7f]',r' ', resumeText) 
+    resumeText = re.sub('\s+', ' ', resumeText)  # remove extra whitespace
+    return resumeText
+    
+df['cleaned_resume'] = df.Resume.apply(lambda x: cleanResume(x))
+```
