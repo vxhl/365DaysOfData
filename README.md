@@ -3715,3 +3715,20 @@ def cleanResume(resumeText):
     
 df['cleaned_resume'] = df.Resume.apply(lambda x: cleanResume(x))
 ```
+
+
+## 📌Day 81-82: Resume Screening Project #02
+I did some more preprocessing for the text in the resume's by removing unncessary stopwords and also visualized it on a WordCloud to make sense of the most relevant features. Converted the categorical words into actual numerical values to be able to train the model. 
+
+We further vectorised the data using the TfidVectorizer from the sklearn.feature_extraction library on  our cleaned_resume column, setting max features to 1500. We split the training and test set in a ratio of 80:20. 
+
+We implemented the One-vs-the-rest multiclass strategy for this: 
+
+Also known as one-vs-all, this strategy consists in fitting one classifier per class. For each classifier, the class is fitted against all the other classes. In addition to its computational efficiency (only n_classes classifiers are needed), one advantage of this approach is its interpretability. Since each class is represented by one and one classifier only, it is possible to gain knowledge about the class by inspecting its corresponding classifier. This is the most commonly used strategy for multiclass classification and is a fair default choice.
+
+![ciro1](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/clean1.png)
+![ciro2](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/clean2.png)
+![ciro3](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/clean3.png)
+![ciro4](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/clean4.png)
+![ciro5](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/clean5.png)
+![ciro6](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/clean6.png)
