@@ -3737,3 +3737,15 @@ Also known as one-vs-all, this strategy consists in fitting one classifier per c
 ![ciro5](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/clean5.png)
 
 ![ciro6](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/clean6.png)
+
+## 📌Day 83: Named Entity Recognition 
+Named Entity means anything that is a real-world object such as a person, a place, any organization, any product which has a name.
+
+For example, like how Grammarly identifies all the incorrect spellings and punctuations in the text and corrects them. But it does not do anything with the named entities since it is using the same technique.
+
+Today I started implementing one such project using the ner_dataset.csv 
+
+![ci11414o6](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/ner.png)
+
+
+![ci11414o222](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/ner1.png)
