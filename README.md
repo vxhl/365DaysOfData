@@ -3749,3 +3749,58 @@ Today I started implementing one such project using the ner_dataset.csv
 
 
 ![ci11414o222](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/ner1.png)
+
+## 📌Day 84: Named Entity Recognition #02
+
+After all the preprocessing of the data in the previous section, we now split the data into training and test sets. We create a function for splitting the data because the LSTM layers accept sequences of the same length only. So every sentence that appears as integer in the data must be padded with the same length. 
+
+```python
+from sklearn.model_selection import train_test_split
+from keras.preprocessing.sequence import pad_sequences
+from keras.utils import to_categorical
+
+def get_pad_train_test_val(data_group, data):
+
+    #get max token and tag length
+    n_token = len(list(set(data['Word'].to_list())))
+    n_tag = len(list(set(data['Tag'].to_list())))
+
+    #Pad tokens (X var)    
+    tokens = data_group['Word_idx'].tolist()
+    maxlen = max([len(s) for s in tokens])
+    pad_tokens = pad_sequences(tokens, maxlen=maxlen, dtype='int32', padding='post', value= n_token - 1)
+
+    #Pad Tags (y var) and convert it into one hot encoding
+    tags = data_group['Tag_idx'].tolist()
+    pad_tags = pad_sequences(tags, maxlen=maxlen, dtype='int32', padding='post', value= tag2idx["O"])
+    n_tags = len(tag2idx)
+    pad_tags = [to_categorical(i, num_classes=n_tags) for i in pad_tags]
+    
+    #Split train, test and validation set
+    tokens_, test_tokens, tags_, test_tags = train_test_split(pad_tokens, pad_tags, test_size=0.1, train_size=0.9, random_state=2020)
+    train_tokens, val_tokens, train_tags, val_tags = train_test_split(tokens_,tags_,test_size = 0.25,train_size =0.75, random_state=2020)
+
+    print(
+        'train_tokens length:', len(train_tokens),
+        '\ntrain_tokens length:', len(train_tokens),
+        '\ntest_tokens length:', len(test_tokens),
+        '\ntest_tags:', len(test_tags),
+        '\nval_tokens:', len(val_tokens),
+        '\nval_tags:', len(val_tags),
+    )
+    
+    return train_tokens, val_tokens, test_tokens, train_tags, val_tags, test_tags
+
+train_tokens, val_tokens, test_tokens, train_tags, val_tags, test_tags = get_pad_train_test_val(data_group, data)
+
+'''
+output:
+train_tokens length: 32372
+train_tokens length: 32372
+test_tokens length: 4796
+test_tags: 4796
+val_tokens: 10791 val_tags: 10791
+
+'''
+```
+💭 Quote for the day: "It is less about what you want, and more about what you are willing to give up." 
