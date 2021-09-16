@@ -3804,3 +3804,49 @@ val_tokens: 10791 val_tags: 10791
 '''
 ```
 💭 Quote for the day: "It is less about what you want, and more about what you are willing to give up." 
+
+## 📌Day 85: Named Entity Recognition #03
+Today I focused on preparing the data for training with the LSTM NN. Kinda tired with documentation will do a proper one at the end of the project xD. 
+
+```python
+import numpy as np
+import tensorflow
+from tensorflow.keras import Sequential, Model, Input
+from tensorflow.keras.layers import LSTM, Embedding, Dense, TimeDistributed, Dropout, Bidirectional
+from tensorflow.keras.utils import plot_model
+from numpy.random import seed # Used to save the state of a random function
+                            # So that it can generate the same random numbers on multiple executions of the code 
+                            # on the same machine
+seed(1)
+tensorflow.random.set_seed(2)
+```
+The layer below will take the dimensions from the LSTM layer and will give the maximum length and maximum tags as an output
+
+```python
+input_dim = len(list(set(df['Word'].to_list())))+1
+output_dim = 64
+input_length = max([len(s) for s in data_group['Word_idx'].to_list()])
+n_tags = len(tag2idx)
+```
+Now we create a helper function which will help us in giving the summary of every layer of the neural network model for NER
+
+```python
+def get_summary_lstm_model():
+    model = Sequential()
+    
+    # Add Embedding layer
+    model.add(Embedding(input_dim=input_dim, output_dim=output_dim, input_length=input_length))
+    # Add Bidirectional LSTM
+    model.add(Bidirectional(LSTM(units=output_dim, return_sequences=True, dropout=0.2, recurrent_dropout=0.2), merge_mode = 'concat'))
+    # Add LSTM
+    model.add(LSTM(units=output_dim, return_sequences=True, dropout=0.5, recurrent_dropout=0.5))
+    # Add timeDistributed layer
+    model.add(TimeDistributed(Dense(n_tags, activation="relu")))
+    # Optimiser
+    #adam = k.optimizers.Adam(lr=0.0005, beta_1=0.9, beta_2=0.999)
+    # Compile Model
+    model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
+    model.summary()
+    
+    return model
+```
