@@ -3850,3 +3850,65 @@ def get_summary_lstm_model():
     
     return model
 ```
+## 📌Day 86: Data Analytics and Visualization Training Updates #03
+Today was the last session for NumPy and we learnt about some interesting NumPy functions I hadn't seen before. 
+
+```python
+
+# Speed test - bear in mind that list comprehensions are vectorised
+
+def custom_dot(A, B):
+  
+  C = [[0 for i in range(len(B[0]))] for j in range(len(A))]
+  
+  for i in range(len(A)):
+    for j in range(len(B[0])):
+      C[i][j] = sum(A[i,:] * B[:,j])
+  
+  return C
+    
+%time using_numpy = np.dot(A,A)
+%time raw_python = custom_dot(A,A)
+
+'''
+Wall time: 0 ns
+Wall time: 1.01 ms
+'''
+big_array = np.random.rand(100000) #million
+%timeit sum(big_array)
+%timeit np.sum(big_array)
+'''
+22.5 ms ± 1.54 ms per loop (mean ± std. dev. of 7 runs, 10 loops each)
+38.7 µs ± 1.6 µs per loop (mean ± std. dev. of 7 runs, 10000 loops each)
+'''
+
+%timeit min(big_array)
+%timeit np.min(big_array)
+
+'''
+12.3 ms ± 397 µs per loop (mean ± std. dev. of 7 runs, 100 loops each)
+20.9 µs ± 1.6 µs per loop (mean ± std. dev. of 7 runs, 10000 loops each)
+
+'''
+M = np.random.random((3, 4))
+print(M)
+
+M.min(axis=0)
+
+'''
+[[0.26611129 0.68941825 0.09712462 0.91609147]
+ [0.22021768 0.13476991 0.61878012 0.6948387 ]
+ [0.25116466 0.72780002 0.8325948  0.19369098]]
+array([0.22021768, 0.13476991, 0.09712462, 0.19369098])
+'''
+
+M.max(axis=1)
+
+'''
+array([0.91609147, 0.6948387 , 0.8325948 ])
+'''
+M.min()
+'''
+0.09712461658955285
+'''
+```
