@@ -3916,7 +3916,7 @@ M.min()
 ## 📌Day 87-88: Data Analytics and Visualization Training Updates #04
 Doing an internship at the moment so barely have any time for the projects so I'll be keeping them on hold. For the next few days, meanwhile I will be updating the Data Analytics training lessons I learn everyday on here. 
 
-Today we took an extensive look into matplotlib.pyplot since honestly I've only been using templates all this time and not fully understanding the code. Now I do pretty well. 
+Today we took an extensive look into matplotlib.pyplot since honestly I've only been using templates all this time and not trying to fully understanding the code. 
 
 
 ![matplot](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/matplot.png)
@@ -3928,3 +3928,12 @@ Today we took an extensive look into matplotlib.pyplot since honestly I've only 
 
 ![matplot3](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/matplot3.png)
 
+## 📌Day 89: Data Analytics and Visualizationn training updates #05
+Today we looked into how we can plot mathematical functions made using numpy as a graph using matplotlib. Got to know about how to save the graph figures into our local drive, as well as adding texts to specific parts of a graph to gain better insights from them. We also got to know how we can add images as the background of our graph plot which is interesting, but i don't know what practical applications this may have. 
+
+
+![matplot6](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/matplot6.png)
+
+![matplot7](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/matplot7.png)
+
+![matplot8](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/matplot8.png)
