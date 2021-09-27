@@ -3937,3 +3937,34 @@ Today we looked into how we can plot mathematical functions made using numpy as 
 ![matplot7](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/matplot7.png)
 
 ![matplot8](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/matplot8.png)
+
+## 📌Day 90-91: Named Entity Recognition #04
+Getting back on it after a week long break. 
+
+So I left off this project on the function for getting the summary of every layer in the neural network model. Today I trained the NER model and visualize it using the `displacy` library from `spacy`
+
+```python
+def train_model(X, y, model):
+    loss = list()
+    for i in range(25):
+        # fit model for one epoch on this sequence
+        hist = model.fit(X, y, batch_size=1000, verbose=1, epochs=1, validation_split=0.2)
+        loss.append(hist.history['loss'][0])
+    return loss
+
+# Driver Code
+results = pd.DataFrame()
+model_bilstm_lstm = get_bilstm_lstm_model()
+plot_model(model_bilstm_lstm)
+results['with_add_lstm'] = train_model(train_tokens, np.array(train_tags), model_bilstm_lstm)
+
+
+# Testing the model using Displacy
+import spacy
+from spacy import displacy
+nlp = spacy.load('en_core_web_sm')
+text = nlp('Hi, My name is Aman Kharwal \n I am from India \n I want to work with Google \n Steve Jobs is My Inspiration')
+displacy.render(text, style = 'ent', jupyter=True)
+```
+Output:
+![ner1](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/displacy.png)
