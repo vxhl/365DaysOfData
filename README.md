@@ -3968,3 +3968,17 @@ displacy.render(text, style = 'ent', jupyter=True)
 ```
 Output:
 ![ner1](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/displacy.png)
+
+
+## 📌Day 92:  Data Analytics and Visualizationn training updates #06
+Today we reviewed on Overfitting and Underfitting. The overall goal in machine learning is to obtain a model that generalizes well to new, unseen data. In other words, we want a model that generalizes well to unseen data, which we can measure, for example, by using an independent test set. 
+
+Some of the evaluation metrics we can use to measure the performance on the test set are the prediction accuracy and misclassification error in the context of classification models - we can say that a model has a "high generalization accuracy" or "low generalization error".
+
+Now overfitting and underfitting are two terms that we can use to diagnose a machine learning model based on the training and test set performance. 
+
+A model that suffers from underfitting does not perform well on the test and training set. 
+
+A model that overfits can be usually recognised by a high training set accuracy, but low test set accuracy. 
+
+In general we might say that "high variance" is proportional to overfitting and "high bias" is to underfitting. 
