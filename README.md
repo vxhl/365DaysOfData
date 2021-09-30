@@ -3986,7 +3986,7 @@ In general we might say that "high variance" is proportional to overfitting and 
 ## 📌Day 93: Data Analytics and Visualizationn training updates #07
 Today we dabbled with Polynomial Regression and implemented it to understand the concepts of overfitting and underfitting and how to handle them. 
 
-![poly1](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/poly1.png)
+![poly1](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/poly.png)
 
 
 ![poly2](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/poly2.png)
