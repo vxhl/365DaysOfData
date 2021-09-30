@@ -3982,3 +3982,18 @@ A model that suffers from underfitting does not perform well on the test and tra
 A model that overfits can be usually recognised by a high training set accuracy, but low test set accuracy. 
 
 In general we might say that "high variance" is proportional to overfitting and "high bias" is to underfitting. 
+
+## 📌Day 93: Data Analytics and Visualizationn training updates #07
+Today we dabbled with Polynomial Regression and implemented it to understand the concepts of overfitting and underfitting and how to handle them. 
+
+![poly1](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/poly1.png)
+
+
+![poly2](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/poly2.png)
+
+
+![poly3](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/poly3.png)
+
+
+![poly4](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/poly4.png)
+
