@@ -4000,7 +4000,7 @@ Today we dabbled with Polynomial Regression and implemented it to understand the
 ## 📌Day 94-95: Data Analytics and Visualizationn training updates #08
 In the last two days we learnt and revised on the metrics namely Total sum of square, Residual Sum Of Squares in their role when defining the goodness of fit for a model. After doing so we implemented multiple linear regression on the Concrete_data dataset and evaluated it based on the metrics we learnt in the previous section. 
 
-![poly4141](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/metrics1.png)
+![poly4141](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/metrics.png)
 
 ![poly436363](https://github.com/vxhl/365Days_MachineLearning_DeepLearning/blob/main/Images/metrics2.png)
 
